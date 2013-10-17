@@ -13,6 +13,7 @@ $(document).ready( function() {
 	$.ajax({
 		type: 'POST',
 		url: 'xml/weather.xml',
+		//url:'http://api.openweathermap.org/data/2.5/weather?q=Paris&mode=xml,'
 		dataType: 'xml',
 		success: Init,
 		error: AJAX_erreur
