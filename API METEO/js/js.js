@@ -12,8 +12,7 @@ $(document).ready( function() {
 	
 	$.ajax({
 		type: 'POST',
-		url: 'xml/weather.xml',
-		//url:'http://api.openweathermap.org/data/2.5/weather?q=Paris&mode=xml,'
+		url:'http://api.openweathermap.org/data/2.5/weather?q=Paris&mode=xml',
 		dataType: 'xml',
 		success: Init,
 		error: AJAX_erreur
@@ -29,7 +28,7 @@ $(document).ready( function() {
 		
 		// Stockage du XML
 		_xml						= p_xml;
-		console.log('Météo chargée');
+		console.log('Mï¿½tï¿½o chargï¿½e');
 		Decor();
 		
 	};
