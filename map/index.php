@@ -15,7 +15,7 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL6jbConOc2cMBNepwDNA0l_lqrNOaRPI&sensor=true"></script><!-- API Google Maps-->
 
-    <script type="text/javascript" src="geolocation.js"></script>
+    <script type="text/javascript" src="map.js"></script>
 
 
 </head>
