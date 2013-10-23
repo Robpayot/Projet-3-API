@@ -1,0 +1,104 @@
+@font-face {
+    font-family: 'ProximaNovaSemibold';
+    src: url('../fonts/proximanova/proximanova-semibold.eot');
+    src: url('../fonts/proximanova/proximanova-semibold.eot') format('embedded-opentype'),
+         url('../fonts/proximanova/proximanova-semibold.woff') format('woff'),
+         url('../fonts/proximanova/proximanova-semibold.ttf') format('truetype'),
+         url('../fonts/proximanova/proximanova-semibold.svg#ProximaNovaSemibold') format('svg');
+}
+@font-face {
+    font-family: 'ProximaNovaSemiboldItalic';
+    src: url('../fonts/proximanova/proximanova-semiboldItalic.eot');
+    src: url('../fonts/proximanova/proximanova-semiboldItalic.eot') format('embedded-opentype'),
+         url('../fonts/proximanova/proximanova-semiboldItalic.woff') format('woff'),
+         url('../fonts/proximanova/proximanova-semiboldItalic.ttf') format('truetype'),
+         url('../fonts/proximanova/proximanova-semiboldItalic.svg#ProximaNovaSemiboldItalic') format('svg');
+}
+@font-face {
+    font-family: 'ProximaNovaRegular';
+    src: url('../fonts/proximanova/proximanova-regular.eot');
+    src: url('../fonts/proximanova/proximanova-regular.eot') format('embedded-opentype'),
+         url('../fonts/proximanova/proximanova-regular.woff') format('woff'),
+         url('../fonts/proximanova/proximanova-regular.ttf') format('truetype'),
+         url('fonts/proximanova/proximanova-regular.svg#ProximaNovaRegular') format('svg');
+}
+
+body{
+	font-family: 'ProximaNovaRegular', verdana;
+}
+#topbar-content{
+	width:960px;
+	margin-left:-480px;
+	left:50%;
+	position:relative;
+	padding-top:18px;
+}
+#topbar{
+	height:50px;
+	background:white;
+	border-bottom: solid 1px #6dc9e4;
+	font-size:14px;
+}
+#topbar h1{font-family: 'ProximaNovaSemibold';font-size:18px;position:absolute;left:0;}
+#topbar li{display:inline-block;margin-left:13px;}
+#topbar ul{font-family: 'ProximaNovaSemibold';font-size:14px;position:absolute;right:0px;}
+#userbar-content{width:960px;position:relative;margin-left:-480px;left:50%;}
+#userbar{height:160px;padding:10px;background:#efefef;}
+#userbar h2{font-family: 'ProximaNovaSemibold';font-size:18px;}
+#userbar p{font-size:14px;margin-top:2px;}
+#userbar :nth-child(4){color:#8d8d8d;}
+#subscribe{
+    height:18px;
+    width:110px;
+    text-transform: uppercase;
+    font-size:14px;
+    padding-top:5px;
+    text-align:center;
+    background:white;
+    color:#dd4a4a;
+    margin-top:6px;
+}
+#identity{position:absolute;left:170px;top:0;}
+#cal{
+    height:181px;
+    width:276px;
+  
+    position:absolute;
+    right:0;
+    top:-20px;
+}
+#cal-shadow-1{
+    height:10px;
+    width:10px;
+    background:#797979;
+    margin-left:3px;
+    -moz-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-30deg) skewY(0deg);
+        -webkit-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-30deg) skewY(0deg);
+        -o-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-30deg) skewY(0deg);
+        -ms-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-30deg) skewY(0deg);
+        transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-30deg) skewY(0deg);
+}
+#cal-shadow-2{width:270px;height:180px;background:#e4e4e4;position:absolute;bottom:0;left:4px;
+        -moz-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-2deg) skewY(0deg);
+        -webkit-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-2deg) skewY(0deg);
+        -o-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-2deg) skewY(0deg);
+        -ms-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-2deg) skewY(0deg);
+        transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-2deg) skewY(0deg);
+}
+#cal :nth-child(3){width:270px;height:180px;background:white;position:absolute;top:0;right:0;}
+#status{
+    width:250px;
+    position:absolute;
+    left: 50%;
+    top:40%;
+    margin-left:-125px;
+    text-align:center;
+    color:#8d8d8d;
+    font-family: 'ProximaNovaSemiboldItalic';
+    font-size:14px;
+}
+
+
+
+
+
