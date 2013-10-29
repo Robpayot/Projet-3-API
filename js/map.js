@@ -1,19 +1,27 @@
 
 var map;
-var initializeGeolocation;
+var initializeMap;
 var latLng;
-var minZoomLvl = 12;
+var minZoomLvl = 13;
+var geocoder;
 
 var skateparks = [
-  ['Bercy', 48.83704, 2.378773, 4],
-  ['Batignole', 48.890483, 2.315151, 5],
-  ['Batignole', 48.890483, 2.315151, 3],
-  ['Batignole', 48.890483, 2.315151, 2],
-  ['Batignole', 48.890483, 2.315151, 1],
+  ['JulesNoel', 48.824381, 2.314923, 11],
+  ['Porte d\'Orleans', 48.821641, 2.322991, 10],
+  ['EGP 18', 48.899653, 2.36517, 9],
+  ['Cladel', 48.868518, 2.342755, 8],
+  ['Charonne', 48.856324, 2.388413, 7],
+  ['Louis Vicat', 48.826093, 2.297053, 6],
+  ['Bercy', 48.83704, 2.378773, 5],
+  ['Batignole', 48.890483, 2.315151, 4],
+  ['Fougeres', 48.872707, 2.412882, 3],
+  ['St Ouen', 48.899611, 2.330257, 2],
+  ['La Muette', 48.864877, 2.26866, 1],
 ];
 
 // initialisation de la carte
-initializeGeolocation = function () {
+initializeMap = function () {
+    geocoder = new google.maps.Geocoder();
     latLng = new google.maps.LatLng(48.857261, 2.341751);
     var myOptions = {
         zoom: minZoomLvl,
@@ -28,6 +36,7 @@ initializeGeolocation = function () {
     map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
 
     setMarkers(map, skateparks);
+    getCheckin();
 
     // Frontières de la carte --- http://stackoverflow.com/questions/3818016/google-maps-v3-limit-viewable-area-and-zoom-level
     var strictBounds = new google.maps.LatLngBounds(
@@ -65,6 +74,7 @@ initializeGeolocation = function () {
 
 };
 
+
 //Affichage marqueurs
 function setMarkers(map, locations) {
   for (var i = 0; i < locations.length; i++) {
@@ -76,8 +86,19 @@ function setMarkers(map, locations) {
         title: skatepark[0],
         zIndex: skatepark[3]
     });
+    var skateparkName = "";
+    var infoSkatepark = new google.maps.InfoWindow({
+      content: skatepark[0]
+    });
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infoSkatepark.setContent(locations[i][0]);
+          infoSkatepark.open(map, marker);
+        }
+    })(marker, i));
   }
 }
+
 
 // Affichage d'erreurs
 function updateStatus(message) {
@@ -100,17 +121,33 @@ function handleError(error) {
         break;
     }
 }
+
 var latitude, longitude;
-//Récupération des données de localisation
-function findPosition(position) {
+var addressLocation;
+//Récupération des données de localisation et vérification de si Paris ou pas
+function findPosition(position) { 
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
     accuracy = position.coords.accuracy;
-    findOnGoogleMaps();
-    //var xhr = new XMLHttpRequest();
-    //var url = "trouve_position.php?lat=" + latitude + "&lng=" + longitude;
-    //xhr.open("GET", url);
-    //xhr.send(null);
+    var ltlng = new google.maps.LatLng(latitude, longitude);
+    geocoder.geocode({'latLng': ltlng}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      if (results[1]) {
+        console.log(results[4].formatted_address);
+        addressLocation = results[1].formatted_address;
+        console.log('Adresse : '+addressLocation);
+        if(results[4].formatted_address!="Paris, France" ) {
+          alert("Le service n'est disponible qu'à Paris pour le moment, tu ne peux donc pas te géolocaliser ici, désolé !");
+        } else {
+          findOnGoogleMaps();
+        }
+      } else {
+        console.log('No results found');
+      }
+    } else {
+      console.log('Geocoder failed due to: ' + status);
+    }
+  });
 }
 
 //Message check in
@@ -126,6 +163,7 @@ var infowindowCI = new google.maps.InfoWindow({
     content: checkinSuccess
 });
 
+
 function addCheckin() {
     //cancelDefaultAction(); //annule l'action du clic
     var comment = document.forms["add_comment"].elements[0].value;
@@ -133,14 +171,59 @@ function addCheckin() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url);
     xhr.send(null);
-    document.getElementById('firstHeading').innerHTML = "C'est fait !";
+    document.getElementById('textInfoCheckin').innerHTML = "C'est fait !";
     document.getElementById('firstHeading').innerHTML = "Check in enregistré !";
 }
 
+//Récupère les données des checkin de la BDD
+function getCheckin() {
+    cancelDefaultAction(); //annule l'action du clic
+    var url = "getcheckin.php";
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.send(null);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+            var locationsData=JSON.parse(xhr.responseText);
+            var count = locationsData.json.length;
+            console.log(locationsData);
+            //console.log(locationsData.json[1]);
+            for(var i=0;i<=count;i++) {
+              setMarkersCheckin(map,locationsData.json[i]);
+            }
+        }
+    };
+}
+
+//affiche les checkins
+function setMarkersCheckin(map, locations) {
+  console.log("setMarkersCheckin");
+  console.log(locations);
+    var id = locations.id;
+    console.log(locations.id);
+    var myLatLng = new google.maps.LatLng(locations.lat, locations.lng);
+    console.log(locations.lat+', '+locations.lng);
+    var markerChekin = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: id,
+    });
+    var checkinInfo = '<h3>'+locations.pseudo+'</h3>'+
+                      '"'+locations.comment+'" <br>'+
+                      "Du "+locations.date_debut+" à "+locations.date_fin;
+    var infoCheckin = new google.maps.InfoWindow({
+      content: checkinInfo
+    });
+    google.maps.event.addListener(markerChekin, 'click', (function() {
+          infoCheckin.open(map, markerChekin);
+    }));
+
+  }
+
 
 //annule l'action par défaut de l'event js
-function cancelDefaultAction() {
-    //var evt = e ? e:window.event;
+function cancelDefaultAction(e) {
+    var evt = e ? e:window.event;
     if (evt.preventDefault) evt.preventDefault();
     evt.returnValue = false;
     return false;
@@ -249,4 +332,5 @@ var styles = [
     "elementType": "geometry"  }
 ];
 
-google.maps.event.addDomListener(window, 'load', initializeGeolocation);
+google.maps.event.addDomListener(window, 'load', initializeMap);
+
