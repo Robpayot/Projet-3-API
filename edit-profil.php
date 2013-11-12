@@ -12,9 +12,13 @@ try {
     echo 'Erreur: ' . $e->getMessage();
 }
 
+session_start();
+$pseudo_user = $_SESSION['login'];
+
+
 //_________________RÉCUPÉRATION DES DONNEES USER_________________//
 
-	$user = $dbh -> query("SELECT * FROM grabin_user WHERE id=2")->fetchAll();
+	$user = $dbh -> query("SELECT * FROM grabin_user WHERE pseudo='".$pseudo_user."'")->fetchAll();
 	foreach ($user as $users):
 $name = $users['name'];
 $surname = $users['surname'];
@@ -98,25 +102,25 @@ if ($sport==15) {
 	//______________MODIF DANS LA DATABASE_______________	
 		}
 	if(isset($_POST['name'])) {	
-			$dbh -> query("UPDATE grabin_user SET name = '".$name_modify."' " );		
+			$dbh -> query("UPDATE grabin_user SET name = '".$name_modify."' WHERE pseudo='".$pseudo_user."' " );		
 	}
 	if(isset($_POST['surname'])) {	
-			$dbh -> query("UPDATE grabin_user SET surname = '".$surname_modify."' " );		
+			$dbh -> query("UPDATE grabin_user SET surname = '".$surname_modify."' WHERE pseudo='".$pseudo_user."'" );		
 	}
 		if(isset($_POST['pseudo'])) {	
-			$dbh -> query("UPDATE grabin_user SET pseudo = '".$pseudo_modify."' " );		
+			$dbh -> query("UPDATE grabin_user SET pseudo = '".$pseudo_modify."' WHERE pseudo='".$pseudo_user."' " );		
 	}
 		if(isset($_POST['email'])) {	
-			$dbh -> query("UPDATE grabin_user SET email = '".$email_modify."' " );		
+			$dbh -> query("UPDATE grabin_user SET email = '".$email_modify."' WHERE pseudo='".$pseudo_user."' " );		
 	}
 		if(isset($_POST['avatar'])) {	
-			$dbh -> query("UPDATE grabin_user SET avatar = '".$avatar_modify."' " );		
+			$dbh -> query("UPDATE grabin_user SET avatar = '".$avatar_modify."' WHERE pseudo='".$pseudo_user."' " );		
 	}
 		if(isset($_POST['age'])) {	
-			$dbh -> query("UPDATE grabin_user SET age = '".$age_modify."' " );		
+			$dbh -> query("UPDATE grabin_user SET age = '".$age_modify."' WHERE pseudo='".$pseudo_user."' " );		
 	}
 		if(isset($_POST['ville'])) {	
-			$dbh -> query("UPDATE grabin_user SET ville = '".$ville_modify."' " );		
+			$dbh -> query("UPDATE grabin_user SET ville = '".$ville_modify."' WHERE pseudo='".$pseudo_user."' " );		
 	}
 		
 	// MODIF SPORT PRATIQUES_____________________________________________________
@@ -128,17 +132,17 @@ if (isset($_POST['check']))
     foreach ($tabCheckbox as $checkbox) {
 		$Vsport=$Vsport+$checkbox;
     }
-	$dbh -> query("UPDATE grabin_user SET sport = '".$Vsport."'");
+	$dbh -> query("UPDATE grabin_user SET sport = '".$Vsport."' WHERE pseudo='".$pseudo_user."' ");
 
 	
 }
 	// MODIF SPORT LEVEL ___________________________________________________
 		if(isset($_POST['sport_level'])) {	
-			$dbh -> query("UPDATE grabin_user SET sport_level = '".$sport_level_modify."' " );		
+			$dbh -> query("UPDATE grabin_user SET sport_level = '".$sport_level_modify."' WHERE pseudo='".$pseudo_user."'" );		
 	}
 
 // _________________________________________Upload de fichier_________________________________
-$dossier = 'upload/';
+$dossier = 'MEDIA/avatars/';
 $fichier = basename($_FILES['avatar']['name']);
 $taille_maxi = 100000000;
 $taille = filesize($_FILES['avatar']['tmp_name']);
@@ -177,8 +181,9 @@ $fichierDbName=$users['id'].$fichier;
      {
 		 
 	
-		 $dbh -> query("UPDATE grabin_user SET avatar = '".$fichierDbName."'" );		
+		 $dbh -> query("UPDATE grabin_user SET avatar = 'MEDIA/avatars/".$fichierDbName."' WHERE pseudo='".$pseudo_user."'" );		
           echo 'Upload effectué avec succès !';
+		$_SESSION['photo']="MEDIA/avatars/".$fichierDbName;
      }
      else //Sinon (la fonction renvoie FALSE).
      {
@@ -224,6 +229,7 @@ width:170px;
 </style>
 
 <div id="content">
+<a href="profil.php">Retour Profil</a>
  <?php if (isset($success_modify)): ?>
                 		<div">
                  			 <h5><?php echo $success_modify; ?></h5>
@@ -245,7 +251,10 @@ width:170px;
 	<input class="monForm" value="<?php echo ($email);?>" name="email" id="email" data-provide="limit" data-counter="#counter"  rows="8"></input>
     
 	<p>Ton avatar : </p>
-    <div id="photo"><img alt="image avatar ici" width="100%" height="100%" src="upload/<?php echo ($avatar);?>"></div>
+    
+    <div id="photo"><img alt="image avatar ici" width="100%" height="100%" src="<?php 
+echo ($avatar);
+	?>"></div>
 	<input type="hidden" name="MAX_FILE_SIZE" value="100000000">
      <p>Ajouter une image : <input type="file" name="avatar" id="avatar"></p>
      
