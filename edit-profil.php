@@ -15,6 +15,9 @@ try {
 session_start();
 $pseudo_user = $_SESSION['login'];
 
+//____________REQUIRE_____________________
+
+require 'function.php';
 
 //_________________RÉCUPÉRATION DES DONNEES USER_________________//
 
@@ -176,14 +179,20 @@ if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
 // $fichier = "{$id_membre}.{$extension_upload}";
 /*$resultat = move_uploaded_file($_FILES['icone']['tmp_name'],$nom);
 */
+
 $fichierDbName=$users['id'].$fichier;
     if(move_uploaded_file($_FILES['avatar']['tmp_name'], $dossier . $fichierDbName)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
      {
-		 
-	
-		 $dbh -> query("UPDATE grabin_user SET avatar = 'MEDIA/avatars/".$fichierDbName."' WHERE pseudo='".$pseudo_user."'" );		
+
+// Recadrage de l'image 
+ $image_path = 'MEDIA/avatars/' .$fichierDbName;
+    $thumb_path = 'MEDIA/avatars/thumb_'. $fichierDbName;
+     
+    imagethumb($image_path, $thumb_path, 190);
+
+		 $dbh -> query("UPDATE grabin_user SET avatar = '".$thumb_path."' WHERE pseudo='".$pseudo_user."'" );		
           echo 'Upload effectué avec succès !';
-		$_SESSION['photo']="MEDIA/avatars/".$fichierDbName;
+		$_SESSION['photo']=$thumb_path;
      }
      else //Sinon (la fonction renvoie FALSE).
      {
@@ -194,6 +203,18 @@ else
 {
      echo $erreur;
 }
+
+//_________________SUPPRESSION DU COMPTE_________________//
+	
+		
+	if ( isset($_POST['submit_delete']) ) 
+	{
+		echo "<script>alert('Voulez-vous vraiment supprimer votre compte Grab\'in ?');</script>"; 
+		//unlink($avatar);
+		$dbh -> query("DELETE FROM grabin_user WHERE pseudo='".$pseudo_user."'" );
+		
+		
+	}
 
 ?>
      
@@ -223,7 +244,7 @@ input, label {
 	
 #photo {
 	margin:0 auto;
-width:170px;
+
 	}
 
 </style>
@@ -252,7 +273,7 @@ width:170px;
     
 	<p>Ton avatar : </p>
     
-    <div id="photo"><img alt="image avatar ici" width="100%" height="100%" src="<?php 
+    <div id="photo"><img alt="image avatar ici" src="<?php 
 echo ($avatar);
 	?>"></div>
 	<input type="hidden" name="MAX_FILE_SIZE" value="100000000">
@@ -278,6 +299,13 @@ echo ($avatar);
 
          				  <button id="submit_edit" name="submit_edit" type="submit">Valider les modifs</button></p>
                         </form>
+                        
+                         <form action='edit-profil.php' method="POST">
+           <button id="submit_delete" name="submit_delete" type="submit">Supprimer mon compte</button></p>
+        </form>
+        </div>
+      </div>
+                        
 </div>
 </body>
 </html>

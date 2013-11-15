@@ -62,7 +62,7 @@
     </fieldset>
   </form>
   
-  <h1><a href="Inscription.php"> S'inscrire </a></h1>
+  <h1><a href="inscription.php"> S'inscrire </a></h1>
   <h1><a href="facebook_connect.php"> S'inscrire avec Facebook </a></h1>
 
  

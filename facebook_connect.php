@@ -1,5 +1,6 @@
 <?php
 
+//____________________REQUIRE_FACEBOOK_____________________
 
 require_once("API/facebook.php");
 
@@ -47,19 +48,18 @@ try {
 
 // CREATION DE L'URL DE LA PHOTO DE PROFIL FACEBOOK 
 
-$avatar="https://graph.facebook.com/".$uid."/picture?type=large";
+$avatar="https://graph.facebook.com/".$uid."/picture?width=190&height=190";
 
 // CALCULE DE L'AGE EN FONCTION DE LA DATE DE NAISSANCE
 
   //date in mm/dd/yyyy format; or it can be in other formats as well
 
          //explode the date to get month, day and year
-         $birthday_dateTab = explode("/", $birthday_date);
-		 $birthday_date = $birthday_dateTab[2].$birthday_dateTab[1].$birthday_dateTab[0]; 
-		 
-$age = floor( (strtotime(date('Ymd')) - strtotime($birthday_date)) / 31556926);
 
-        
+         $birthday_date = explode("/", $birthday_date);
+		 
+		 $age = (date("md", date("U", mktime(0, 0, 0, intval($birthday_date[0]), intval($birthday_date[1]), intval($birthday_date[2])))) > date("md") ? ((date("Y")-intval($birthday_date[2]))-1):(date("Y")-intval($birthday_date[2])));
+		
 
 // CALCUL DE LA VALEUR DES SPORT PRATIQUES_____________________________________________________
 	
@@ -76,8 +76,12 @@ if (isset($_POST['check']))
 		$pseudo=mysql_escape_string($_POST['pseudo']);
 		$niveau=mysql_escape_string($_POST['niveau']);
 		
+//Date d'inscription
+
+$date_register=date('Y-m-d');
+
 if (isset($_POST['envoie'])) {
-$user = $dbh -> query('INSERT INTO grabin_user(name, surname, pseudo, sport, sport_level, email, mdp, avatar, age, ville)VALUES("'.$lastname.'","'.$firstname.'","'.$pseudo.'","'.$Vsport.'","'.$niveau.'","'.$email.'","'.$mdp.'","'.$avatar.'","'.$age.'", "'.$ville.'")');
+$user = $dbh -> query('INSERT INTO grabin_user(name, surname, pseudo, sport, sport_level, email, mdp, avatar, age, ville, date_register)VALUES("'.$lastname.'","'.$firstname.'","'.$pseudo.'","'.$Vsport.'","'.$niveau.'","'.$email.'","'.$mdp.'","'.$avatar.'","'.$age.'", "'.$ville.'", "'.$date_register.'")');
 		
 		
 						session_start(); 
@@ -99,15 +103,16 @@ $user = $dbh -> query('INSERT INTO grabin_user(name, surname, pseudo, sport, spo
 <head>
 <meta charset="utf-8">
 <title>Facebook connect</title>
-<script type="text/javascript" src="JS/verifmdp.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="js/verifmdpFb.js"></script>
 </head>
 
 <body>
 
 <h1> Inscription via Facebook </h1>
 <div id="fb-root"></div>
-
-<fb:login-button id="fb_connexion" scope="user_birthday,email" show-faces="true" width="200" max-rows="1"></fb:login-button>
+<div id="message_co"></div>
+<div id="facebook_button"><fb:login-button id="fb_connexion" scope="user_birthday,email" width="200" max-rows="1"></fb:login-button></div>
 <form autocomplete="off" method='post' action='facebook_connect.php'>
    <fieldset>
     <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required >
@@ -131,6 +136,7 @@ $user = $dbh -> query('INSERT INTO grabin_user(name, surname, pseudo, sport, spo
     </fieldset>
   </form>
 <script>
+
   // Additional JS functions here
   window.fbAsyncInit = function() {
     FB.init({
@@ -154,6 +160,10 @@ $user = $dbh -> query('INSERT INTO grabin_user(name, surname, pseudo, sport, spo
       // login status of the person. In this case, we're handling the situation where they 
       // have logged in to the app.
       testAPI();
+	       $("#facebook_button").hide();
+		   $("#fb-root").hide();
+		   var message_co=document.getElementById("message_co");
+			message_co.innerHTML="connecté à Facebook";
 	      } else if (response.status === 'not_authorized') {
       // In this case, the person is logged into Facebook, but not into the app, so we call
       // FB.login() to prompt them to do so. 
@@ -162,6 +172,7 @@ $user = $dbh -> query('INSERT INTO grabin_user(name, surname, pseudo, sport, spo
       // (1) JavaScript created popup windows are blocked by most browsers unless they 
       // result from direct interaction from people using the app (such as a mouse click)
       // (2) it is a bad experience to be continually prompted to login upon page load.
+	    $("#message_co").hide();
       FB.login();
     } else {
       // In this case, the person is not logged into Facebook, so we call the login() 
@@ -169,10 +180,10 @@ $user = $dbh -> query('INSERT INTO grabin_user(name, surname, pseudo, sport, spo
       // of whether they are logged into the app. If they aren't then they'll see the Login
       // dialog right after they log in to Facebook. 
       // The same caveats as above apply to the FB.login() call here.
+	  $("#message_co").hide();
       FB.login();
     }
   });
-
 
   };
 
