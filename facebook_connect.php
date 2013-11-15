@@ -34,17 +34,9 @@ $ville = $loginUrls['current_location.city'];
 $avatar = $loginUrls['picture'];
 endforeach;
 
+// CONNEXION BDD_____________________________________
 
-		
-$dsn = 'mysql:dbname=robinpayadmin;host=mysql51-100.perso';
-$user = 'robinpayadmin';
-$password = 'gUFjHp3Q8m9y';
-
-try {
-    $dbh = new PDO($dsn, $user, $password);
-} catch (PDOException $e) {
-    echo 'Erreur: ' . $e->getMessage();
-}
+require 'config.php';
 
 // CREATION DE L'URL DE LA PHOTO DE PROFIL FACEBOOK 
 

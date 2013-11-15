@@ -1,23 +1,13 @@
 <?php 
 
-// CONNEXION À LA BASE DE DONNÉES
-
-$dsn = 'mysql:dbname=robinpayadmin;host=mysql51-100.perso';
-$user = 'robinpayadmin';
-$password = 'gUFjHp3Q8m9y';
-
-try {
-    $dbh = new PDO($dsn, $user, $password);
-} catch (PDOException $e) {
-    echo 'Erreur: ' . $e->getMessage();
-}
-
-session_start();
-$pseudo_user = $_SESSION['login'];
-
 //____________REQUIRE_____________________
 
 require 'function.php';
+require 'config.php';
+session_start();
+$pseudo_user = $_SESSION['login'];
+
+
 
 //_________________RÉCUPÉRATION DES DONNEES USER_________________//
 
