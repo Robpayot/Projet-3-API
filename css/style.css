@@ -45,6 +45,19 @@ body{
 #topbar h1{font-family: 'ProximaNovaSemibold';font-size:18px;position:absolute;left:0;}
 #topbar li{display:inline-block;margin-left:13px;}
 #topbar ul{font-family: 'ProximaNovaSemibold';font-size:14px;position:absolute;right:0px;}
+.abos{margin-right:19px;}
+#topbar li input{
+    margin-right:19px;
+    height:25px;
+    width:240px;
+    text-align:right;
+    box-shadow:none;
+    border:solid 1px #e2e2e2;
+    padding-right:10px;
+    font-family: 'ProximaNovaSemibold';
+    font-size: 14px;
+
+}
 #userbar-content{width:960px;position:relative;margin-left:-480px;left:50%;}
 #userbar{height:160px;padding:10px;background:#efefef;}
 #userbar h2{font-family: 'ProximaNovaSemibold';font-size:18px;}
@@ -100,6 +113,130 @@ body{
     font-family: 'ProximaNovaSemiboldItalic';
     font-size:14px;
 }
+
+.transition200io, #classement-dropdown li{
+  -webkit-transition: all 200ms ease-in-out;
+        -moz-transition: all 200ms ease-in-out;
+        -ms-transition: all 200ms ease-in-out;
+        -o-transition: all 200ms ease-in-out;
+        transition: all 200ms ease-in-out;
+}
+
+#connexion-dropdown, #classement-dropdown{
+  width:320px;
+  position:fixed;
+  left:50%;
+  margin-left:-160px;
+  border:solid 1px #e4e4e4;
+  text-align:center;
+  font-size:14px;
+  padding-bottom:19px;
+  -webkit-box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.1);
+  background-color:white;
+  z-index:200;
+}
+.dropdown-up{
+  -moz-transform: scale(1) rotate(0deg) translateX(0px) translateY(-150%) skewX(0deg) skewY(0deg);
+        -webkit-transform: scale(1) rotate(0deg) translateX(0px) translateY(-150%) skewX(0deg) skewY(0deg);
+        -o-transform: scale(1) rotate(0deg) translateX(0px) translateY(-150%) skewX(0deg) skewY(0deg);
+        -ms-transform: scale(1) rotate(0deg) translateX(0px) translateY(-150%) skewX(0deg) skewY(0deg);
+        transform: scale(1) rotate(0deg) translateX(0px) translateY(-150%) skewX(0deg) skewY(0deg);
+}
+.dropdown-down{top:-1px;}
+.dropdown-down, .dropdown-up{
+-webkit-transition: all 500ms ease-in-out;
+        -moz-transition: all 500ms ease-in-out;
+        -ms-transition: all 500ms ease-in-out;
+        -o-transition: all 500ms ease-in-out;
+        transition: all 500ms ease-in-out;
+}
+.dropdown-title{
+  margin:19px;
+  font-size:18px;
+  font-family: 'ProximaNovaSemibold';
+}
+
+#connexion-dropdown input{
+  margin-bottom:14px;
+  font-size:14px;
+}
+#btn-connexion, #btn-fbco, #connexion-dropdown input{
+  height:36px;
+  width:202px;
+  border:solid 1px #e4e4e4;
+  text-align:center;
+}
+#btn-connexion, #btn-fbco{
+  position:relative;
+  left:50%;
+  margin-left:-101px;
+  line-height:36px;
+  color:white;
+}
+
+#btn-connexion{background-color:#6dc9e4;}
+#btn-fbco{background-color:#46629e;margin-bottom:18px;}
+#btn-connexion a, #btn-fbco a{display:block;color:white;text-decoration:none;}
+#btn-connexion:hover{background-color:#75d6f3;}
+#btn-fbco:hover{background-color:#5172b9;}
+
+#separation{
+  border-top:solid 1px #e4e4e4;
+  margin-top:14px;
+  width:202px;
+  position:relative;
+  left:50%;
+  margin-left:-101px;
+  height:0px;
+  margin-bottom:14px;
+}
+#separation p{
+  width:32px;
+  background:white;
+  margin-top:-8px;
+  position:relative;
+  left:50%;
+  margin-left:-16px;  
+  color:#8d8d8d;
+}
+
+.no-account:link, .no-account:visited{color:#6dc7e2;}
+.no-account:hover{color:#6dc7e2;text-decoration:none;}
+
+.close{
+  position:absolute;
+  right:14px;
+  top:18px;
+}
+
+#classement-dropdown li{
+  height:27px;
+  line-height:27px;
+  padding-right:14px;
+}
+#testgr{display:block;}
+#classement-dropdown li:hover{background-color:#efefef;}
+.categ{
+  height:100%;
+  width:2px;
+  float:left;
+  width
+}
+.goldcup{background:url('../imgs/cup-gold.png') no-repeat;}
+.silvercup{background:url('../imgs/cup-silver.png') no-repeat;}
+.bronzecup{background:url('../imgs/cup-bronze.png') no-repeat;}
+.cup{width:27px;height:27px;float:left;background-position:center right;}
+
+.blue{background-color:#69c1db;}
+.red{background-color:#e58787;}
+.yellow{background-color:#f7f041;}
+.blue{background-color:#69c1db;}
+.blue{background-color:#69c1db;}
+.rider{float:left;font-family: 'ProximaNovaSemibold';margin-left:14px;}
+.score{float:right;color:#797979;}
+
+#galery{height:400px;width:100%;}
 
 
 
