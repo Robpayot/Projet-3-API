@@ -1,14 +1,19 @@
 var map;
 var initializeMap;
 var latLng;
-//var minZoomLvl = 13;
 var geocoder;
 var debut;
 var fin;
 var pseudo;
 var comment;
-var date="2013-11-10"; //remplacer par actuelle
-var hour="13:00";
+
+var dateTS= new Date().getTime();
+var dateNow = new Date(dateTS);
+var month = dateNow.getMonth()+1;
+var date = dateNow.getFullYear() + "-" + month + "-" +  dateNow.getDate();
+var hour = dateNow.getHours() + ":" + dateNow.getMinutes();
+console.log(date+' '+hour);
+
 var markerChekin;
 var indiceMarker;
 var markers = [];
@@ -206,6 +211,19 @@ var mapObj = {
 	  debut=locations.date_begin;
 	  fin=locations.date_end;
 
+	  var begin=new Date(locations.date_begin);
+	  var dayBegin=begin.getDate();
+	  var monthBegin=begin.getMonth()+1;
+	  var hourBegin=begin.getHours();
+	  var minuteBegin=begin.getMinutes();
+	  var timeBegin=dayBegin+'/'+monthBegin+' <br>'+hourBegin+':'+minuteBegin;
+
+	  var end=new Date(locations.date_end);
+	  var hourEnd=end.getHours();
+	  var minuteEnd=end.getMinutes();
+	  var timeEnd=hourEnd+':'+minuteEnd;
+	  console.log(fin);
+
 	  //pseudo = locations.pseudo;
 	  comment = locations.comment;
 	  var myLatLng = new google.maps.LatLng(locations.lat, locations.lng);
@@ -255,7 +273,7 @@ var mapObj = {
 		        addressCheckin = results[1].formatted_address;
 		        infobulle.setContent('<div id="pseudo-checkin"><div class="categ blue" style="margin-right:10px;"></div>'+locations.pseudo+'</div>'+
 	                      '<div id="content-infocheckin"><span id="addressCheckin"><img src="imgs/icons/geomark.png" alt="" style="margin-right:5px" />'+addressCheckin+'</span><br>'+
-	                      '<span class="dateCheckin"><img src="imgs/icons/time.png" alt="" style="margin-right:5px"  /> Du '+debut+' à '+fin+'</span><br>'+
+	                      '<span class="dateCheckin"><img src="imgs/icons/time.png" alt="" style="margin-right:5px"  />Le '+timeBegin+' à '+timeEnd+'</span><br>'+
 	                      '<span><img src="imgs/icons/bubble.png" alt="" style="margin-right:5px"  /> "'+comment+'"</span></div>');
 		      } else {
 		        console.log('No results found');
@@ -389,6 +407,16 @@ var mapObj = {
 	removeMarkerPlan : function(){
 		markerPlan.setMap(null);
 	},
+
+	/*formatDate:function(date){
+		var d=date.split("/");
+		var nd=new Date(d[0], d[1] - 1, d[2]);
+		var dd = nd.getDate();
+		var mm = nd.getMonth() + 1; 
+		var yyyy = nd.getFullYear();
+		var dateFormated = yyyy + "-" + mm + "-" + dd;
+		return dateFormated;
+	},*/
 
 	planCheckin:function() {
 		var datePlan = $('#day').val();
