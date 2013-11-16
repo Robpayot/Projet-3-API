@@ -158,7 +158,7 @@ var mapObj = {
 
 	changeDate:function() {
 	  date = document.getElementById('date').value;
-	  //console.log(date);
+	  console.log(date);
 	  //setMarkersCheckin(map,null);
 	  mapObj.deleteMarkers();
 	  mapObj.getCheckin();
@@ -166,7 +166,7 @@ var mapObj = {
 
 	changeHour:function() {
 	  hour = document.getElementById('hour').value;
-	  //console.log(hour);
+	  console.log(hour);
 	  //setMarkersCheckin(map,null);
 	  mapObj.deleteMarkers();
 	  mapObj.getCheckin();
@@ -203,16 +203,17 @@ var mapObj = {
 	setMarkersCheckin: function(map,locations) {
 	  var timeChoosen=date+' '+hour;
 	  //console.log(locations);
-	  debut=locations.date_debut;
-	  fin=locations.date_fin;
-	  pseudo = locations.pseudo;
+	  debut=locations.date_begin;
+	  fin=locations.date_end;
+
+	  //pseudo = locations.pseudo;
 	  comment = locations.comment;
 	  var myLatLng = new google.maps.LatLng(locations.lat, locations.lng);
+	  console.log(debut+' < '+timeChoosen+' < '+fin);
 
 	  if((debut<timeChoosen) && (timeChoosen<fin)) {
-	    console.log(locations.date_debut+" / "+timeChoosen+" / "+locations.date_fin);
 	    console.log("setMarkersCheckin");  
-	    
+	    //console.log(debut+' < '+timeChoosen+' < '+fin);
 	    var checkinInfo = '';
 
 	    //Initialiser la variable dans laquelle va être construit l'objet InfoBubble
@@ -252,10 +253,10 @@ var mapObj = {
 		    if (status == google.maps.GeocoderStatus.OK) {
 		      if (results[1]) {
 		        addressCheckin = results[1].formatted_address;
-		        infobulle.setContent('<p id="pseudo-checkin">'+locations.pseudo+'</p>'+
-	                      '<div id="content-infocheckin"><span id="addressCheckin">'+addressCheckin+'</span><br>'+
-	                      '<span class="dateCheckin">Du '+locations.date_debut+' à '+locations.date_fin+'</span><br>'+
-	                      '<span>"'+locations.comment+'"</span></div>');
+		        infobulle.setContent('<div id="pseudo-checkin"><div class="categ blue" style="margin-right:10px;"></div>'+locations.pseudo+'</div>'+
+	                      '<div id="content-infocheckin"><span id="addressCheckin"><img src="imgs/icons/geomark.png" alt="" style="margin-right:5px" />'+addressCheckin+'</span><br>'+
+	                      '<span class="dateCheckin"><img src="imgs/icons/time.png" alt="" style="margin-right:5px"  /> Du '+debut+' à '+fin+'</span><br>'+
+	                      '<span><img src="imgs/icons/bubble.png" alt="" style="margin-right:5px"  /> "'+comment+'"</span></div>');
 		      } else {
 		        console.log('No results found');
 		      }

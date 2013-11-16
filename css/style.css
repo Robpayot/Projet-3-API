@@ -222,7 +222,6 @@ body{
   height:100%;
   width:2px;
   float:left;
-  width
 }
 .goldcup{background:url('../imgs/cup-gold.png') no-repeat;}
 .silvercup{background:url('../imgs/cup-silver.png') no-repeat;}
@@ -242,5 +241,21 @@ body{
 
 
 /*--Infobulles checkins--*/
-#pseudo-checkin {display: block; background-color: #eeeeee; padding: 10px; margin: 0; border-left: #000 solid 3px;}
+#pseudo-checkin {display: block; background-color: #eeeeee; padding: 0; margin: 0; height: 30px;}
 #content-infocheckin{padding: 10px;color: #aaa;}
+
+/*--Form recherche lieu--*/
+#geocoder {position:absolute;z-index:100;width:100%; left:80%; top: 50px;}
+#geocoder input {
+    background-color: #eeeeee;
+    border: thick solid #ffffff;
+    color: #646464;
+    font-size: 1em;
+    padding: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+#map-section {position: relative;}
+
+
