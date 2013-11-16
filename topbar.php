@@ -53,7 +53,7 @@
 <div id="abonnes-dropdown" class="dropdown-up">
   <p class="dropdown-title">Demandes d'amitié</p>
   <a  href="#" class="close" onclick="getDropDownUp('abonnes-dropdown')"><img src="imgs/close.png" alt="close"/></a>
-  <div id="liste-abonnes">
+  <div id="dmd">
     <!--PHP GOES HERE-->
   </div>
 </div> <!-- end of classement-dropdown -->
