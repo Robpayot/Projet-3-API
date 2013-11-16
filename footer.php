@@ -8,7 +8,7 @@
 <script type="text/javascript" src="js/myMap.js"></script>
 <script type="text/javascript" src="js/classeProfil.js"></script>
 <script type="text/javascript" src="js/ProfilUser.js"></script>
-<script type="text/javascript" src="js/ProfilUserVisite.js"></script>
+<script type="text/javascript" src="js/ProfilVisite.js"></script>
 <script type="text/javascript" src="js/search.js"></script>
 
 
