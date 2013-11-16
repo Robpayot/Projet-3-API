@@ -24,6 +24,6 @@ $endTS = $startTS+10800;
 $end = date("Y-m-d H:i", $endTS);
 //echo $lat.", ".$lng."<br>";
 //echo "start: ".$start.", end: ".$end."<br>";
-$bdd->exec("INSERT INTO checkin(json, lat, lng, comment, date_debut, date_fin) VALUES('json', '$lat', '$lng', '$comment', '$start', '$end')"); 
+$dbh->exec("INSERT INTO checkIn(json, lat, lng, comment, date_begin, date_end) VALUES('json', '$lat', '$lng', '$comment', '$start', '$end')"); 
        
 ?>
