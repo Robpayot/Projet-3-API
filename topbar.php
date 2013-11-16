@@ -31,8 +31,8 @@
   <div id="separation">
     <p>ou</p>
   </div>
-  <div id="btn-fbco" class="transition200io"><a href="#">Inscription avec Facebook</a></div>
-  <a href="#" class="no-account">Pas encore de compte ?</a>
+  <div id="btn-fbco" class="transition200io"><a href="facebook_connect.php">Connexion avec Facebook</a></div>
+  <a href="inscription.php" class="no-account">Pas encore de compte ?</a>
 </div> <!-- end of connexion-dropdown -->
 <div id="classement-dropdown" class="dropdown-up">
   <p class="dropdown-title">Classement</p>

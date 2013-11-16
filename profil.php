@@ -8,23 +8,43 @@ if (!isset($_SESSION['login'])) {
 else{
 require_once("gestionProfil.php");	
 	
-require 'header.php' ;
-require 'topbar.php' ;
+	
 }
 ?>
+<head>
+<meta charset="utf-8"> 
+<link rel="stylesheet" href="css/reset.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+<script src="js/modernizr.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/search.js"  charset="UTF-8"></script>
+<title>Grab-In</title>
+</head>
+ 
+<body>
+<div id="topbar">
+        <div id="topbar-content">
+                <h1>Grab-In</h1>
+                <ul>
+                		<li><a href="profil.php"><?php echo $_SESSION['login']; ?></a></li>
+                        <li><div class="champR">
+                             <input type="text" id="recherche" name="recherche" placeholder="chercher" required >
+                       		</div>
+                          </li>
+                        <li>Classement</li>
+                        <li> <a href="edit-profil.php">Modifier mon profil</a></li>
+                        <li><a href="deconnexion.php">Déconnexion</a></li>
+                </ul>
+        </div>
+</div> <!-- end of topbar -->
 <div style="height:50px;" ></div>
  <!-- DEBUT MAP -->
 <div class="affichageR" id="resultat"></div>
 <div class="demandesAmi" id="dmde"></div>
 <div class="Amis" id="AmisT"></div>
-<div id="map-section">
-  <p><input type="button" id="find" onClick="findLocation()" value="check in"> <input type="date" max="2015-06-25" min="2013-08-13" value="2013-11-13" id="date" onChange="changeDate()" > <input type="time" id="hour" value="15:00" onChange="changeHour()"> </p>
-  <form id="geocoder">
-    <input type="text" id="address" name="address" placeholder="Recherche un lieu" />
-  </form>
-  <p id="statut"></p> <!-- Affichage erreurs -->
-  <div id="map-canvas" style="height:665px; width:100%; " ></div> <!-- Affichage de la map -->
-</div>
+<p><input type="button" id="find" onClick="findLocation()" value="check in"> </p>
+<p id="statut"></p> <!-- Affichage erreurs -->
+<div id="map-canvas" style="height:665px; width:100%; " ></div> <!-- Affichage de la map -->
 <!-- FIN MAP -->
 <div id="userbar">
         <div id="userbar-content">
@@ -46,10 +66,18 @@ require 'topbar.php' ;
      		<input name="email" id="email" data-provide="limit" data-counter="#counter"  rows="8"></input>
              <button id="submit_photo" name="submit_photo" type="submit">Valider</button></p>
                 </form> 
+                <?php foreach ($urls as $url):
+?>
                 <img alt="image photo ici" src="<?php 
-echo ($url);
+echo $url['url'];
 	?>">
-    <p><?php echo ($description);?></p>
+    <?php endforeach; ?>
+    <?php foreach ($descriptions as $description):
+?>
+
+    <p><?php echo $description['description'];?></p>
+    
+   <?php endforeach; ?>
 
                 <div id="cal">
                         <div id="cal-shadow-1"></div>
@@ -62,7 +90,12 @@ echo ($url);
 
 
 
-<?php
-require 'footer.php' ;
-?> 
 
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL6jbConOc2cMBNepwDNA0l_lqrNOaRPI&sensor=true"></script><!-- API Google Maps-->
+<script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript" src="js/classeProfil.js"></script>
+<script type="text/javascript" src="js/ProfilUser.js"></script>
+</body>
+</html> 
