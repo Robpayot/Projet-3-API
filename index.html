@@ -27,9 +27,11 @@
 <div id="connexion-dropdown" class="dropdown-up">
   <p class="dropdown-title">Connexion</p>
   <a  href="#" class="close" onclick="getDropDownUp('connexion-dropdown')"><img src="imgs/close.png" alt="close"/></a>
-  <input type="text" placeholder="E-mail" required="">
-  <input type="text" placeholder="Mot de passe" required="">
-  <div id="btn-connexion" class="transition200io"><a href="#">Let's ride !</a></div>
+  <form autocomplete="off" method='post' action='connexion.php'>
+  <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required>
+  <input type="password" placeholder="Mot de passe" id="mdp" name="mdp" required >
+  <div id="btn-connexion"><input class="transition200io" type="submit" value="Let's ride" /></div>
+  </form>
   <div id="separation">
     <p>ou</p>
   </div>
@@ -77,15 +79,6 @@
 	</div>
 </div>
 <div id="profile-content">
-	<div id="plan_checkin">
-    <form name="planPlace" id="planPlace" ><div id="errors" ></div><br>
-      <label for="name">Lieu </label><input type="text" name="place" id="place"><br>
-      <label for="day">Jour </label><input type="text" name="day" id="day">
-      <label for="time">Heure </label><input type="time" name="time" id="time" value="hh:mm"><br>
-      <label for="comment">Commentaire </label><input type="text" name="comment" id="comment"><br>
-      <input type="submit" value="OK">
-    </form>
-  </div>
 </div>
 
 
@@ -97,8 +90,8 @@
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script type="text/javascript" src="js/planning.js"></script>
-<script type="text/javascript" src="js/map.js"></script>
-
+<script type="text/javascript" src="js/myMap.js"></script>
+<script type="text/javascript" src="js/mapObj.js"></script>
 
 
 

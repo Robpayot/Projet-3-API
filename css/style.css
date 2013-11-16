@@ -175,9 +175,10 @@ body{
   color:white;
 }
 
-#btn-connexion{background-color:#6dc9e4;}
+#connexion-dropdown input[type=submit]{background-color:#6dc9e4;display:block;color:white;text-decoration:none;border: none;}
 #btn-fbco{background-color:#46629e;margin-bottom:18px;}
-#btn-connexion a, #btn-fbco a{display:block;color:white;text-decoration:none;}
+#btn-connexion a{}
+#btn-fbco a{display:block;color:white;text-decoration:none;}
 #btn-connexion:hover{background-color:#75d6f3;}
 #btn-fbco:hover{background-color:#5172b9;}
 
@@ -240,5 +241,6 @@ body{
 
 
 
-
-
+/*--Infobulles checkins--*/
+#pseudo-checkin {display: block; background-color: #eeeeee; padding: 10px; margin: 0; border-left: #000 solid 3px;}
+#content-infocheckin{padding: 10px;color: #aaa;}
