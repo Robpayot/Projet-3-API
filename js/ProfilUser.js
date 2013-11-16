@@ -4,9 +4,10 @@ profil.init({
 		boutonDemandeAmitie:'#dmdAmi',
 		champStatut:'#newStatut',
 		divDemandesAmi:'#dmde',
+		divAmis:'#liste-amis',
 		statutDone : function(server_response){
 				$('#newStatut').val('');
-				$("#statut").html(server_response).show();
+				$("#status").html(server_response).show();
 				$("#envoiStatut").attr('disabled',false);			
 			},
 		boutonAmitieDone : function(server_response){},
@@ -19,6 +20,21 @@ profil.init({
 						alert('Vous avez refusé');
 			},
 });
+var notif;
+function affiche_bonjour(){
+	alert("bonjour");
+}
+
+$(document).ready(function(){
+     //notif=setInterval(affiche_bonjour, 5000);
+});
+
+$(document).keydown(function(){
+	console.log("keyyy");
+     clearInterval(notif);
+});
+
+profil.afficherlisteDesAmis(1);
 
 //Liste des demandes d'amis
 	profil.afficherlisteDesDemandes();

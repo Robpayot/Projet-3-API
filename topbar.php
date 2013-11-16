@@ -7,8 +7,9 @@
           </div>
       </li>
 			<li><img src="imgs/params.png" alt="Edition du profil"/></li>
-			<li class="abos"><img src="imgs/abos.png" alt="Confirmer les nouveaux abonnés"/></li>
-			<li><a onclick="getDropDownDown('classement-dropdown');">Classement</a></li>
+      <li><a href="#" onclick="getDropDownDown('amis-dropdown');"><img src="imgs/friends.png" alt="Liste d'amis"/></a></li>
+			<li class="abos"><a href="#" onclick="getDropDownDown('abonnes-dropdown');"><img src="imgs/abos.png" alt="Confirmer les nouveaux abonnés"/></a></li>
+			<li><a  href="#" onclick="getDropDownDown('classement-dropdown');">Classement</a></li>
 			<li><a href="profil.php"><?php echo $_SESSION['login']; ?></a></li>
       <?php if(isset($_SESSION['login'])) {?>
       <li> <a href="edit-profil.php">Modifier mon profil</a></li>
@@ -31,8 +32,8 @@
   <div id="separation">
     <p>ou</p>
   </div>
-  <div id="btn-fbco" class="transition200io"><a href="#">Inscription avec Facebook</a></div>
-  <a href="#" class="no-account">Pas encore de compte ?</a>
+  <div id="btn-fbco" class="transition200io"><a href="facebook_connect.php">Connexion avec Facebook</a></div>
+  <a href="inscription.php" class="no-account">Pas encore de compte ?</a>
 </div> <!-- end of connexion-dropdown -->
 <div id="classement-dropdown" class="dropdown-up">
   <p class="dropdown-title">Classement</p>
@@ -49,6 +50,20 @@
   	<li><div class="categ yellow"></div><div class="cup"></div><p class="rider">Christine-Boutin</p><p class="score">240 pts.</p></li>
   	<li><div class="categ red"></div><div class="cup"></div><p class="rider">Spiderman</p><p class="score">240 pts.</p></li>
   </ul>
+</div> <!-- end of classement-dropdown -->
+<div id="abonnes-dropdown" class="dropdown-up">
+  <p class="dropdown-title">Demandes d'amitié</p>
+  <a  href="#" class="close" onclick="getDropDownUp('abonnes-dropdown')"><img src="imgs/close.png" alt="close"/></a>
+  <div id="liste-abonnes">
+    <!--PHP GOES HERE-->
+  </div>
+</div> <!-- end of classement-dropdown -->
+<div id="amis-dropdown" class="dropdown-up">
+  <p class="dropdown-title">Amis</p>
+  <a  href="#" class="close" onclick="getDropDownUp('amis-dropdown')"><img src="imgs/close.png" alt="close"/></a>
+  <div id="liste-amis">
+    <!--PHP GOES HERE-->
+  </div>
 </div> <!-- end of classement-dropdown -->
 
 

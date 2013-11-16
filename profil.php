@@ -1,4 +1,3 @@
-<html lang="fr">
 <?php
 session_start();  
 if (!isset($_SESSION['login'])) { 
@@ -7,10 +6,10 @@ if (!isset($_SESSION['login'])) {
 }
 else{
 require_once("gestionProfil.php");	
-	
+
+}
 require 'header.php' ;
 require 'topbar.php' ;
-}
 ?>
 <div style="height:50px;" ></div>
  <!-- DEBUT MAP -->
@@ -46,10 +45,17 @@ require 'topbar.php' ;
      		<input name="email" id="email" data-provide="limit" data-counter="#counter"  rows="8"></input>
              <button id="submit_photo" name="submit_photo" type="submit">Valider</button></p>
                 </form> 
+<?php foreach ($urls as $url): ?>
                 <img alt="image photo ici" src="<?php 
-echo ($url);
+echo $url['url'];
 	?>">
-    <p><?php echo ($description);?></p>
+<?php endforeach; ?>
+<?php foreach ($descriptions as $description):
+ ?>
+ 
+<p><?php echo $description['description'];?></p>
+     
+<?php endforeach; ?>
 
                 <div id="cal">
                         <div id="cal-shadow-1"></div>
