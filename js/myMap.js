@@ -37,6 +37,9 @@ $(mapObj.params.checkinButton).on('click',function(e){
 	mapObj.findLocation();
 });
 
+$('#date').val(date);
+$('#hour').val(hour);
+
 function changeDate() {
   mapObj.changeDate();
 }

@@ -14,10 +14,12 @@ require 'topbar.php' ;
 <div style="height:50px;" ></div>
  <!-- DEBUT MAP -->
 <div class="affichageR" id="resultat"></div>
-<div class="demandesAmi" id="dmde"></div>
+<div class="demandesAmi" id="liste-abonnes"></div>
 <div class="Amis" id="AmisT"></div>
 <div id="map-section">
-  <p><input type="button" id="find" onClick="findLocation()" value="check in"> <input type="date" max="2015-06-25" min="2013-08-13" value="2013-11-13" id="date" onChange="changeDate()" > <input type="time" id="hour" value="15:00" onChange="changeHour()"> </p>
+  <?php if(isset($_SESSION['login'])) {?><p><input type="button" id="find" onClick="findLocation()" value="check in"><?php } ?>
+  <input type="date" max="2015-06-25" min="2013-08-13" id="date" onChange="changeDate()" >
+  <input type="time" id="hour" onChange="changeHour()"> </p>
   <form id="geocoder">
     <input type="text" id="address" name="address" placeholder="Recherche un lieu" />
   </form>

@@ -3,7 +3,7 @@
 profil.init({
 		boutonDemandeAmitie:'#dmdAmi',
 		champStatut:'#newStatut',
-		divDemandesAmi:'#dmde',
+		divDemandesAmi:'#liste-abonnes',
 		divAmis:'#liste-amis',
 		statutDone : function(server_response){
 				$('#newStatut').val('');

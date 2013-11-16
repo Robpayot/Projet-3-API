@@ -1,18 +1,17 @@
 <div id="topbar">
 	<div id="topbar-content">
 		<h1>Grab-In</h1>
-		<ul>
+		<ul><?php if(isset($_SESSION['login'])) {?>
       <li><div class="champR">
             <input type="text" id="recherche" name="recherche" placeholder="Chercher des Riders" required >
           </div>
       </li>
-			<li><img src="imgs/params.png" alt="Edition du profil"/></li>
+      
+			<li><a href="edit-profil.php"><img src="imgs/params.png" alt="Edition du profil"/></a></li>
       <li><a href="#" onclick="getDropDownDown('amis-dropdown');"><img src="imgs/friends.png" alt="Liste d'amis"/></a></li>
 			<li class="abos"><a href="#" onclick="getDropDownDown('abonnes-dropdown');"><img src="imgs/abos.png" alt="Confirmer les nouveaux abonnés"/></a></li>
 			<li><a  href="#" onclick="getDropDownDown('classement-dropdown');">Classement</a></li>
 			<li><a href="profil.php"><?php echo $_SESSION['login']; ?></a></li>
-      <?php if(isset($_SESSION['login'])) {?>
-      <li> <a href="edit-profil.php">Modifier mon profil</a></li>
       <li><a href="deconnexion.php">Déconnexion</a></li>
       <?php } else {?>
 			<li><a href="#" onclick="getDropDownDown('connexion-dropdown')">Connexion</a></li>
