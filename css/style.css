@@ -175,9 +175,10 @@ body{
   color:white;
 }
 
-#btn-connexion{background-color:#6dc9e4;}
+#connexion-dropdown input[type=submit]{background-color:#6dc9e4;display:block;color:white;text-decoration:none;border: none;}
 #btn-fbco{background-color:#46629e;margin-bottom:18px;}
-#btn-connexion a, #btn-fbco a{display:block;color:white;text-decoration:none;}
+#btn-connexion a{}
+#btn-fbco a{display:block;color:white;text-decoration:none;}
 #btn-connexion:hover{background-color:#75d6f3;}
 #btn-fbco:hover{background-color:#5172b9;}
 
@@ -221,7 +222,6 @@ body{
   height:100%;
   width:2px;
   float:left;
-  width
 }
 .goldcup{background:url('../imgs/cup-gold.png') no-repeat;}
 .silvercup{background:url('../imgs/cup-silver.png') no-repeat;}
@@ -240,5 +240,22 @@ body{
 
 
 
+/*--Infobulles checkins--*/
+#pseudo-checkin {display: block; background-color: #eeeeee; padding: 0; margin: 0; height: 30px;}
+#content-infocheckin{padding: 10px;color: #aaa;}
+
+/*--Form recherche lieu--*/
+#geocoder {position:absolute;z-index:100;width:100%; left:80%; top: 50px;}
+#geocoder input {
+    background-color: #eeeeee;
+    border: thick solid #ffffff;
+    color: #646464;
+    font-size: 1em;
+    padding: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+#map-section {position: relative;}
 
 

@@ -1,15 +1,6 @@
 <?php 
-try
-{
-    // On se connecte à MySQL
-    $bdd = new PDO('mysql:host=localhost;dbname=test_map', 'root', '');
-}
-catch(Exception $e)
-{
-    // En cas d'erreur, on affiche un message et on arrête tout
-        die('Erreur : '.$e->getMessage());
-}
 
+require 'config.php';
 
 date_default_timezone_set('CET');
 
@@ -24,7 +15,8 @@ function unix_timestamp($date)
 }
 
 // lancement de la requete
-//$place = $_GET['place'];
+$lat = $_GET['lat'];
+$lng = $_GET['lng'];
 $day = $_GET['day'];
 $comment = $_GET['c'];
 $time = $_GET['time'];
@@ -35,6 +27,6 @@ $startTS = unix_timestamp($start);
 $endTS = $startTS+10800;
 $end = date("Y-m-d H:i", $endTS);
 //echo "start: ".$start.", end: ".$end."<br>";
-$bdd->exec("INSERT INTO checkin(json, lat, lng, comment, date_debut, date_fin) VALUES('json', '$lat', '$lng', '$comment', '$start', '$end')"); 
+$dbh->exec("INSERT INTO checkIn(json, lat, lng, comment, date_begin, date_end) VALUES('json', '$lat', '$lng', '$comment', '$start', '$end')"); 
        
 ?>
