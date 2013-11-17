@@ -10,7 +10,7 @@
 <script type="text/javascript" src="js/ProfilUser.js"></script>
 <script type="text/javascript" src="js/ProfilVisite.js"></script>
 <script type="text/javascript" src="js/search.js"></script>
-
+<script type="text/javascript" src="js/video.js"></script>
 
 </body>
 </html>
