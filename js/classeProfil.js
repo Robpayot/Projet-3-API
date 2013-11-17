@@ -4,7 +4,7 @@ var profil={
 	defaults : {
 		boutonDemandeAmitie:'#dmdAmi',
 		champStatut:'#newStatut',
-		divDemandesAmi:'#dmd',
+		divDemandesAmi:'#liste-abonnes',
 		divAmis:'#dmd',
 		statutDone : function(){},
 		boutonAmitieDone : function(){},
@@ -49,7 +49,7 @@ var profil={
 				type : "GET",
 				url : url,
 				success: function(server_response){
-					
+					console.log(profil.params.divDemandesAmi);
 					$(profil.params.divDemandesAmi).html(server_response).show();
 				}
 			});

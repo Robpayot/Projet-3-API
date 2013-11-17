@@ -14,7 +14,7 @@ require 'topbar.php' ;
 <div style="height:50px;" ></div>
  <!-- DEBUT MAP -->
 <div class="affichageR" id="resultat"></div>
-<div class="demandesAmi" id="liste-abonnes"></div>
+<div class="demandesAmi" id="liste"></div>
 <div class="Amis" id="AmisT"></div>
 <div id="map-section">
   <?php if(isset($_SESSION['login'])) {?><p><input type="button" id="find" onClick="findLocation()" value="check in"><?php } ?>
@@ -43,20 +43,23 @@ require 'topbar.php' ;
                 
                 <form action="profil.php" enctype="multipart/form-data" method="post">
                 <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
-     <p>Poster une photo : <input type="file" name="url" id="url"></p>
-     		<input name="email" id="email" data-provide="limit" data-counter="#counter"  rows="8"></input>
+     <p>Poster une photo : <input type="file" name="url" id="url" required></p>
+     		<input name="description" id="description" data-provide="limit" data-counter="#counter"  rows="8" required></input>
              <button id="submit_photo" name="submit_photo" type="submit">Valider</button></p>
                 </form> 
-<?php foreach ($urls as $url): ?>
-                <img alt="image photo ici" src="<?php 
-echo $url['url'];
-	?>">
-<?php endforeach; ?>
-<?php foreach ($descriptions as $description):
- ?>
- 
-<p><?php echo $description['description'];?></p>
-     
+                <form action="profil.php" enctype="multipart/form-data" method="post">
+                <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
+    <p> Ou une vidéo : <input type="file" name="url" id="url" required></p>
+     		<input name="description" id="description" data-provide="limit" data-counter="#counter"  rows="8" required></input>
+             <button id="submit_video" name="submit_video" type="submit">Valider</button></p>
+                </form> 
+                   
+<?php foreach ($media as $medias): ?>
+                <img alt="image photo ici" src="<?php echo $medias['url'];?>">
+                      <p><?php echo $medias['description'];?></p>
+                      <form action='profil.php' method="POST">
+				<button id="delete_media<?=$medias['id']?>" name="delete_media<?=$medias['id']?>" type="submit">Supprimer la photo</button>
+                </form>
 <?php endforeach; ?>
 
                 <div id="cal">
