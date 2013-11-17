@@ -1,3 +1,5 @@
+<?php require'facebook_connect.php'; ?>
+
 <div id="topbar">
 	<div id="topbar-content">
 		<h1>Grab-In</h1>
@@ -52,34 +54,40 @@
 </div> <!-- end of classement-dropdown -->
 <div id="inscription-fb-dropdown" class="dropdown-up">
   <p class="dropdown-title">Inscription avec Facebook</p>
+  <div id="fb-root"></div>
+<div id="message_co"></div>
+<div id="facebook_button"><fb:login-button id="fb_connexion" scope="user_birthday,email" width="200" max-rows="1"></fb:login-button></div>
   <a  href="#" class="close" onclick="getDropDownUp('inscription-fb-dropdown')"><img src="imgs/close.png" alt="close"/></a>
+  <form autocomplete="off" method='post' action='facebook_connect.php'>
   <ul>
-    <li class="l-field"><div class="l-text-field"><div class="fb-login-button" data-width="200"></div></div></li>
     <li class="l-field"><p class="field-desc">Pseudo</p><input class="l-text-field" type="text" id="pseudo" name="pseudo" required></li>
-    <li class="l-field"><p class="field-desc">Mot de passe</p><input class="l-text-field" type="text" id="mdp" name="mdp" required></li>
-    <li class="l-field check"><p class="field-desc">Confirm. Mdp</p><input class="l-text-field" type="text" id="conf-mdp" name="conf-mdp" required><img src="imgs/check.png" alt="bon"/></li>
-    <li class="xl-field spaced"><p class="field-desc">Sport pratiqué</p>
+   <li class="l-field"><p class="field-desc">Mot de passe</p><input class="l-text-field" type="password" id="mdp" name="mdp" required></li>
+    <li class="l-field check"><p class="field-desc">Confirm. Mdp</p><input class="l-text-field" type="password" id="retape_mdp" name="retape_mdp" required>
+    <img src="imgs/check.png" alt="bon"/></li>
+  <div class="verifMatchMdp" id="verifMatchMdp"></div> 
+   <li class="xl-field spaced"><p class="field-desc">Sport pratiqué</p>
       <ul class="sports-checkboxes">
-        <li><input type="checkbox" name="bmx" value="bmx">BMX</li>
-        <li><input type="checkbox" name="longboard" value="longboard">Longboard</li>
-        <li><input type="checkbox" name="roller" value="roller">Roller</li>
-        <li><input type="checkbox" name="skate" value="skate">Skate</li>
-        <li><input type="checkbox" name="trotinette" value="trotinette">Trotinette</li>
+        <li><input type="checkbox" name="check[]" value="1">Skate</li>
+        <li><input type="checkbox" name="check[]" value="2">Roller</li>
+        <li><input type="checkbox" name="check[]" value="4">BMX</li>
+        <li><input type="checkbox" name="check[]" value="8">Trotinette</li>
       </ul>
     </li>
+    
     <li class="l-field"><p class="field-desc">Niveau</p>
-      <FORM id="niveau">
-        <SELECT name="niveau" size="1">
-          <OPTION>Débutant
-          <OPTION>Amateur
-          <OPTION>Confirmé
-          <OPTION>Expert
-          <OPTION>Pro
+    
+        <SELECT name="niveau" id="niveau" size="1">
+          <OPTION value="Débutant">Débutant</OPTION>
+          <OPTION value="Amateur">Amateur</OPTION>
+          <OPTION value="Confirmé">Confirmé</OPTION>
+          <OPTION value="Expert">Expert</OPTION>
+          <OPTION value="Pro">Pro</OPTION>
         </SELECT>
-      </FORM>
+      
     </li>
-    <li class="l-field spaced send"><a href="#"><p class="field-send">Envoyer</p></a></li>
+    <li class="l-field spaced send"><p class="field-send"><input type="submit" id="envoie" name="envoie" value="ENVOYER" class="button"/></p></li>
   </ul>
+  </form>
 </div> <!-- end of inscription-fb-dropdown -->
 <div id="abonnes-dropdown" class="dropdown-up">
   <p class="dropdown-title">Demandes d'amitié</p>
