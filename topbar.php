@@ -54,6 +54,7 @@
   <p class="dropdown-title">Inscription avec Facebook</p>
   <a  href="#" class="close" onclick="getDropDownUp('inscription-fb-dropdown')"><img src="imgs/close.png" alt="close"/></a>
   <ul>
+    <li class="l-field"><div class="l-text-field"><div class="fb-login-button" data-width="200"></div></div></li>
     <li class="l-field"><p class="field-desc">Pseudo</p><input class="l-text-field" type="text" id="pseudo" name="pseudo" required></li>
     <li class="l-field"><p class="field-desc">Mot de passe</p><input class="l-text-field" type="text" id="mdp" name="mdp" required></li>
     <li class="l-field check"><p class="field-desc">Confirm. Mdp</p><input class="l-text-field" type="text" id="conf-mdp" name="conf-mdp" required><img src="imgs/check.png" alt="bon"/></li>
