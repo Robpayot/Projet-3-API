@@ -12,8 +12,8 @@ require 'header.php' ;
 require 'topbar.php' ;
 ?>
 <div style="height:50px;" ></div>
- <!-- DEBUT MAP -->
-<div class="affichageR" id="resultat"></div>
+ <!-- DEBUT MAP 
+<div class="affichageR" id="resultat"></div>-->
 <div class="sauvage" id="notifications"></div>
 <div id="map-section">
   <?php if(isset($_SESSION['login'])) {?><p><input type="button" id="find" onClick="findLocation()" value="check in"><?php } ?>
