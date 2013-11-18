@@ -90,14 +90,14 @@
   </form>
 </div> <!-- end of inscription-fb-dropdown -->
 <div id="abonnes-dropdown" class="dropdown-up">
-  <p class="dropdown-title">Demandes d'amitié</p>
+  <p class="dropdown-title">Demandes d'abonnements</p>
   <a  href="#" class="close" onclick="getDropDownUp('abonnes-dropdown')"><img src="imgs/close.png" alt="close"/></a>
   <div id="dmd" class="demandesAmi">
     <!--PHP GOES HERE-->
   </div>
 </div> <!-- end of abonnes-dropdown -->
 <div id="amis-dropdown" class="dropdown-up">
-  <p class="dropdown-title">Amis</p>
+  <p class="dropdown-title">Abonnements</p>
   <a  href="#" class="close" onclick="getDropDownUp('amis-dropdown')"><img src="imgs/close.png" alt="close"/></a>
   <div id="liste-amis">
     <!--PHP GOES HERE-->
