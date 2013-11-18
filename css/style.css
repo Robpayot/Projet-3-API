@@ -114,7 +114,7 @@ body{
     font-size:14px;
 }
 
-.transition200io, #classement-dropdown li{
+.transition200io, #classement-dropdown li, #envoie{
   -webkit-transition: all 200ms ease-in-out;
         -moz-transition: all 200ms ease-in-out;
         -ms-transition: all 200ms ease-in-out;
@@ -160,6 +160,7 @@ body{
 #connexion-dropdown input{
   margin-bottom:14px;
   font-size:14px;
+  outline:none;
 }
 #btn-connexion, #btn-fbco, #connexion-dropdown input{
   height:36px;
@@ -176,11 +177,12 @@ body{
 }
 
 #connexion-dropdown input[type=submit]{background-color:#6dc9e4;display:block;color:white;text-decoration:none;border: none;}
+
+#connexion-dropdown input[type=submit]:hover{background-color:#76d7f4;cursor:pointer;}
+
 #btn-fbco{background-color:#46629e;margin-bottom:18px;}
-#btn-connexion a{}
 #btn-fbco a{display:block;color:white;text-decoration:none;}
-#btn-connexion:hover{background-color:#75d6f3;}
-#btn-fbco:hover{background-color:#5172b9;}
+#btn-fbco:hover{background-color:#5172b9;cursor:pointer;}
 
 #separation{
   border-top:solid 1px #e4e4e4;
@@ -328,7 +330,7 @@ body{
   line-height:48px;
 }
 
-.field-send{line-height:45px;font-size:16px;font-family: 'ProximaNovaSemibold';}
+
 
 .checkbox{display:none;}
 
@@ -341,7 +343,9 @@ body{
 
 .sports-checkboxes input{margin-right:8px;}
 
-
+#envoie{width:320px;height:45px;background-color: white;border:none;color:#69c1db;font-size:16px;font-family: 'ProximaNovaSemibold';cursor:pointer;}
+#envoie:hover{background-color: #efefef;}
+#facebook_button{margin-top:11px;}
 
 
 
