@@ -14,8 +14,7 @@ require 'topbar.php' ;
 <div style="height:50px;" ></div>
  <!-- DEBUT MAP -->
 <div class="affichageR" id="resultat"></div>
-<div class="demandesAmi" id="liste"></div>
-<div class="Amis" id="AmisT"></div>
+<div class="sauvage" id="notifications"></div>
 <div id="map-section">
   <?php if(isset($_SESSION['login'])) {?><p><input type="button" id="find" onClick="findLocation()" value="check in"><?php } ?>
   <input type="date" max="2015-06-25" min="2013-08-13" id="date" onChange="changeDate()" >
@@ -59,7 +58,7 @@ require 'topbar.php' ;
                 </form> 
                 <form action="profil.php" enctype="multipart/form-data" method="post">
                 <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
-    <p> Ou une vidéo : <input type="file" name="url" id="url" required></p>
+    <p> Ou une vidéo (fichiers mp4 et ogg) : <input type="file" name="url" id="url" required></p>
         <input name="description" id="description" data-provide="limit" data-counter="#counter"  rows="8" required></input>
              <button id="submit_video" name="submit_video" type="submit">Valider</button></p>
                 </form> 
@@ -78,7 +77,11 @@ require 'topbar.php' ;
     <span></span>
   </div>
   <video id="video" preload="none">
-    <source src="videos/v06-07_ld.mp4" type='video/mp4' >
+  <?php foreach ($media as $medias):
+   $url_vid = $medias['url_vid'];
+   endforeach;  ?>
+    <source src="<?php echo $url_vid; ?>" type='video/mp4' >
+    
     <p>Your user agent does not support the HTML5 Video element.</p>
   </video>
   <div id="progressBar">
@@ -91,6 +94,7 @@ require 'topbar.php' ;
   <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1">
   <button type="button" id="full-screen">Full-Screen</button>
 </div>
+
 
 
 <?php
