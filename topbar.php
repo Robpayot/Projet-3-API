@@ -57,12 +57,13 @@
   <?php require'facebook_connect.php'; ?>
   <div id="fb-root"></div>
 <div id="message_co"></div>
-<div id="facebook_button"><fb:login-button id="fb_connexion" scope="user_birthday,email" width="200" max-rows="1"></fb:login-button></div>
+
   <a  href="#" class="close" onclick="getDropDownUp('inscription-fb-dropdown')"><img src="imgs/close.png" alt="close"/></a>
   <form autocomplete="off" method='post' action='facebook_connect.php'>
   <ul>
+    <li class="l-field"><div id="facebook_button"><fb:login-button id="fb_connexion" scope="user_birthday,email" width="200" max-rows="1"></fb:login-button></div></li>
     <li class="l-field"><p class="field-desc">Pseudo</p><input class="l-text-field" type="text" id="pseudo" name="pseudo" required></li>
-   <li class="l-field"><p class="field-desc">Mot de passe</p><input class="l-text-field" type="password" id="mdp" name="mdp" required></li>
+    <li class="l-field"><p class="field-desc">Mot de passe</p><input class="l-text-field" type="password" id="mdp" name="mdp" required></li>
     <li class="l-field check"><p class="field-desc">Confirm. Mdp</p><input class="l-text-field" type="password" id="retape_mdp" name="retape_mdp" required>
     <img src="imgs/check.png" alt="bon"/></li>
   <div class="verifMatchMdp" id="verifMatchMdp"></div> 
@@ -86,7 +87,7 @@
         </SELECT>
       
     </li>
-    <li class="l-field spaced send"><p class="field-send"><input type="submit" id="envoie" name="envoie" value="ENVOYER" class="button"/></p></li>
+    <li class="l-field spaced send"><p class="field-send"><input type="submit" id="envoie" name="envoie" value="Envoyer" class="button"/></p></li>
   </ul>
   </form>
 </div> <!-- end of inscription-fb-dropdown -->

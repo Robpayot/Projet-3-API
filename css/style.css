@@ -328,7 +328,7 @@ body{
   line-height:48px;
 }
 
-.field-send{line-height:45px;font-size:16px;font-family: 'ProximaNovaSemibold';}
+
 
 .checkbox{display:none;}
 
@@ -341,7 +341,9 @@ body{
 
 .sports-checkboxes input{margin-right:8px;}
 
+#envoie{width:320px;height:45px;background-color: white;border:none;color:#69c1db;font-size:16px;font-family: 'ProximaNovaSemibold';cursor:pointer;}
 
+#facebook_button{margin-top:11px;}
 
 
 
