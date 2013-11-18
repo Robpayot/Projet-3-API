@@ -11,7 +11,7 @@ $config['secret'] = '4e4db92334de6046923cdc345fc79013';
 $facebook = new Facebook($config);
 $uid = $facebook->getUser();
 
-$fql = "SELECT uid,first_name,last_name,birthday_date,email,music,current_location.city FROM user WHERE uid='".$uid."'";
+$fql = "SELECT uid,first_name,last_name,birthday_date,email,current_location.city FROM user WHERE uid='".$uid."'";
 
 
 $params = array(
@@ -22,25 +22,31 @@ $params = array(
   'query' => $fql
 );
 		 
-$loginUrl = $facebook->api($params);
+
+
+
+
+
+if (isset($_POST['envoie'])) {
+	
+	$loginUrl = $facebook->api($params);
 //print_r($loginUrl);
 foreach ($loginUrl as $loginUrls):
 $firstname = $loginUrls['first_name'];
 $lastname = $loginUrls['last_name'];
 $birthday_date = $loginUrls['birthday_date'];
 $email = $loginUrls['email'];
-$music = $loginUrls['music'];
 $ville = $loginUrls['current_location.city'];
 $avatar = $loginUrls['picture'];
 endforeach;
-
-// CONNEXION BDD_____________________________________
+	
+	// CONNEXION BDD_____________________________________
 
 require 'config.php';
 
-// CREATION DE L'URL DE LA PHOTO DE PROFIL FACEBOOK 
+	// CREATION DE L'URL DE LA PHOTO DE PROFIL FACEBOOK 
 
-$avatar="https://graph.facebook.com/".$uid."/picture?width=190&height=190";
+	$avatar="https://graph.facebook.com/".$uid."/picture?width=190&height=190";
 
 // CALCULE DE L'AGE EN FONCTION DE LA DATE DE NAISSANCE
 
@@ -72,10 +78,15 @@ if (isset($_POST['check']))
 
 $date_register=date('Y-m-d');
 
-if (isset($_POST['envoie'])) {
+	
+
 $user = $dbh -> query('INSERT INTO grabin_user(name, surname, pseudo, sport, sport_level, email, mdp, avatar, age, ville, date_register)VALUES("'.$lastname.'","'.$firstname.'","'.$pseudo.'","'.$Vsport.'","'.$niveau.'","'.$email.'","'.$mdp.'","'.$avatar.'","'.$age.'", "'.$ville.'", "'.$date_register.'")');
 		
-		
+		$user = $dbh -> query("SELECT * FROM grabin_user WHERE pseudo='".$pseudo."'")->fetchAll();
+	foreach ($user as $users):
+		if($users['pseudo']==$pseudo)
+			$id = $users['id'];
+	endforeach;
 					 
 						 session_start(); 
 						$_SESSION['login']=$pseudo; 

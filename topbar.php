@@ -1,4 +1,4 @@
-<?php require'facebook_connect.php'; ?>
+
 
 <div id="topbar">
 	<div id="topbar-content">
@@ -54,6 +54,7 @@
 </div> <!-- end of classement-dropdown -->
 <div id="inscription-fb-dropdown" class="dropdown-up">
   <p class="dropdown-title">Inscription avec Facebook</p>
+  <?php require'facebook_connect.php'; ?>
   <div id="fb-root"></div>
 <div id="message_co"></div>
 <div id="facebook_button"><fb:login-button id="fb_connexion" scope="user_birthday,email" width="200" max-rows="1"></fb:login-button></div>
@@ -90,14 +91,14 @@
   </form>
 </div> <!-- end of inscription-fb-dropdown -->
 <div id="abonnes-dropdown" class="dropdown-up">
-  <p class="dropdown-title">Demandes d'amitié</p>
+  <p class="dropdown-title">Demandes d'abonnements</p>
   <a  href="#" class="close" onclick="getDropDownUp('abonnes-dropdown')"><img src="imgs/close.png" alt="close"/></a>
   <div id="dmd" class="demandesAmi">
     <!--PHP GOES HERE-->
   </div>
 </div> <!-- end of abonnes-dropdown -->
 <div id="amis-dropdown" class="dropdown-up">
-  <p class="dropdown-title">Amis</p>
+  <p class="dropdown-title">Abonnements</p>
   <a  href="#" class="close" onclick="getDropDownUp('amis-dropdown')"><img src="imgs/close.png" alt="close"/></a>
   <div id="liste-amis">
     <!--PHP GOES HERE-->
