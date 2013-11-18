@@ -25,10 +25,11 @@ profil.init({
 				
 			},
 });
+
 var notif;
-function affiche_bonjour(){
+/*function affiche_bonjour(){
 	alert("bonjour");
-}
+}*/
 
 $(document).ready(function(){
      //notif=setInterval(affiche_bonjour, 5000);
@@ -37,6 +38,7 @@ $(document).ready(function(){
 $(document).keydown(function(){
      //clearInterval(notif);
 });
+
 //Liste des amis
 profil.afficherlisteDesAmis(1);
 $("#voirAmis").click(function(e) {
