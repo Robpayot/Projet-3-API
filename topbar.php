@@ -10,9 +10,9 @@
       </li>
       
 			<li><a href="edit-profil.php"><img src="imgs/params.png" alt="Edition du profil"/></a></li>
-      <li><a href="#" onclick="getDropDownDown('amis-dropdown');"><img src="imgs/friends.png" alt="Liste d'amis"/></a></li>
-			<li class="abos"><a href="#" onclick="getDropDownDown('abonnes-dropdown');"><img src="imgs/abos.png" alt="Confirmer les nouveaux abonnés"/></a></li>
-			<li><a  href="#" onclick="getDropDownDown('classement-dropdown');">Classement</a></li>
+      <li><a href="#" onclick="getDropDownDown('amis-dropdown');" id="voirAmis"><img src="imgs/friends.png" alt="Liste d'amis"/></a></li>
+			<li class="abos"><a href="#" onclick="getDropDownDown('abonnes-dropdown');" id="voirDemandes"><img src="imgs/abos.png" alt="Confirmer les nouveaux abonnés"/></a></li>
+			<li><a href="#" onclick="getDropDownDown('classement-dropdown');">Classement</a></li>
 			<li><a href="profil.php"><?php echo $_SESSION['login']; ?></a></li>
       <li><a href="deconnexion.php">Déconnexion</a></li>
       <?php } else {?>
