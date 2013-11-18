@@ -5,7 +5,6 @@ var geocoder;
 var debut;
 var fin;
 var pseudo;
-var comment;
 
 var dateTS= new Date().getTime();
 var dateNow = new Date(dateTS);
@@ -82,7 +81,7 @@ var mapObj = {
 	    google.maps.event.addListener(map, 'click', function(event) {
 	    	if(plan==false){
 	    	plan=true;
-		    console.log(event.latLng);
+		    //console.log(event.latLng);
 		    latPlan=event.latLng.ob;
 		    lngPlan=event.latLng.pb;
 		    	mapObj.addMarkerPlan(event.latLng);
@@ -153,12 +152,16 @@ var mapObj = {
 	//get the datas of the checkin registered in the database
 	getCheckin : function() {
 	    var url = "get_checkin.php";
+	    var locationsData;
+	    var pseudo;
+	    var count;
 	    $.get( url, function( data ) {
-	      var locationsData=JSON.parse(data);
-	      var count = locationsData.json.length;
-	      console.log(locationsData);
-	      mapObj.params.gotCheckin.call(this,locationsData,count); 
+	      locationsData=JSON.parse(data);
+	      count = locationsData.json.length;
+	      //console.log(locationsData);
+	      mapObj.params.gotCheckin.call(this,locationsData,count);
 	    });
+	     
 	},
 
 	changeDate:function() {
@@ -205,7 +208,7 @@ var mapObj = {
 	},
 
 	//display the position of the skaters checked in
-	setMarkersCheckin: function(map,locations) {
+	setMarkersCheckin: function(map,locations,pseudo) {
 	  var timeChoosen=date+' '+hour;
 	  //console.log(locations);
 	  debut=locations.date_begin;
@@ -222,12 +225,18 @@ var mapObj = {
 	  var hourEnd=end.getHours();
 	  var minuteEnd=end.getMinutes();
 	  var timeEnd=hourEnd+':'+minuteEnd;
-	  console.log(fin);
+	  var pseudo=locations.pseudo;
+	  //console.log(locations.id_user);
+	  /*var url2 = "getPseudoCheckin.php?idCheck="+locations.id_user;
+	    $.get( url2, function( data ) {
+	      pseudo=data;
+	      
+	    });*/
+		console.log(pseudo);
 
-	  //pseudo = locations.pseudo;
-	  comment = locations.comment;
+	  var comment = locations.comment;
 	  var myLatLng = new google.maps.LatLng(locations.lat, locations.lng);
-	  console.log(debut+' < '+timeChoosen+' < '+fin);
+	  //console.log(debut+' < '+timeChoosen+' < '+fin);
 
 	  if((debut<timeChoosen) && (timeChoosen<fin)) {
 	    console.log("setMarkersCheckin");  
@@ -271,7 +280,7 @@ var mapObj = {
 		    if (status == google.maps.GeocoderStatus.OK) {
 		      if (results[1]) {
 		        addressCheckin = results[1].formatted_address;
-		        infobulle.setContent('<div id="pseudo-checkin"><div class="categ blue" style="margin-right:10px;"></div>'+locations.pseudo+'</div>'+
+		        infobulle.setContent('<div id="pseudo-checkin"><div class="categ blue" style="margin-right:10px;"></div>'+pseudo+'</div>'+
 	                      '<div id="content-infocheckin"><span id="addressCheckin"><img src="imgs/icons/geomark.png" alt="" style="margin-right:5px" />'+addressCheckin+'</span><br>'+
 	                      '<span class="dateCheckin"><img src="imgs/icons/time.png" alt="" style="margin-right:5px"  />Le '+timeBegin+' à '+timeEnd+'</span><br>'+
 	                      '<span><img src="imgs/icons/bubble.png" alt="" style="margin-right:5px"  /> "'+comment+'"</span></div>');

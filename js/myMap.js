@@ -33,7 +33,7 @@ mapObj.getCheckin(); //Get the information about the skaters and display the ska
 //console.log(mapObj.params.checkinButton);
 $(mapObj.params.checkinButton).on('click',function(e){ 
 	e.preventDefault();
-	console.log('cliiiick');
+	//console.log('cliiiick');
 	mapObj.findLocation();
 });
 

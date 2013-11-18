@@ -4,7 +4,7 @@ var profil={
 	defaults : {
 		boutonDemandeAmitie:'#dmdAmi',
 		champStatut:'#newStatut',
-		divDemandesAmi:'#liste-abonnes',
+		divDemandesAmi:'#dmd',
 		divAmis:'#dmd',
 		statutDone : function(){},
 		boutonAmitieDone : function(){},
@@ -49,8 +49,21 @@ var profil={
 				type : "GET",
 				url : url,
 				success: function(server_response){
-					console.log(profil.params.divDemandesAmi);
+					console.log("server_response "+server_response);
+					if(server_response!="Aucune demande"){
+						$('#imgDmd').attr("src","imgs/abosAdd.png");
+						var length = $('#ul_dmd > *').length;
+						console.log("taille"+length);
+						$('#notifications').html(length).show();
+					}
+					else{
+						$('#imgDmd').attr("src","imgs/abos.png");
+					}
+						
+						
 					$(profil.params.divDemandesAmi).html(server_response).show();
+					
+
 				}
 			});
 			
@@ -71,6 +84,7 @@ var profil={
 		
 			var classe=e.toElement.className;
 			datas='accepte='+$("."+classe).attr('data-accepte')+'&ami='+$("."+classe).attr('data-ami');
+			console.log(datas);
 			
 			url="acceptationAmitie.php";
 			
@@ -79,6 +93,7 @@ var profil={
 				url : url,
 				data: datas,
 				success: function(choix){
+					console.log(choix);
 					profil.params.reponseAmitieDone.call(this,choix);					
 				}
 			});
