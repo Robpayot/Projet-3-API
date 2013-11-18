@@ -1,17 +1,22 @@
 #video-section {width:620px;height:auto;background-color:#000; position:relative;}
 video{background-color:#000;-webkit-transition:opacity 5s;display:block;margin:0 auto;width:100%;z-index:0;}
 
-#progressBar{width:80%;height:10px;border:1px solid #fff;position:absolute;bottom:20px;left:10%;opacity:.6;z-index:6;}
+#progressBar{width:80%;height:10px;border:1px solid #fff;position:absolute;bottom:40px;left:10%;opacity:.6;z-index:6;}
 #progressBar span{height:8px;background-color:#fff;display:inline-block;position:absolute;top:1px;}
 
 #progressBar .progress{z-index:7;}
 #progressBar .buffer{opacity:.5;}
 
-#button{position:absolute;bottom:20px;left:10px;z-index:2;height:20px;width:20px;opacity:.5;text-align:center;background:transparent;transition:opacity .2s ease, -webkit-transform .2s ease;}
+#button{position:absolute;bottom:35px;left:10px;z-index:2;height:20px;width:20px;opacity:.5;text-align:center;background:transparent;transition:opacity .2s ease, -webkit-transform .2s ease;}
 #button.off{-webkit-transform:scale(4);opacity:0;}
 #button.play{height:20px;width:20px;background:#fff;}
 #button.pause{height:20px;width:20px;background:red;}
 
-#duration{position:absolute;z-index:30;bottom:50px;right:15%;color:#ffffff;}
-#current{position:absolute;z-index:30;bottom:50px;right:25%;color:#ffffff;}
+#duration{position:absolute;z-index:30;bottom:50px;right:10%;color:#ffffff;font-size:12px;}
+#current{position:absolute;z-index:30;bottom:50px;left:10%;color:#ffffff;font-size:12px;}
+
+#full-screen{position:absolute;z-index:30;bottom:8px;right:9%;padding:5px;}
+#volume-bar{position:absolute;z-index:30;bottom:12px;left:20%;}
+#mute{position:absolute;z-index:30;bottom:8px;left:10%;padding:5px;}
+#full-screen,#mute{color:#ffffff;background-color:transparent;border:none;}
 

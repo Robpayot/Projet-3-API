@@ -57,12 +57,14 @@ var player={
 
 		    // Update the button text
 		    player.params.muteButton.innerHTML = "Unmute";
+		    $(player.params.volumeBar).val()=0;
 		} else {
 		    // Unmute the video
 		    media.muted = false;
 
 		    // Update the button text
 		    player.params.muteButton.innerHTML = "Mute";
+		    $(player.params.volumeBar).val()=1;
 		}
 	},
 
