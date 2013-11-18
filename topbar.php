@@ -1,4 +1,4 @@
-<?php require'facebook_connect.php'; ?>
+
 
 <div id="topbar">
 	<div id="topbar-content">
@@ -54,6 +54,7 @@
 </div> <!-- end of classement-dropdown -->
 <div id="inscription-fb-dropdown" class="dropdown-up">
   <p class="dropdown-title">Inscription avec Facebook</p>
+  <?php require'facebook_connect.php'; ?>
   <div id="fb-root"></div>
 <div id="message_co"></div>
 <div id="facebook_button"><fb:login-button id="fb_connexion" scope="user_birthday,email" width="200" max-rows="1"></fb:login-button></div>
