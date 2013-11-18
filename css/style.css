@@ -114,7 +114,7 @@ body{
     font-size:14px;
 }
 
-.transition200io, #classement-dropdown li{
+.transition200io, #classement-dropdown li, #envoie{
   -webkit-transition: all 200ms ease-in-out;
         -moz-transition: all 200ms ease-in-out;
         -ms-transition: all 200ms ease-in-out;
@@ -342,7 +342,7 @@ body{
 .sports-checkboxes input{margin-right:8px;}
 
 #envoie{width:320px;height:45px;background-color: white;border:none;color:#69c1db;font-size:16px;font-family: 'ProximaNovaSemibold';cursor:pointer;}
-
+#envoie:hover{background-color: #efefef;}
 #facebook_button{margin-top:11px;}
 
 
