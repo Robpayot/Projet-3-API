@@ -136,7 +136,11 @@ $user = $dbh -> query('INSERT INTO grabin_user(name, surname, pseudo, sport, spo
 	       $("#facebook_button").hide();
 		   $("#fb-root").hide();
 		   var message_co=document.getElementById("message_co");
-			message_co.innerHTML="connecté à Facebook";
+			message_co.innerHTML="Connecté à Facebook";
+			 var check_fb=document.getElementById("check_fb").src;
+			
+			check_fb="imgs/check.png";
+			
 	      } else if (response.status === 'not_authorized') {
       // In this case, the person is logged into Facebook, but not into the app, so we call
       // FB.login() to prompt them to do so. 

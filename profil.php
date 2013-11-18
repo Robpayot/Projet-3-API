@@ -70,8 +70,12 @@ require 'topbar.php' ;
         <button id="delete_media<?=$medias['id']?>" name="delete_media<?=$medias['id']?>" type="submit">Supprimer la photo</button>
                 </form>
 <?php endforeach; ?>
-
-
+<?php
+if (empty($medias['url_vid'])){
+       
+    }else{
+       ?>
+    
 <div id="video-section">
   <div id="button" class="pause">
     <span></span>
@@ -94,7 +98,7 @@ require 'topbar.php' ;
   <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1">
   <button type="button" id="full-screen">Full-Screen</button>
 </div>
-
+<?php } ?>
 
 
 <?php
