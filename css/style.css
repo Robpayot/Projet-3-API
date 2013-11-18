@@ -152,7 +152,7 @@ body{
         transition: all 500ms ease-in-out;
 }
 .dropdown-title{
-  margin:19px;
+  margin:19px 19px 27px 19px;
   font-size:18px;
   font-family: 'ProximaNovaSemibold';
 }
@@ -348,6 +348,7 @@ body{
 #facebook_button{margin-top:11px;}
 
 
+#entryfail{position:absolute;top:124px;right:15px;}
 
 
 

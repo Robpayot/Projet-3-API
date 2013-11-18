@@ -27,7 +27,7 @@
   <a  href="#" class="close" onclick="getDropDownUp('connexion-dropdown')"><img src="imgs/close.png" alt="close"/></a>
   <form autocomplete="off" method='post' action='connexion.php'>
   <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required>
-  <input type="password" placeholder="Mot de passe" id="mdp" name="mdp" required >
+  <input type="password" placeholder="Mot de passe" id="mdp" name="mdp" required ><img id="entryfail" src="imgs/fail.png" alt="Erreur de saisie"/>
   <div id="btn-connexion"><input class="transition200io" type="submit" value="Let's ride" /></div>
   </form>
   <div id="separation">
