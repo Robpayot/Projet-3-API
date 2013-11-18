@@ -3,21 +3,26 @@
 profil.init({
 		boutonDemandeAmitie:'#dmdAmi',
 		champStatut:'#newStatut',
-		divDemandesAmi:'#liste-abonnes',
+		divDemandesAmi:'#dmd',
 		divAmis:'#liste-amis',
 		statutDone : function(server_response){
 				$('#newStatut').val('');
 				$("#status").html(server_response).show();
 				$("#envoiStatut").attr('disabled',false);			
 			},
-		boutonAmitieDone : function(server_response){},
+		boutonAmitieDone : function(server_response){
+			console.log("etat amitie"+server_response);
+					if(server_response==1)
+						$('#dmdAmi').attr("value","Suivi(e)").attr('disabled',true);
+					else if (server_response==0)
+						$('#dmdAmi').attr("value","demande envoyée").attr('disabled',true);
+						
+						$("#demande").html(server_response).show();},
+						
 		reponseAmitieDone : function(choix){
+			console.log("doneee!!");
 					profil.afficherlisteDesDemandes();
-					
-					if(choix==1)
-						alert('Vous êtes maintenant amis');
-					else
-						alert('Vous avez refusé');
+				
 			},
 });
 var notif;
@@ -30,18 +35,22 @@ $(document).ready(function(){
 });
 
 $(document).keydown(function(){
-	console.log("keyyy");
-     clearInterval(notif);
+     //clearInterval(notif);
 });
-
+//Liste des amis
 profil.afficherlisteDesAmis(1);
-
+$("#voirAmis").click(function(e) {
+	profil.afficherlisteDesAmis(1);
+});
 //Liste des demandes d'amis
+profil.afficherlisteDesDemandes();
+$("#voirDemandes").click(function(e) {
 	profil.afficherlisteDesDemandes();
-	
+});
 //Reponse demande ami
 
 $('.demandesAmi').click(function(e) {
+	console.log(e);
 	profil.reponseAmitie(e);
 	
 });
