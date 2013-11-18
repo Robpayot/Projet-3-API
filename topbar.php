@@ -1,4 +1,4 @@
-
+  <?php require'facebook_connect.php'; ?>
 
 <div id="topbar">
 	<div id="topbar-content">
@@ -93,7 +93,7 @@
 </div> <!-- end of inscription-fb-dropdown -->
 <div id="inscription-fb-dropdown" class="dropdown-up">
   <p class="dropdown-title">Inscription avec Facebook</p>
-  <?php require'facebook_connect.php'; ?>
+
   <div id="fb-root"></div>
 <div id="message_co"></div>
 
