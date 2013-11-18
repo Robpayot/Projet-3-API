@@ -4,13 +4,21 @@
 		$loginP=mysql_escape_string($_POST['prenom']);
 		$mdp=mysql_escape_string($_POST['mdp']);
 		$pseudo=mysql_escape_string($_POST['pseudo']);
-		$mail=$_POST['email_addr'];
+		$mail=$_POST['email'];
 		$sport=mysql_escape_string($_POST['sport']);
 		$niveau=mysql_escape_string($_POST['niveau']);
 		$date_register=date('Y-m-d');
 
 
-require 'config.php';
+$dsn = 'mysql:dbname=robinpayadmin;host=mysql51-100.perso';
+$user = 'robinpayadmin';
+$password = 'gUFjHp3Q8m9y';
+
+try {
+    $dbh = new PDO($dsn, $user, $password);
+} catch (PDOException $e) {
+    echo 'Erreur: ' . $e->getMessage();
+}
 
 if(isset($_GET['test_pseudo'])){
 	$pseudo_test=$_GET['test_pseudo'];

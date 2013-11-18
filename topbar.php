@@ -1,4 +1,4 @@
-
+  <?php require'facebook_connect.php'; ?>
 
 <div id="topbar">
 	<div id="topbar-content">
@@ -55,6 +55,8 @@
 <div id="inscription-dropdown" class="dropdown-up">
   <p class="dropdown-title">Inscription</p>
   <a  href="#" class="close" onclick="getDropDownUp('inscription-dropdown')"><img src="imgs/close.png" alt="close"/></a>
+ 
+  <form autocomplete="off" method='post' action='sinscrire.php'>
   <ul>
     
     <li class="l-field"><p class="field-desc">Prénom</p><input class="l-text-field" type="text" id="prenom" name="prenom" required></li>
@@ -90,7 +92,7 @@
 </div> <!-- end of inscription-fb-dropdown -->
 <div id="inscription-fb-dropdown" class="dropdown-up">
   <p class="dropdown-title">Inscription avec Facebook</p>
-  <?php require'facebook_connect.php'; ?>
+
   <div id="fb-root"></div>
 <div id="message_co"></div>
 

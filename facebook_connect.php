@@ -88,7 +88,7 @@ $user = $dbh -> query('INSERT INTO grabin_user(name, surname, pseudo, sport, spo
 			$id = $users['id'];
 	endforeach;
 					 
-						 session_start(); 
+						 
 						$_SESSION['login']=$pseudo; 
 						$_SESSION['ID']=$id;
 						
