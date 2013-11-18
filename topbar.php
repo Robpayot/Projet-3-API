@@ -6,10 +6,11 @@
 		<ul><?php if(isset($_SESSION['login'])) {?>
       <li>
         <div class="champR">
-          <input type="text" id="recherche" name="recherche" onfocus="displayResults()" onblur="hideResults()" placeholder="Chercher des Riders" required="">
+          <input type="text" id="recherche" name="recherche" onfocus="displayResults()" onblur="hideResults()" placeholder="Chercher des Riders" required>
         </div>
         <div class="affichageR" id="resultat"></div>
       </li>
+       
 			<li><a href="edit-profil.php"><img src="imgs/params.png" alt="Edition du profil"/></a></li>
       <li><a href="#" onclick="getDropDownDown('amis-dropdown');" id="voirAmis"><img src="imgs/friends.png" alt="Liste d'amis"/></a></li>
 			<li class="abos"><a href="#" onclick="getDropDownDown('abonnes-dropdown');" id="voirDemandes"><img src="imgs/abos.png" id="imgDmd" alt="Confirmer les nouveaux abonnés"/></a></li>
@@ -95,16 +96,19 @@
   <p class="dropdown-title">Inscription avec Facebook</p>
 
   <div id="fb-root"></div>
-<div id="message_co"></div>
+
 
   <a  href="#" class="close" onclick="getDropDownUp('inscription-fb-dropdown')"><img src="imgs/close.png" alt="close"/></a>
   <form autocomplete="off" method='post' action='facebook_connect.php'>
   <ul>
-    <li class="l-field"><div id="facebook_button"><fb:login-button id="fb_connexion" scope="user_birthday,email" width="200" max-rows="1"></fb:login-button></div></li>
+    <li class="l-field"><div id="facebook_button"><fb:login-button id="fb_connexion" scope="user_birthday,email" width="200" max-rows="1"></fb:login-button></div>
+    <div id="message_co"></div>
+     <img id="check_fb" src="1" alt="bon"/></li>
+    </li>
     <li class="l-field"><p class="field-desc">Pseudo</p><input class="l-text-field" type="text" id="pseudo" name="pseudo" required></li>
     <li class="l-field"><p class="field-desc">Mot de passe</p><input class="l-text-field" type="password" id="mdp" name="mdp" required></li>
     <li class="l-field check"><p class="field-desc">Confirm. Mdp</p><input class="l-text-field" type="password" id="retape_mdp" name="retape_mdp" required>
-    <img src="imgs/check.png" alt="bon"/></li>
+    <img id="check_fb" src="imgs/check.png" alt="bon"/></li>
   <div class="verifMatchMdp" id="verifMatchMdp"></div> 
    <li class="xl-field spaced"><p class="field-desc">Sport pratiqué</p>
       <ul class="sports-checkboxes">
