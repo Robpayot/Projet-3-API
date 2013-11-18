@@ -32,6 +32,7 @@ endforeach;
 	$media = $dbh -> query("SELECT * FROM media WHERE id_user='".$id_user."'")->fetchAll();
 	foreach ($media as $medias):
 $url = $medias['url'];
+$url_vid = $medias['url_vid'];
 $description = $medias['description'];
 $date = $medias['date'];
 endforeach;
@@ -113,7 +114,7 @@ $fichier = basename($_FILES['url']['name']);
 $taille_maxi = 100000000;
 $taille = filesize($_FILES['url']['tmp_name']);
 
-$extensions = array('.mpeg','.avi','.mp4','.mov', '.MPEG','.AVI','.MP4','.MOV');
+$extensions = array('.ogg','.mp4','.OGG','.MP4');
 $extension = strrchr($_FILES['url']['name'], '.'); 
 
 
@@ -148,15 +149,12 @@ $fichierDbName=$users['id'].$fichier;
     if(move_uploaded_file($_FILES['url']['tmp_name'], $dossier . $fichierDbName)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
      {
 
-// Recadrage de l'image 
- $image_path = 'MEDIA/videos/' .$fichierDbName;
-    $thumb_path = 'MEDIA/videos/thumb_'. $fichierDbName;
-     
-    imagethumb($image_path, $thumb_path, 190);
+
+ $video_path = 'MEDIA/videos/' .$fichierDbName;
 
 	$date=date('Y-m-d H-i-s');
-	$description = $_POST['email'];
-	$media = $dbh -> query('INSERT INTO media(id_user,url,description,date)VALUES("'.$id_user.'","'.$thumb_path.'","'.$description.'", "'.$date.'")');	
+	$description = $_POST['description'];
+	$media = $dbh -> query('INSERT INTO media(id_user,url_vid,description,date)VALUES("'.$id_user.'","'.$video_path.'","'.$description.'", "'.$date.'")');	
 	    echo 'Upload effectué avec succès !';
 	$_SESSION['photo']=$thumb_path;
 
