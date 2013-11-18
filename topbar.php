@@ -4,11 +4,12 @@
 	<div id="topbar-content">
 		<h1>Grab-In</h1>
 		<ul><?php if(isset($_SESSION['login'])) {?>
-      <li><div class="champR">
-            <input type="text" id="recherche" name="recherche" placeholder="Chercher des Riders" required >
-          </div>
+      <li>
+        <div class="champR">
+          <input type="text" id="recherche" name="recherche" onfocus="displayResults()" onblur="hideResults()" placeholder="Chercher des Riders" required="">
+        </div>
+        <div class="affichageR" id="resultat"></div>
       </li>
-      
 			<li><a href="edit-profil.php"><img src="imgs/params.png" alt="Edition du profil"/></a></li>
       <li><a href="#" onclick="getDropDownDown('amis-dropdown');" id="voirAmis"><img src="imgs/friends.png" alt="Liste d'amis"/></a></li>
 			<li class="abos"><a href="#" onclick="getDropDownDown('abonnes-dropdown');" id="voirDemandes"><img src="imgs/abos.png" id="imgDmd" alt="Confirmer les nouveaux abonnés"/></a></li>
@@ -55,6 +56,8 @@
 <div id="inscription-dropdown" class="dropdown-up">
   <p class="dropdown-title">Inscription</p>
   <a  href="#" class="close" onclick="getDropDownUp('inscription-dropdown')"><img src="imgs/close.png" alt="close"/></a>
+ 
+  <form autocomplete="off" method='post' action='sinscrire.php'>
   <ul>
     
     <li class="l-field"><p class="field-desc">Prénom</p><input class="l-text-field" type="text" id="prenom" name="prenom" required></li>
