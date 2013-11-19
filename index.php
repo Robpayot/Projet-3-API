@@ -5,7 +5,6 @@ require 'topbar.php' ;
 
 
 
-<div style="height:50px;" ></div>
  <!-- DEBUT MAP -->
 <div id="map-section">
   <?php if(isset($_SESSION['login'])) {?><p><input type="button" id="find" onClick="findLocation()" value="check in"><?php } ?>
@@ -15,7 +14,7 @@ require 'topbar.php' ;
     <input type="text" id="address" name="address" placeholder="Recherche un lieu" />
   </form>
   <p id="statut"></p> <!-- Affichage erreurs -->
-  <div id="map-canvas" style="height:665px; width:100%; " ></div> <!-- Affichage de la map -->
+  <div id="map-canvas" ></div> <!-- Affichage de la map -->
 </div>
 <!-- FIN MAP -->
 
