@@ -79,17 +79,33 @@ var mapObj = {
 	    //Plan a checkin by clicking on the map
 	    var plan=false;
 	    google.maps.event.addListener(map, 'click', function(event) {
-	    	if(plan==false){
-	    	plan=true;
-		    //console.log(event.latLng);
-		    latPlan=event.latLng.ob;
-		    lngPlan=event.latLng.pb;
-		    	mapObj.addMarkerPlan(event.latLng);
-		    	mapObj.windowPlanCheckin(event.latLng);
-			} else {
-				mapObj.removeMarkerPlan();
-				plan=false;
-			}
+	    	geocoder.geocode({'latLng': event.latLng}, function(results, status) {
+		    if (status == google.maps.GeocoderStatus.OK) {
+		    	console.log(results[4]);
+		      if (results[1]) {
+		        	if(results[4].formatted_address!="Paris, France" ) {
+			            alert("Le service n'est disponible qu'à Paris pour le moment, tu ne peux donc pas te géolocaliser ici, désolé !");
+			        } else {
+				    	if(plan==false){
+				    	plan=true;
+					    //console.log(event.latLng);
+					    latPlan=event.latLng.ob;
+					    lngPlan=event.latLng.pb;
+					    	mapObj.addMarkerPlan(event.latLng);
+					    	mapObj.windowPlanCheckin(event.latLng);
+						} else {
+							mapObj.removeMarkerPlan();
+							plan=false;
+						}
+					}
+		        } else {
+		        console.log('No results found');
+		      }
+		    } else {
+		      console.log('Geocoder failed due to: ' + status);
+		    }
+		  });
+	    	
 		});
 
 	    // Limit of the map --- http://stackoverflow.com/questions/3818016/google-maps-v3-limit-viewable-area-and-zoom-level
@@ -133,6 +149,7 @@ var mapObj = {
 	    var marker = new google.maps.Marker({
 	        position: myLatLng,
 	        map: map,
+	        icon:'imgs/icons/skatepark.png',
 	        title: skatepark[0],
 	        zIndex: skatepark[3]
 	    });
@@ -181,13 +198,16 @@ var mapObj = {
 	},
 
 	// Add a marker to the map and push to the array.
-	addMarker : function(location) {
+	addMarker : function(location,url) {
 	  markerChekin = new google.maps.Marker({
 	    position: location,
-	    map: map
+	    map: map,
+	    icon:url,
 	  });
 	  markers.push(markerChekin);
+	  //console.log(markers);
 	},
+
 
 	// Sets the map on all markers in the array.
 	setAllMap : function(map) {
@@ -227,19 +247,13 @@ var mapObj = {
 	  var timeEnd=hourEnd+':'+minuteEnd;
 	  var pseudo=locations.pseudo;
 	  //console.log(locations.id_user);
-	  /*var url2 = "getPseudoCheckin.php?idCheck="+locations.id_user;
-	    $.get( url2, function( data ) {
-	      pseudo=data;
-	      
-	    });*/
-		console.log(pseudo);
 
 	  var comment = locations.comment;
 	  var myLatLng = new google.maps.LatLng(locations.lat, locations.lng);
 	  //console.log(debut+' < '+timeChoosen+' < '+fin);
 
 	  if((debut<timeChoosen) && (timeChoosen<fin)) {
-	    console.log("setMarkersCheckin");  
+	    //console.log("setMarkersCheckin");  
 	    //console.log(debut+' < '+timeChoosen+' < '+fin);
 	    var checkinInfo = '';
 
@@ -263,16 +277,29 @@ var mapObj = {
 			maxWidth :   150  // Largeur minimum de l'infobulle  (en px)
 		});
 
-		mapObj.addMarker(myLatLng);
-
-		google.maps.event.addListener(markerChekin, 'click', (function() {
+		//ajax to know if is friend or not
+		var url='ListeAmis.php?iduser_checkin='+locations.id_user;
+		$.get( url, function( data ) {
+	      var isFriend =data;
+	      //if is a friend, it's this icon
+	      if(isFriend==1) {
+		  	mapObj.addMarker(myLatLng,'imgs/icons/checkinamis.png');
+		  } else if(isFriend==2){
+		  	mapObj.addMarker(myLatLng,'imgs/icons/checkinme.png');
+		  } else {
+		  	mapObj.addMarker(myLatLng,'imgs/icons/checkin.png');
+	      }
+	      //console.log(markerChekin);
+	      if(isFriend==1 || isFriend==2){
+	      google.maps.event.addListener(markerChekin, 'click', (function() {
 	      for (var j=0;j<markers.length; j++){
 	          if((this.position.ob==markers[j].position.ob)&&(this.position.pb==markers[j].position.pb)){
 	            indiceMarker=j;
 	          }
 	        }
 	        infobulle.open(map,markers[indiceMarker]);
-	    }));
+	      }));
+	  	  }
 
 	    
 	    var addressCheckin;
@@ -291,9 +318,14 @@ var mapObj = {
 		      console.log('Geocoder failed due to: ' + status);
 		    }
 		  });
+	    });
+
+		//mapObj.addMarker(myLatLng,'imgs/icons/checkinme.png');
+
+		
 
 ////////console.log(addressCheckin);
-		console.log($('#infobulle-checkin'));
+		//console.log($('#infobulle-checkin'));
 		
 	    
 	  }
@@ -409,7 +441,7 @@ var mapObj = {
 	addMarkerPlan : function(location) {
 	  markerPlan = new google.maps.Marker({
 	    position: location,
-	    map: map
+	    map: map,
 	  });
 	},
 
