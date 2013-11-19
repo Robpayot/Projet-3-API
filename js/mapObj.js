@@ -83,7 +83,8 @@ var mapObj = {
 		    if (status == google.maps.GeocoderStatus.OK) {
 		    	console.log(results[4]);
 		      if (results[1]) {
-		        	if(results[4].formatted_address!="Paris, France" ) {
+		        	if(results[4].formatted_address!="Paris, France" && results[5].formatted_address!="Paris, France") {
+		        		console.log(results[5].formatted_address);
 			            alert("Le service n'est disponible qu'à Paris pour le moment, tu ne peux donc pas te géolocaliser ici, désolé !");
 			        } else {
 				    	if(plan==false){
@@ -364,7 +365,8 @@ var mapObj = {
 	    var markerPos = new google.maps.Marker({
 	        position: currentPos,
 	        map: map,
-	        title: "Votre position"
+	        title: "Votre position",
+	        icon: 'imgs/icons/checkinme.png'
 	    });
 	    infowindowCI.open(map, markerPos);
 	},
@@ -442,6 +444,7 @@ var mapObj = {
 	  markerPlan = new google.maps.Marker({
 	    position: location,
 	    map: map,
+	    icon: 'imgs/icons/checkinadd.png'
 	  });
 	},
 
@@ -484,6 +487,7 @@ var mapObj = {
 	      console.log( "Request failed: " + textStatus );
 	      $( "#plan_checkin" ).append( "oops! il y a eu une erreur" );
 	    });
+	    //mapObj.removeMarkerPlan();
 	    return false;
 	},
 	
