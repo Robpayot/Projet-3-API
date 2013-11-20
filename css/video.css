@@ -1,4 +1,4 @@
-#video-section {width:620px;height:auto;background-color:#000; position:relative;}
+#video-section {width:60%;height:100%;background-color:#000; position:relative; float: left;}
 video{background-color:#000;-webkit-transition:opacity 5s;display:block;margin:0 auto;width:100%;z-index:0;}
 
 #progressBar{width:80%;height:10px;border:1px solid #fff;position:absolute;bottom:40px;left:10%;opacity:.6;z-index:6;}

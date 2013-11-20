@@ -276,7 +276,6 @@ body{
         -o-transition: all 200ms ease-in-out;
         transition: all 200ms ease-in-out;
 }
-/*nth-child(odd)*/
 #liste-amis ul li:hover, #resultat ul li:hover {
   background-color: #efefef;
 }
@@ -295,12 +294,16 @@ body{
   display: block;
 }
 
+
+#map-canvas{/*height:75%*/height:500px;width:100%;margin-top:50px;}
+#map-section{padding-top: 50px;}
+
 /*--Infobulles checkins--*/
 #pseudo-checkin {display: block; background-color: #eeeeee; padding: 0; margin: 0; height: 30px;}
 #content-infocheckin{padding: 10px;color: #aaa;}
 
 /*--Form recherche lieu--*/
-#geocoder {position:absolute;z-index:50;left:80%; top: 50px;}
+#geocoder {position:absolute;z-index:50;right:10%; top: 50px;}
 #geocoder input {
     background-color: #eeeeee;
     border: thick solid #ffffff;
@@ -312,7 +315,7 @@ body{
     border-radius: 10px;
 }
 
-#map-canvas{height:75%;width:100%;margin-top:50px;}
+
 
 .l-field{
   width:100%;
@@ -378,7 +381,9 @@ body{
 
 
 
+#profile-content{width:1000px;margin:0 auto;padding-top:40px;}
 
+#medias{width:100%;margin:0 auto;padding-top:40px;}
 
 
 

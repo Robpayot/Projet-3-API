@@ -11,6 +11,15 @@
 <script type="text/javascript" src="js/ProfilVisite.js"></script>
 <script type="text/javascript" src="js/search.js"></script>
 <script type="text/javascript" src="js/video.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/scripts.js"></script>
+<script>
+    $(document).ready(function(){
+     $('#gallery-container').sGallery({
+        fullScreenEnabled: true
+      });
+    });
+</script>
 
 </body>
 </html>
