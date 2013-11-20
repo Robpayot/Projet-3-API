@@ -32,11 +32,11 @@ require 'topbar.php' ;
                 <img src="<?php echo $avatarV?>" alt="<?php echo htmlentities($pseudoV); ?>"/>
                 <div id="identity">
                         <h2><?php echo htmlentities($pseudoV); ?> <img src="imgs/skate.png" alt="Skate"/></h2>
-                        <?php if($age>0) {?>
-                        <p><?php echo $age?> ans</p>
+                        <?php if($ageV>0) {?>
+                        <p><?php echo $ageV?> ans</p>
                         <? }?>
-                         <?php if($ville!=null) {?>
-                        <p>ville: <?php echo $ville?></p>
+                         <?php if($villeV!=null) {?>
+                        <p>ville: <?php echo $villeV?></p>
                         <? }?>
                         <p><?php echo $scoreV."pts"?></p>
                         
