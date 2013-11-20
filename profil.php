@@ -30,9 +30,15 @@ require 'topbar.php' ;
                 <img src="<?php echo $avatar?>" alt="<?php echo htmlentities($pseudo); ?>"/>
                 <div id="identity">
                         <h2><?php echo htmlentities($pseudo); ?> <img src="imgs/skate.png" alt="Skate"/></h2>
+                        <?php if($age>0) {?>
                         <p><?php echo $age?> ans</p>
+                        <? }?>
+                         <?php if($ville!=null) {?>
                         <p>ville: <?php echo $ville?></p>
-                        <p>1234 pts.</p>
+                        <? }?>
+                        <?php if($score>0) {?>
+                        <p><?php echo $score."pts"?></p>
+                         <? }?>
                         
                 </div>
                 <div><p id="status">&#171;<?php echo $statut ?>!&#187;</p></div> 
