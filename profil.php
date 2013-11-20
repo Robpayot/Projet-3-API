@@ -6,6 +6,7 @@ if (!isset($_SESSION['login'])) {
 }
 else{
 require_once("gestionProfil.php");	
+require_once("meteo.php");	
 
 }
 require 'header.php' ;
@@ -13,7 +14,8 @@ require 'topbar.php' ;
 
 ?>
  <!-- DEBUT MAP -->
-<div class="sauvage" id="notifications"></div>
+
+
 <div id="map-section">
   <?php if(isset($_SESSION['login'])) {?><p><input type="button" id="find" onClick="findLocation()" value="check in"><?php } ?>
   <input type="date" max="2015-06-25" min="2013-08-13" id="date" onChange="changeDate()" >
@@ -45,7 +47,9 @@ require 'topbar.php' ;
                 <div id="cal">
                         <div id="cal-shadow-1"></div>
                         <div id="cal-shadow-2"></div>
-                        <div><img src="imgs/cal.png" alt="Calendrier"/></div>
+                        <div><p>Température:<?php echo $temperature ?></p>
+                        	<p>Code Image:<?php echo $codeImg ?></p>
+                        </div>
                 </div>
         </div>
 </div>
@@ -130,7 +134,7 @@ require 'topbar.php' ;
 
 
   </div> <!-- end #medias-->
-
+<img src="http://l.yimg.com/a/i/us/we/52/<?php echo $codeImg ?>.gif"/>
 
 
 

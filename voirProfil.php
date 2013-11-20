@@ -10,6 +10,7 @@ else{
 $_SESSION['profilVisite']=$_GET["profil"]; 
 $_SESSION['IDprofilVisite']=$_GET["key"];
 require_once("gestionProfilVisite.php");	
+require_once("meteo.php");	
 }  
 require 'header.php' ;
 require 'topbar.php' ;
@@ -17,7 +18,7 @@ require 'topbar.php' ;
 
 <div style="height:50px;" ></div>
  <!-- DEBUT MAP -->
-<div class="affichageR" id="resultat"></div>
+
 <div id="map-section">
   <p><input type="button" id="find" onClick="findLocation()" value="check in"> <input type="date" max="2015-06-25" min="2013-08-13" value="2013-11-13" id="date" onChange="changeDate()" > <input type="time" id="hour" value="15:00" onChange="changeHour()"> </p>
   <form id="geocoder">
@@ -47,9 +48,14 @@ require 'topbar.php' ;
                 <div id="cal">
                         <div id="cal-shadow-1"></div>
                         <div id="cal-shadow-2"></div>
-                        <div><img src="imgs/cal.png" alt="Calendrier"/></div>
+                        <div><p>Température:<?php echo $temperature ?></p>
+                        	<p>Code Image:<?php echo $codeImg ?></p></div>
+                         
+                            
+                        
                 </div>
         </div>
+        <img src="http://l.yimg.com/a/i/us/we/52/<?php echo $codeImg ?>.gif"/>
 </div>
 
 
