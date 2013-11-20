@@ -75,8 +75,8 @@ require 'recup.php';
   <ul>
     
     <li class="l-field"><p class="field-desc">Prénom</p><input class="l-text-field" type="text" id="prenom" name="prenom" required></li>
-    <li class="l-field"><p class="field-desc">Nom</p><input class="l-text-field" type="nom" id="nom" name="nom" required></li>
-    <li class="l-field"><p class="field-desc">Pseudo</p><input class="l-text-field" type="pseudo" id="pseudo" name="pseudo" required></li>
+    <li class="l-field"><p class="field-desc">Nom</p><input class="l-text-field" type="text" id="nom" name="nom" required></li>
+    <li class="l-field"><p class="field-desc">Pseudo</p><input class="l-text-field" type="text" id="pseudo" name="pseudo" required></li>
     <li class="l-field spaced"><p class="field-desc">Mot de passe</p><input class="l-text-field" type="password" id="mdp" name="mdp" required></li>
     <li class="l-field check"><p class="field-desc">Confirm. Mdp</p><input class="l-text-field" type="password" id="retape_mdp" name="retape_mdp" required><img src="imgs/fail.png" alt="bon" id="imgVerif"/></li>
     <li class="l-field"><p class="field-desc">E-mail</p><input class="l-text-field" type="email" id="email" name="email" required></li>
@@ -160,10 +160,10 @@ require 'recup.php';
   <ul class="profiledit-right">
     
     <li class="l-field"><p class="field-desc">Prénom</p><input class="l-text-field" type="text" id="surname_edit" name="surname" value="<?php echo ($surname);?>" required></li>
-    <li class="l-field"><p class="field-desc">Nom</p><input class="l-text-field" type="nom" id="name_edit" name="name" value="<?php echo ($name);?>" required></li>
-    <li class="l-field"><p class="field-desc">Pseudo</p><input class="l-text-field" type="pseudo" id="pseudo_edit" name="pseudo" value="<?php echo ($pseudo);?>" required></li>
+    <li class="l-field"><p class="field-desc">Nom</p><input class="l-text-field" type="text" id="name_edit" name="name" value="<?php echo ($name);?>" required></li>
+    <li class="l-field"><p class="field-desc">Pseudo</p><input class="l-text-field" type="text" id="pseudo_edit" name="pseudo" value="<?php echo ($pseudo);?>" required></li>
     <li class="l-field"><p class="field-desc">E-mail</p><input class="l-text-field" type="email" id="email_edit" name="email"value="<?php echo ($email);?>" required></li>
-    <li class="l-field"><p class="field-desc">Ville</p><input class="l-text-field" type="ville" id="ville_edit" name="ville"value="<?php echo ($ville);?>" required></li>
+    <li class="l-field"><p class="field-desc">Ville</p><input class="l-text-field" type="text" id="ville_edit" name="ville"value="<?php echo ($ville);?>" required></li>
   <div class="verifMatchMdp" id="verifMatchMdp_edit"></div> 
    <li class="xl-field spaced"><p class="field-desc">Sport pratiqué</p>
       <ul class="sports-checkboxes">

@@ -46,7 +46,7 @@ require 'config.php';
 
 	// CREATION DE L'URL DE LA PHOTO DE PROFIL FACEBOOK 
 
-	$avatar="https://graph.facebook.com/".$uid."/picture?width=190&height=190";
+	$avatar="https://graph.facebook.com/".$uid."/picture?width=160&height=160";
 
 // CALCULE DE L'AGE EN FONCTION DE LA DATE DE NAISSANCE
 
