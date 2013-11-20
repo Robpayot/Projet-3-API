@@ -32,9 +32,14 @@ require 'topbar.php' ;
                 <img src="<?php echo $avatarV?>" alt="<?php echo htmlentities($pseudoV); ?>"/>
                 <div id="identity">
                         <h2><?php echo htmlentities($pseudoV); ?> <img src="imgs/skate.png" alt="Skate"/></h2>
-                        <p><?php echo $ageV?> ans</p>
-                        <p>ville: <?php echo $villeV?></p>
-                        <p>1234 pts.</p>
+                        <?php if($age>0) {?>
+                        <p><?php echo $age?> ans</p>
+                        <? }?>
+                         <?php if($ville!=null) {?>
+                        <p>ville: <?php echo $ville?></p>
+                        <? }?>
+                        <p><?php echo $scoreV."pts"?></p>
+                        
                         <div id="subscribe"><input type="button" id="dmdAmi" name="dmdAmi" value="suivre" ></div>
                 </div>
                 <p id="status"><?php echo "&#171;".utf8_encode($statut)."!&#187;" ?> </p> 

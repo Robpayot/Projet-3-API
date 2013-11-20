@@ -25,19 +25,23 @@ profil.init({
 				
 			},
 });
-
 var notif;
-/*function affiche_bonjour(){
-	alert("bonjour");
-}*/
+profil.evenement();
 
-$(document).ready(function(){
-     //notif=setInterval(affiche_bonjour, 5000);
-});
+//Classement
+  function Classement(){
+        $.ajax({
+            type: "GET",
+            url: "classement.php",
+            success: function (server_response) {
+                $("#classement-dropdown ul").append(server_response);
 
-$(document).keydown(function(){
-     //clearInterval(notif);
-});
+            }
+        });
+
+    }
+	
+Classement();
 
 //Liste des amis
 profil.afficherlisteDesAmis(1);
@@ -45,12 +49,14 @@ $("#voirAmis").click(function(e) {
 	profil.afficherlisteDesAmis(1);
 });
 //Liste des demandes d'amis
+
 profil.afficherlisteDesDemandes();
 $("#voirDemandes").click(function(e) {
 	profil.afficherlisteDesDemandes();
 });
-//Reponse demande ami
+notif=setInterval(profil.afficherlisteDesDemandes(),60000);
 
+//Reponse demande ami
 $('.demandesAmi').click(function(e) {
 	console.log(e);
 	profil.reponseAmitie(e);

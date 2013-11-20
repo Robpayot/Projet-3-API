@@ -36,9 +36,8 @@ require 'topbar.php' ;
                          <?php if($ville!=null) {?>
                         <p>ville: <?php echo $ville?></p>
                         <? }?>
-                        <?php if($score>0) {?>
                         <p><?php echo $score."pts"?></p>
-                         <? }?>
+
                         
                 </div>
                 <div><p id="status">&#171;<?php echo $statut ?>!&#187;</p></div> 
