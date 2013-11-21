@@ -1,5 +1,9 @@
 .clear-float{clear: both;}
 #medias{margin-bottom: 40px;}
+.upload-media p{font-size: 14px;margin-top: 8px;}
+.upload-media p label{text-align: right;display: inline-block;width: 200px;margin-right: 20px;}
+.upload-media button{margin: 0 auto; background-color: #ffffff; color:#555555; border: none;display: block;padding: 5px 15px;font-size: 14px;}
+
 h3{font-weight: bolder;font-size: 1.3em;margin-bottom: 20px;}
 #list-checkins ul li{padding: 8px 20px;background-color: #efefef;width: 60%;margin-bottom: 5px;}
 #list-checkins ul li:hover{background-color: #f7f7f7;}
