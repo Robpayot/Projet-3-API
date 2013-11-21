@@ -23,7 +23,7 @@ require 'topbar.php' ;
   <form id="geocoder">
     <input type="text" id="address" name="address" placeholder="Recherche un lieu" />
   </form>
-  <p id="statut"></p> <!-- Affichage erreurs -->
+  <p id="map-status"></p> <!-- Affichage erreurs -->
   <div id="map-canvas" ></div> <!-- Affichage de la map -->
 </div>
 <!-- FIN MAP -->
@@ -43,7 +43,7 @@ require 'topbar.php' ;
                         
                 </div>
                 <div id="statut">
-                  <p id="status">&#171;Bon, il faut encore que je travaille mes réceptions, mais je rentre le Backflip !&#187;</p> 
+                  <p id="status"><?php echo "&#171;".$statut."!&#187;" ?> </p> 
                   <p><input type="text" id="newStatut" name="newStatut" placeholder="Nouveau statut" required ><br>
                   <input type="button" id="envoiStatut" name="envoiStatut" value="Exprime-toi !" class="button"/></p>
                 </div>
@@ -74,7 +74,7 @@ require 'topbar.php' ;
   <form action="profil.php" enctype="multipart/form-data" method="post">
     <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
     <p><label for="url">Votre photo : </label><input type="file" name="url" id="url" required></p>
-    <p><label for="description">Description : </label><input name="description" id="description" data-provide="limit" data-counter="#counter"  rows="8" ></input></p>
+    <p><label for="description">Description : </label><input name="description" id="description" data-provide="limit" data-counter="#counter" ></p>
     <button id="submit_photo" name="submit_photo" type="submit">Valider</button></p>
   </form> 
 </div>
@@ -83,8 +83,8 @@ require 'topbar.php' ;
   <form action="profil.php" enctype="multipart/form-data" method="post">
     <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
     <p><label for="url">Votre vidéo (fichiers mp4 et ogg) :</label> <input type="file" name="url" id="url" required></p>
-    <p><label for="description">Description : </label><input name="description" id="description" data-provide="limit" data-counter="#counter"  rows="8" ></input></p>
-    <button id="submit_video" name="submit_video" type="submit">Valider</button></p>
+    <p><label for="description">Description : </label><input name="description" id="description" data-provide="limit" data-counter="#counter" ></p>
+    <p><button id="submit_video" name="submit_video" type="submit">Valider</button></p>
   </form> 
 </div>
 
@@ -95,7 +95,7 @@ require 'topbar.php' ;
         <?php foreach ($url as $urls): ?>
           <li class="item"><a href="#"><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a></li>
           <form action='profil.php' method="POST" style="display:none">
-            <button id="delete_media<?=$urls['id']?>" name="delete_media<?=$urls['id']?>" type="submit">Supprimer la photo</button>
+            <button class="delete_media" name="delete_media<?=$urls['id']?>" type="submit">Supprimer la photo</button>
           </form>
         <?php endforeach; ?>
       </ul>
