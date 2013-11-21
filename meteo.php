@@ -61,6 +61,8 @@ switch ($codeImg) {
 	case 24:
 	case 25:
 	case 26:
+	case 27:
+	case 29:
 		$codeImg=4;
 		break;
 	case 35:
@@ -70,25 +72,44 @@ switch ($codeImg) {
 		$codeImg=2;
 		break;
 	case 28:
-	case 29:
 	case 30:
 	case 44:
 		$codeImg=3;
 		break;	
-	case 31:
-	case 33:
+	case 32:
+	case 34:
 	case 36:
 		$codeImg=5;
 		break;	
-	case 27:
-	case 28:
-	case 30:
-	case 32:
-	case 27:
+	case 31:
+	case 33:
 		$codeImg=7;
 		break;	
 	
 }
+
+/*
+Pluie :  Yahoo : 1 / 2 / 3 / 4 / 5 / 6 / 9 / 11 / 12 / 17 / 18 / 39 / 40 / 45
+Icon => 1.png
+
+Neige : Yahoo : 7 / 8 / 10 / 13 / 14 / 15 / 16 / 41 / 42 / 43 / 46
+Icon => 6.png
+	
+Nuage : Yahoo : 19 / 20 / 21 / 22 / 23 / 24 / 25 / 26 /27/29
+  Icon => 4.png
+
+Orage : Yahoo : 35 / 37 / 38 / 47 
+Icon => 2.png
+
+Nuage+soleil : Yahoo : 28 /  30 / 44
+Icon => 3.png
+
+Soleil : Yahoo :  32/36/34
+Icon => 5.png
+
+Lune : Yahoo :   31 /  33 
+Icon => 7.png
+*/
 
 
 ?>
