@@ -1,4 +1,9 @@
 <?php 
+session_start();  
+if (isset($_SESSION['login'])) { 
+   header ('Location: profil.php'); 
+   exit();  
+}
 require 'header.php' ;
 require 'topbar.php' ;
 ?>
@@ -17,7 +22,7 @@ require 'topbar.php' ;
   <div id="map-canvas" ></div> <!-- Affichage de la map -->
 </div>
 <!-- FIN MAP -->
-
+<div id="list-checkins"></div>
 
 
 <?php

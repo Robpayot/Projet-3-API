@@ -9,11 +9,11 @@ if (!isset($_SESSION['login'])) {
 else{
 $_SESSION['profilVisite']=$_GET["profil"]; 
 $_SESSION['IDprofilVisite']=$_GET["key"];
-require_once("gestionProfilVisite.php");	
-require_once("meteo.php");	
+require_once("../../../AppData/Local/Temp/fz3temp-3/gestionProfilVisite.php");	
+require_once("../../../AppData/Local/Temp/fz3temp-3/meteo.php");	
 }  
-require 'header.php' ;
-require 'topbar.php' ;
+require '../../../AppData/Local/Temp/fz3temp-3/header.php' ;
+require '../../../AppData/Local/Temp/fz3temp-3/topbar.php' ;
 ?>
 
 <div style="height:50px;" ></div>
@@ -32,7 +32,7 @@ require 'topbar.php' ;
         <div id="userbar-content">
                 <img src="<?php echo $avatarV?>" alt="<?php echo htmlentities($pseudoV); ?>"/>
                 <div id="identity">
-                        <h2><?php echo htmlentities($pseudoV); ?> <img src="imgs/skate.png" alt="Skate"/></h2>
+                        <h2><?php echo htmlentities($pseudoV); ?> <img src="../../../AppData/Local/Temp/fz3temp-3/imgs/skate.png" alt="Skate"/></h2>
                         <?php if($ageV>0) {?>
                         <p><?php echo $ageV?> ans</p>
                         <? }?>
@@ -43,7 +43,7 @@ require 'topbar.php' ;
                         
                         <div id="subscribe"><input type="button" id="dmdAmi" name="dmdAmi" value="suivre" ></div>
                 </div>
-                <p id="status"><?php echo "&#171;".utf8_encode($statut)."!&#187;" ?> </p> 
+                <p id="status"><?php echo "&#171;".$statut."!&#187;" ?> </p> 
 
                 <div id="cal">
                         <div id="cal-shadow-1"></div>
@@ -60,6 +60,6 @@ require 'topbar.php' ;
 
 
 <?php
-require 'footer.php' ;
+require '../../../AppData/Local/Temp/fz3temp-3/footer.php' ;
 ?> 
 
