@@ -5,7 +5,7 @@ if (!isset($_SESSION['login'])) {
    exit();  
 }
 else{
-require_once("gestionProfil.php");	
+require("gestionProfil.php");	
 require_once("meteo.php");	
 
 }
@@ -77,10 +77,11 @@ require 'topbar.php' ;
     <!--// Gallery Markup: A container that the plugin is called upon, and two lists for the images (use images with same aspect ratio) //-->
     <div id="gallery-container">
       <ul class="items--small">
-        <?php foreach ($media as $medias): ?>
-          <li class="item"><a href="#"><img src="<?php echo $medias['url'];?>" alt="<?php echo $medias['description'];?>" /></a></li>
+        <?php 
+		 foreach ($url as $urls): ?>
+          <li class="item"><a href="#"><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a></li>
           <form action='profil.php' method="POST" style="display:none">
-            <button id="delete_media<?=$medias['id']?>" name="delete_media<?=$medias['id']?>" type="submit">Supprimer la photo</button>
+            <button id="delete_media<?=$urls['id']?>" name="delete_media<?=$urls['id']?>" type="submit">Supprimer la photo</button>
           </form>
         <?php endforeach; ?>
       </ul>
@@ -107,16 +108,13 @@ require 'topbar.php' ;
     </div><!-- end #gallery-container-->    
     <div id="video-section">
       <?php
-        if (empty($medias['url_vid'])){
-        }else{
+        if (empty($url_vid)){
+		} else {
        ?>
       <div id="button" class="pause">
         <span></span>
       </div>
       <video id="video" preload="none">
-        <?php foreach ($media as $medias):
-          $url_vid = $medias['url_vid'];
-          endforeach;  ?>
         <source src="<?php echo $url_vid; ?>" type='video/mp4' >
         <p>Your user agent does not support the HTML5 Video element.</p>
       </video>

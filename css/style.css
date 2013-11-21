@@ -348,7 +348,8 @@ body{
 .l-text-field{
   height:100%;
   width:210px;
-  margin-left:10px;
+  /*margin-left:10px;*/
+  padding-left:10px;
   border:none;
   color:black;
   font-size:14px;
