@@ -1,3 +1,4 @@
+
 <?php
 
 		$login=mysql_escape_string($_POST['pseudo']);
@@ -14,25 +15,30 @@
 						 session_start(); 
 						 $_SESSION['login'] = $login; 
 						 $_SESSION['ID']=$util['id'];
-						 header('Location: profil.php'); 
-						 exit(); 
+						 $_SESSION['photo']=$util['avatar'];
 		 					
 						}
 					else {
-		 				echo"<div class='loginI'>Mot de passe incorrect</div>";
+						//mdp incorrect
+		 				echo 1;
 		 			}
 				
 			}
 		}
 		 
 		 else {
-		 	echo"<div class='loginI'>Login incorrect</div>";
+			 //login incorrect
+		 	echo 2;
 		 	}
 
 		
 		function deco(){
 			session_destroy();
-			unset($_SESSION['bon']);
+			unset($_SESSION['ID']);
+			unset($_SESSION['avatar']);
+			unset($_SESSION['login']);
+			unset($_SESSION['ID']);
+			unset($_SESSION['IDprofilVisite']);
 			echo "Vous êtes déconnecté(e)";
 			
 		}
