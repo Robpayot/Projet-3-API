@@ -30,9 +30,11 @@ endforeach;
 //_________________RÉCUPÉRATION DES DONNEES MEDIA_________________//
 
 	$media = $dbh -> query("SELECT * FROM media WHERE id_user='".$id_user."'")->fetchAll();
+	$url = $dbh -> query("SELECT url FROM media WHERE id_user='".$id_user."' AND url!=''")->fetchAll();
 	foreach ($media as $medias):
-$url = $medias['url'];
-$url_vid = $medias['url_vid'];
+ if (!empty($medias['url_vid'])) {
+	$url_vid = $medias['url_vid'];
+}
 $description = $medias['description'];
 $date = $medias['date'];
 endforeach;
@@ -83,7 +85,7 @@ $fichierDbName=$users['id'].$fichier;
  $image_path = 'MEDIA/photos/' .$fichierDbName;
     $thumb_path = 'MEDIA/photos/thumb_'. $fichierDbName;
      
-    imagethumb($image_path, $thumb_path, 190);
+    imagethumb($image_path, $thumb_path, 470);
 
 	$date=date('Y-m-d H-i-s');
 	$description = $_POST['description'];
@@ -178,7 +180,7 @@ header('location:profil.php');
 
 	foreach ($media as $medias):
 
-	if ( isset($_POST['delete_media'.$medias['id']]) ) 
+	if ( isset($_POST['delete_media'.$urls['id']]) ) 
 	{
 
 		//unlink($painting['url_painting']);
