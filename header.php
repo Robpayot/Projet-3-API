@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/video.css" type="text/css" />
 <link rel="stylesheet" href="css/gallery.css" type="text/css" />
+<link rel="stylesheet" href="css/profil.css" type="text/css" />
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="js/grabin.js" type="text/javascript"></script>

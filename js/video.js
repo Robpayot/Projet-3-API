@@ -56,15 +56,18 @@ var player={
 		    media.muted = true;
 
 		    // Update the button text
+		    console.log("mute");
 		    player.params.muteButton.innerHTML = "Unmute";
-		    $(player.params.volumeBar).val()=0;
+		    $(player.params.volumeBar).val(0);
 		} else {
 		    // Unmute the video
 		    media.muted = false;
 
 		    // Update the button text
+		    console.log("unmute");
 		    player.params.muteButton.innerHTML = "Mute";
-		    $(player.params.volumeBar).val()=1;
+		    $(player.params.volumeBar).val(1);
+		    console.log($(player.params.volumeBar).val());
 		}
 	},
 

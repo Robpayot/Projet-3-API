@@ -54,7 +54,7 @@ require 'topbar.php' ;
                             <span>Météo</span>
                             <span>Paris</span>
                             <span><?php echo $temperature ?></span>
-                            <img src="http://l.yimg.com/a/i/us/we/52/<?php echo $codeImg ?>.gif"/>
+                            <img src="imgs/meteo_grabin/<?php echo $codeImg ?>.png"/>
                         </div>
                 </div>
         </div>
@@ -93,20 +93,21 @@ require 'topbar.php' ;
     <div id="gallery-container">
       <ul class="items--small">
         <?php foreach ($url as $urls): ?>
-          <li class="item"><a href="#"><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a></li>
-          <form action='profil.php' method="POST" style="display:none">
+          <li class="item"><a href="#"><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a>
+          <form action='profil.php' method="POST" >
             <button class="delete_media" name="delete_media<?=$urls['id']?>" type="submit">Supprimer la photo</button>
           </form>
+          </li>
         <?php endforeach; ?>
       </ul>
       <ul class="items--big">
-        <?php foreach ($media as $medias): ?>
+        <?php foreach ($url as $urls): ?>
           <li class="item--big">
             <a href="#">
               <figure>
-                <img src="<?php echo $medias['url'];?>" alt="" />
+                <img src="<?php echo $urls['url'];?>" alt="" />
                 <figcaption class="img-caption">
-                  <?php echo $medias['description'];?>
+                  <?php echo $urls['description'];?>
                 </figcaption>
               </figure>
               </a>
@@ -141,7 +142,7 @@ require 'topbar.php' ;
       <?php } ?>
     </div> <!-- end #video-section-->
 
-
+    <div class="clear-float"></div>
   </div> <!-- end #medias-->
 
 
