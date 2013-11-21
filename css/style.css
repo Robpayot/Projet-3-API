@@ -82,8 +82,8 @@ body{
 #userbar h2{font-family: 'ProximaNovaSemibold';font-size:18px;}
 #userbar p{font-size:14px;margin-top:2px;}
 #userbar :nth-child(4){color:#8d8d8d;}
-#subscribe{
-    height:18px;
+#dmdAmi{
+    height:24px;
     width:110px;
     text-transform: uppercase;
     font-size:14px;
@@ -91,7 +91,8 @@ body{
     text-align:center;
     background:white;
     color:#dd4a4a;
-    margin-top:6px;
+    margin-top:5px;
+    border: none;
 }
 #identity{display:inline-block;vertical-align:top;margin-left:7px;height:100%;}
 #cal{
@@ -112,14 +113,20 @@ body{
         -ms-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-30deg) skewY(0deg);
         transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-30deg) skewY(0deg);
 }
-#cal-shadow-2{width:270px;height:180px;background:#e4e4e4;position:absolute;bottom:0;left:4px;
+#cal-shadow-2{width:270px;height:180px;background:#6dc7e2;position:absolute;bottom:0;left:4px;
         -moz-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-2deg) skewY(0deg);
         -webkit-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-2deg) skewY(0deg);
         -o-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-2deg) skewY(0deg);
         -ms-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-2deg) skewY(0deg);
         transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-2deg) skewY(0deg);
 }
-#cal :nth-child(3){width:270px;height:180px;background:white;position:absolute;top:0;right:0;}
+/*#cal :nth-child(3){width:270px;height:180px;background:white;position:absolute;top:0;right:0;}*/
+#weather{width:270px;height:180px;position:absolute;top:0;right:0;padding:10px;}
+#weather :nth-child(1){position:absolute;top:25px;left:40%;}
+#weather :nth-child(2){position:absolute;bottom:35px;left:41%;}
+#weather :nth-child(3){position:absolute;top:36%;right:30px;font-size: 40px;}
+#weather span{font-size: 20px;color: #ffffff;font-weight: bolder;text-transform: uppercase;}
+#weather img{position:absolute;left:45px;top:30%;}
 #status{
     width:300px;
     text-align:center;
@@ -390,8 +397,13 @@ body{
 
 #medias{width:100%;margin:0 auto;padding-top:40px;}
 
-.poster-media{display:inline-block;width:200px;height:30px;background-color:#efefef;text-transform:uppercase;font-weight:bold;color:#dd4a4a;margin-left:180px;text-align: center;padding-top:6px;}
-.poster-media a{color:#dd4a4a;text-decoration:none;}
+.poster-media{display:inline-block;width:200px;height:25px;background-color:#efefef;text-transform:uppercase;font-weight:bold;color:#dd4a4a;margin-left:180px;text-align: center;padding-top:8px;text-decoration:none;}
+.poster-media a:visited{color:#dd4a4a;}
+.poster-media a:hover{text-decoration: underline;}
 .inline-block{display:inline-block;}
+.upload-media{margin: 20px 5px;background-color:#efefef;padding:20px;}
 
+h3{margin-top: 40px;font-weight: bold;font-size: 1.1em}
+
+#list-checkins ul{}
 
