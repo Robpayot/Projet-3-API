@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <link rel="stylesheet" href="css/reset.css" type="text/css" />
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/video.css" type="text/css" />
@@ -15,7 +15,6 @@
 </head>
 
 <body>
-<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;

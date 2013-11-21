@@ -80,7 +80,7 @@ require 'recup.php';
     <li class="l-field spaced"><p class="field-desc">Mot de passe</p><input class="l-text-field" type="password" id="mdp" name="mdp" required></li>
     <li class="l-field check"><p class="field-desc">Confirm. Mdp</p><input class="l-text-field" type="password" id="retape_mdp" name="retape_mdp" required><img src="imgs/fail.png" alt="bon" id="imgVerif"/></li>
     <li class="l-field"><p class="field-desc">E-mail</p><input class="l-text-field" type="email" id="email" name="email" required></li>
-  <div class="verifMatchMdp" id="verifMatchMdp"></div> 
+  <p class="verifMatchMdp" id="verifMatchMdp"></p> 
    <li class="xl-field spaced"><p class="field-desc">Sport pratiqué</p>
       <ul class="sports-checkboxes">
         <li><input type="checkbox" name="check[]" value="1">Skate</li>
@@ -92,7 +92,7 @@ require 'recup.php';
     
     <li class="l-field"><p class="field-desc">Niveau</p>
     
-        <SELECT name="niveau" id="niveau" size="1">
+        <SELECT name="niveau" class="niveau" size="1">
           <OPTION value="Débutant">Débutant</OPTION>
           <OPTION value="Amateur">Amateur</OPTION>
           <OPTION value="Confirmé">Confirmé</OPTION>
@@ -114,15 +114,14 @@ require 'recup.php';
   <a  href="#" class="close" onclick="getDropDownUp('inscription-fb-dropdown')"><img src="imgs/close.png" alt="close"/></a>
   <form autocomplete="off" method='post' action='facebook_connect.php'>
   <ul>
-    <li class="l-field"><div id="facebook_button"><fb:login-button id="fb_connexion" scope="user_birthday,email" width="200" max-rows="1"></fb:login-button></div>
-    <div id="message_co"></div>
-     <img id="check_fb" src="" alt="bon"/></li>
-    </li>
+    <li class="l-field"><p id="facebook_button"><fb:login-button id="fb_connexion" scope="user_birthday,email" width="200" max-rows="1"></fb:login-button></p>
+    <p id="message_co"></p>
+     <!--<img id="check_fb" src="" alt="bon"/>--></li>
     <li class="l-field"><p class="field-desc">Pseudo</p><input class="l-text-field" type="text" id="pseudoFb" name="pseudo" required></li>
     <li class="l-field"><p class="field-desc">Mot de passe</p><input class="l-text-field" type="password" id="mdpFb" name="mdp" required></li>
     <li class="l-field check"><p class="field-desc">Confirm. Mdp</p><input class="l-text-field" type="password" id="retape_mdpFb" name="retape_mdp" required>
     <img id="check_fb" src="imgs/check.png" alt="bon"/></li>
-  <div class="verifMatchMdp" id="verifMatchMdp"></div> 
+  <p class="verifMatchMdp" id="verifMatchMdpFb"></p> 
    <li class="xl-field spaced"><p class="field-desc">Sport pratiqué</p>
       <ul class="sports-checkboxes">
         <li><input type="checkbox" name="check[]" value="1">Skate</li>
@@ -134,7 +133,7 @@ require 'recup.php';
     
     <li class="l-field"><p class="field-desc">Niveau</p>
     
-        <SELECT name="niveau" id="niveau" size="1">
+        <SELECT name="niveau" class="niveau" size="1">
           <OPTION value="Débutant">Débutant</OPTION>
           <OPTION value="Amateur">Amateur</OPTION>
           <OPTION value="Confirmé">Confirmé</OPTION>
@@ -162,8 +161,8 @@ require 'recup.php';
     <li class="l-field"><p class="field-desc">Prénom</p><input class="l-text-field" type="text" id="surname_edit" name="surname" value="<?php echo ($surname);?>" required></li>
     <li class="l-field"><p class="field-desc">Nom</p><input class="l-text-field" type="text" id="name_edit" name="name" value="<?php echo ($name);?>" required></li>
     <li class="l-field"><p class="field-desc">Pseudo</p><input class="l-text-field" type="text" id="pseudo_edit" name="pseudo" value="<?php echo ($pseudo);?>" required></li>
-    <li class="l-field"><p class="field-desc">E-mail</p><input class="l-text-field" type="email" id="email_edit" name="email"value="<?php echo ($email);?>" required></li>
-    <li class="l-field"><p class="field-desc">Ville</p><input class="l-text-field" type="text" id="ville_edit" name="ville"value="<?php echo ($ville);?>" required></li>
+    <li class="l-field"><p class="field-desc">E-mail</p><input class="l-text-field" type="email" id="email_edit" name="email" value="<?php echo ($email);?>" required></li>
+    <li class="l-field"><p class="field-desc">Ville</p><input class="l-text-field" type="text" id="ville_edit" name="ville" value="<?php echo ($ville);?>" required></li>
   <div class="verifMatchMdp" id="verifMatchMdp_edit"></div> 
    <li class="xl-field spaced"><p class="field-desc">Sport pratiqué</p>
       <ul class="sports-checkboxes">
@@ -176,7 +175,7 @@ require 'recup.php';
     
     <li class="l-field"><p class="field-desc">Niveau</p>
     
-        <select value="<?php echo ($sport_level);?>" name="sport_level" id="niveau" data-provide="limit" data-counter="#counter"  rows="1">
+        <select value="<?php echo ($sport_level);?>" name="sport_level" class="niveau" data-provide="limit" data-counter="#counter" >
           <option value="Débutant" <?php if($sport_level == 'Débutant'){echo('selected');}?>>Débutant</option>
           <option value="Amateur" <?php if($sport_level == 'Amateur'){echo('selected');}?>>Amateur</option>
           <option value="Confirmé" <?php if($sport_level == 'Confirmé'){echo('selected');}?>>Confirmé</option>
@@ -190,7 +189,7 @@ require 'recup.php';
   <div class="l-field send"><p class="field-send"><input type="submit" class="envoie" name="submit_edit" value="Enregistrer les modifications" /></p></div>
   </form>
    <form action='profil.php' method="POST">
-           <button class="envoie" name="submit_delete" type="submit">Supprimer mon compte</button></p>
+           <p><button class="envoie" name="submit_delete" type="submit">Supprimer mon compte</button></p>
         </form>
   </div> <!-- end of profiledit-dropdown -->
 <div id="abonnes-dropdown" class="dropdown-up">
