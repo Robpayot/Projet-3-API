@@ -21,6 +21,7 @@ $('#recherche').focus(displayResults());
 $('#recherche').blur(hideResults());
 $('#resultat').css("opacity","0");
 
+$( "#date" ).datepicker({ dateFormat: 'dd/mm/yy' });
 
 
 function afficher_cacher(id){

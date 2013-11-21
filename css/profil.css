@@ -1,2 +1,12 @@
 .clear-float{clear: both;}
 #medias{margin-bottom: 40px;}
+h3{font-weight: bolder;font-size: 1.3em;margin-bottom: 20px;}
+#list-checkins ul li{padding: 8px 20px;background-color: #efefef;width: 60%;margin-bottom: 5px;}
+#list-checkins ul li:hover{background-color: #f7f7f7;}
+#map-canvas{margin-top:0;}
+#map-section{position:relative;}
+#map-section p{position:absolute;z-index:50;top:75px;right:10px;}
+#map-section p input{background-color: #eeeeee;border: thick solid #ffffff;color: #646464;font-size: 1em;padding: 5px;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;}
+#geocoder{top:130px;right:10px;/*enlever le left:80%*/}
+
+#checkin-btn input{padding: 8px 15px;background-color: #dd4a4a;color: #ffffff;font-size: 1.2em;border: none;}
