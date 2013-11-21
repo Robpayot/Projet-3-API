@@ -1,4 +1,7 @@
 <?php
+session_start();
+$id_user=$_SESSION['ID'];
+
 $user = $dbh -> query("SELECT * FROM grabin_user WHERE id='".$id_user."'")->fetchAll();
 	foreach ($user as $users):
 $name = $users['name'];

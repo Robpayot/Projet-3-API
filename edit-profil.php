@@ -2,7 +2,7 @@
 
 //____________REQUIRE_____________________
 
-//require 'function.php';
+
 require 'config.php';
 			// Modification de toutes les données users
 	
@@ -59,7 +59,7 @@ if (isset($_POST['check']))
 		if(isset($_POST['sport_level'])) {	
 			$dbh -> query("UPDATE grabin_user SET sport_level = '".$sport_level_modify."' WHERE id='".$id_user."'" );		
 	}
-/*
+
 // _________________________________________Upload de fichier_________________________________
 $dossier = 'MEDIA/avatars/';
 $fichier = basename($_FILES['avatar']['name']);
@@ -93,9 +93,9 @@ if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
   //$fichier = md5(uniqid(rand(), true));
   
 // $fichier = "{$id_membre}.{$extension_upload}";
-/*$resultat = move_uploaded_file($_FILES['icone']['tmp_name'],$nom);
-*/
-/*
+$resultat = move_uploaded_file($_FILES['icone']['tmp_name'],$nom);
+
+
 $fichierDbName=$users['id'].$fichier;
     if(move_uploaded_file($_FILES['avatar']['tmp_name'], $dossier . $fichierDbName)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
      {
@@ -104,7 +104,7 @@ $fichierDbName=$users['id'].$fichier;
  $image_path = 'MEDIA/avatars/' .$fichierDbName;
     $thumb_path = 'MEDIA/avatars/thumb_'. $fichierDbName;
      
-    imagethumb($image_path, $thumb_path, 190);
+    imagethumb($image_path, $thumb_path, 160);
 
 		 $dbh -> query("UPDATE grabin_user SET avatar = '".$thumb_path."' WHERE id='".$id_user."'" );		
           echo 'Upload effectué avec succès !';
@@ -121,7 +121,7 @@ else
      echo $erreur;
 }
 
-	*/
+	
 			header('location: profil.php');
 						 exit(); 
  // FIN DU SUBMIT
