@@ -1,24 +1,28 @@
-var map;
+var map; 
+var geocoder;
+
 var initializeMap;
 var latLng;
-var geocoder;
-var debut;
-var fin;
-var pseudo;
 
-var dateTS= new Date().getTime();
+var debut; //stock the date of the beginning of a checkin displayed on the map
+var fin; // ^ the end
+var pseudo; //stock the pseudo of the displayed checkin's user
+
+//get the current date and hour
+var dateTS= new Date().getTime(); 
 var dateNow = new Date(dateTS);
 var month = dateNow.getMonth()+1;
 var date = dateNow.getFullYear() + "-" + month + "-" +  dateNow.getDate();
 var hour = dateNow.getHours() + ":" + dateNow.getMinutes();
-console.log(date+' '+hour);
 
-var markerChekin;
+var markerChekin; //marker of a checkin displayed on the map
 var indiceMarker;
-var markers = [];
-var posLatitude, posLongitude;
-var addressLocation;
-var latPlan, lngPlan;
+var markers = []; //Array with all the markers to display on the map
+var posLatitude, posLongitude; //coordinates of the user's position
+var addressLocation; //stock the address found by the geocoder
+var markerPlan; //marker of the place the user want to plan a checkin
+var latPlan, lngPlan; //coordinates of a checkin planned
+
 //Message if success check in
 var checkinSuccess = '<div id="content">' +
 	'<h1 id="firstHeading" class="firstHeading">Tu es ici. Wanna checkin?</h1>' +
@@ -29,9 +33,9 @@ var checkinSuccess = '<div id="content">' +
 
 //Create the window info
 var infowindowCI = new google.maps.InfoWindow({
-    content: checkinSuccess
+    content: checkinSuccess,
+    maxWidth:500,
 });
-var markerPlan;
 
 
 
@@ -73,7 +77,6 @@ var mapObj = {
 	    };
 
 	    //Create the map
-
 	    map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);//$(mapObj.params.mapDiv)
 
 	    //Plan a checkin by clicking on the map
@@ -106,27 +109,25 @@ var mapObj = {
 		      console.log('Geocoder failed due to: ' + status);
 		    }
 		  });
-	    	
 		});
 
-	    // Limit of the map --- http://stackoverflow.com/questions/3818016/google-maps-v3-limit-viewable-area-and-zoom-level
+	    // Limit of the map 
 	    var strictBounds = new google.maps.LatLngBounds(
 	      new google.maps.LatLng(48.816811, 2.251114),
 	      new google.maps.LatLng(48.902643, 2.408699)
 	    );
 
-	    // Listen for the dragend event
+	    // listen for the dragend event
 	    google.maps.event.addListener(map, 'dragend', function () {
 	      if (strictBounds.contains(map.getCenter())) return;
-	      // We're out of bounds - Move the map back within the bounds
-	      var c = map.getCenter(), //récupère coord. du centre de la carte
-	          x = c.lng(), //récupère lng actuelle du centre
-	          y = c.lat(), //idem avec lat
-	          maxX = strictBounds.getNorthEast().lng(), //lng de l'angle en haut à droite de la map
+	      // out of bounds, move the map back within the bounds
+	      var c = map.getCenter(), //get coords of the center of the map
+	          x = c.lng(), //get lng of the center
+	          y = c.lat(), //get lat
+	          maxX = strictBounds.getNorthEast().lng(), //lng top right corner of the map
 	          maxY = strictBounds.getNorthEast().lat(), //lat''''''''
-	          minX = strictBounds.getSouthWest().lng(), //lng de l'angle en bas à gauche de la map
+	          minX = strictBounds.getSouthWest().lng(), //lng bottom left corner of the map
 	          minY = strictBounds.getSouthWest().lat(); //lat''''''''
-	          //si le centre de la map est hors des frontières
 	          if (x < minX) x = minX;
 	          if (x > maxX) x = maxX;
 	          if (y < minY) y = minY;
@@ -156,7 +157,8 @@ var mapObj = {
 	    });
 	    var skateparkName = "";
 	    var infoSkatepark = new google.maps.InfoWindow({
-	      content: skatepark[0]
+	      content: skatepark[0],
+	      maxWidth: 320,
 	    });
 	    google.maps.event.addListener(marker, 'click', (function(marker, i) {
 	        return function() {
@@ -176,7 +178,6 @@ var mapObj = {
 	    $.get( url, function( data ) {
 	      locationsData=JSON.parse(data);
 	      count = locationsData.json.length;
-	      //console.log(locationsData);
 	      mapObj.params.gotCheckin.call(this,locationsData,count);
 	    });
 	     
@@ -185,7 +186,6 @@ var mapObj = {
 	changeDate:function() {
 	  date = document.getElementById('date').value;
 	  console.log(date);
-	  //setMarkersCheckin(map,null);
 	  mapObj.deleteMarkers();
 	  mapObj.getCheckin();
 	},
@@ -193,7 +193,6 @@ var mapObj = {
 	changeHour:function() {
 	  hour = document.getElementById('hour').value;
 	  console.log(hour);
-	  //setMarkersCheckin(map,null);
 	  mapObj.deleteMarkers();
 	  mapObj.getCheckin();
 	},
@@ -206,7 +205,6 @@ var mapObj = {
 	    icon:url,
 	  });
 	  markers.push(markerChekin);
-	  //console.log(markers);
 	},
 
 
@@ -230,68 +228,65 @@ var mapObj = {
 
 	//display the position of the skaters checked in
 	setMarkersCheckin: function(map,locations,pseudo) {
+	  //define time variables
 	  var timeChoosen=date+' '+hour;
-	  //console.log(locations);
 	  debut=locations.date_begin;
 	  fin=locations.date_end;
 
+	  //date formatted to display them in the infobubble
 	  var begin=new Date(locations.date_begin);
 	  var dayBegin=begin.getDate();
 	  var monthBegin=begin.getMonth()+1;
 	  var hourBegin=begin.getHours();
 	  var minuteBegin=begin.getMinutes();
 	  var timeBegin=dayBegin+'/'+monthBegin+' <br>'+hourBegin+':'+minuteBegin;
-
 	  var end=new Date(locations.date_end);
 	  var hourEnd=end.getHours();
 	  var minuteEnd=end.getMinutes();
 	  var timeEnd=hourEnd+':'+minuteEnd;
+	  //and the pseudo & comment
 	  var pseudo=locations.pseudo;
-	  //console.log(locations.id_user);
-
 	  var comment = locations.comment;
+
+	  //get LatLng object from the coordinates of the checkin
 	  var myLatLng = new google.maps.LatLng(locations.lat, locations.lng);
-	  //console.log(debut+' < '+timeChoosen+' < '+fin);
 
-	  if((debut<timeChoosen) && (timeChoosen<fin)) {
-	    //console.log("setMarkersCheckin");  
-	    //console.log(debut+' < '+timeChoosen+' < '+fin);
-	    var checkinInfo = '';
+	  if((debut<timeChoosen) && (timeChoosen<fin)) {//if the checkin is happening right now
+	    var checkinInfo = ''; //initialize the infobubble content
 
-	    //Initialiser la variable dans laquelle va être construit l'objet InfoBubble
+	    //initialize the var where the infobubble will be
 		var infobulle = new InfoBubble({
 			map: map,
-			content: checkinInfo,  // Contenu de l'infobulle
-			position: event.latLng,  // Coordonnées latitude longitude du marker
-			shadowStyle: 0,  // Style de l'ombre de l'infobulle (0, 1 ou 2)
-			padding: 0,  // Marge interne de l'infobulle (en px)
-			backgroundColor: 'rgb(255,255,255)',  // Couleur de fond de l'infobulle
-			borderRadius: 0, // Angle d'arrondis de la bordure
-			arrowSize: 10, // Taille du pointeur sous l'infobulle
-			borderWidth: 0,  // Épaisseur de la bordure (en px)
-			borderColor: '#009EE0', // Couleur de la bordure
-			disableAutoPan: true, // Désactiver l'adaptation automatique de l'infobulle
-			hideCloseButton: false, // Cacher le bouton 'Fermer'
-			arrowPosition: 50,  // Position du pointeur de l'infobulle (en %)
-			arrowStyle: 0,  // Type de pointeur (0, 1 ou 2)
-			disableAnimation: false,  // Déactiver l'animation à l'ouverture de l'infobulle
-			maxWidth :   150  // Largeur minimum de l'infobulle  (en px)
+			content: checkinInfo,  
+			position: event.latLng,  
+			shadowStyle: 0, 
+			padding: 0,  
+			backgroundColor: 'rgb(255,255,255)',  
+			borderRadius: 0, 
+			arrowSize: 10, 
+			borderWidth: 0,  
+			borderColor: '#009EE0', 
+			disableAutoPan: true, 
+			hideCloseButton: false, 
+			arrowPosition: 50,  
+			arrowStyle: 0, 
+			disableAnimation: false, 
+			maxWidth :   150 
 		});
 
 		//ajax to know if is friend or not
 		var url='ListeAmis.php?iduser_checkin='+locations.id_user;
 		$.get( url, function( data ) {
 	      var isFriend =data;
-	      //if is a friend, it's this icon
+	      //if is a friend, it's the blue icon
 	      if(isFriend==1) {
 		  	mapObj.addMarker(myLatLng,'imgs/icons/checkinamis.png');
-		  } else if(isFriend==2){
+		  } else if(isFriend==2){ //if  it's me it's the red icon
 		  	mapObj.addMarker(myLatLng,'imgs/icons/checkinme.png');
-		  } else {
+		  } else { //if it's someone i don't know, it's the grey icon
 		  	mapObj.addMarker(myLatLng,'imgs/icons/checkin.png');
 	      }
-	      //console.log(markerChekin);
-	      if(isFriend==1 || isFriend==2){
+	      if(isFriend==1 || isFriend==2){ //if it's a firend or if it's me, i can see the information about the checkin
 	      google.maps.event.addListener(markerChekin, 'click', (function() {
 	      for (var j=0;j<markers.length; j++){
 	          if((this.position.ob==markers[j].position.ob)&&(this.position.pb==markers[j].position.pb)){
@@ -302,11 +297,11 @@ var mapObj = {
 	      }));
 	  	  }
 
-	    
+	    //determine what is the address corresponding to the coordinates
 	    var addressCheckin;
 	    geocoder.geocode({'latLng': myLatLng}, function(results, status) {
 		    if (status == google.maps.GeocoderStatus.OK) {
-		      if (results[1]) {
+		      if (results[1]) { //if success, then display the infobubble
 		        addressCheckin = results[1].formatted_address;
 		        infobulle.setContent('<div id="pseudo-checkin"><div class="categ blue" style="margin-right:10px;"></div>'+pseudo+'</div>'+
 	                      '<div id="content-infocheckin"><span id="addressCheckin"><img src="imgs/icons/geomark.png" alt="" style="margin-right:5px" />'+addressCheckin+'</span><br>'+
@@ -320,15 +315,6 @@ var mapObj = {
 		    }
 		  });
 	    });
-
-		//mapObj.addMarker(myLatLng,'imgs/icons/checkinme.png');
-
-		
-
-////////console.log(addressCheckin);
-		//console.log($('#infobulle-checkin'));
-		
-	    
 	  }
 	},
 
@@ -344,6 +330,7 @@ var mapObj = {
 	        console.log(results[4].formatted_address);
 	        addressLocation = results[1].formatted_address;
 	        console.log('Adresse : '+addressLocation);
+	        //////lines below are comments during the developpment and the demo//////
 	        //if(results[4].formatted_address!="Paris, France" ) {
 	          //alert("Le service n'est disponible qu'à Paris pour le moment, tu ne peux donc pas te géolocaliser ici, désolé !");
 	        //} else {
@@ -387,15 +374,11 @@ var mapObj = {
 		geocoder.geocode({"address":address},function(data,status){
 			if(status=='OK'){
 				var destPos=data[0].geometry.location;
-				console.log(mapObj.params.mapDiv);
 				map.setZoom(15);
 				map.setCenter(destPos);
-
-				//var marker = new google.maps.Marker({position: destPos,map: localize.map});
-				//localize.params.found.call(this,destPos);
 			}
 			else{
-				//localize.params.found.call(this,null);
+				console.log('Erreur du geocoder');
 			}
 		});
 		
@@ -422,24 +405,26 @@ var mapObj = {
 	    return false;
 	},
 	  
+	//infowindow when the user click on the map to plan a checkin
 	windowPlanCheckin:function() {
 		var formPlan = '';
 		var windowPlan = new google.maps.InfoWindow({
-	      content: formPlan
+	      content: formPlan,
+	      maxWidth: 500,
 	    });
 		windowPlan.open(map, markerPlan);
-		windowPlan.setContent('<div id="plan_checkin">'+
-		    '<form name="planPlace" id="planPlace" onsubmit="return mapObj.planCheckin();"><div id="errors" ></div><br>'+
-		      '<label for="day">Jour </label><input type="text" name="day" id="day">'+
-		      '<label for="time">Heure </label><input type="time" name="time" id="time" value="hh:mm">'+
-		      '<label for="comment">Commentaire </label><input type="text" name="comment" id="comment">'+
+		windowPlan.setContent('<div id="plan_checkin"><h2>Planifier un checkin</h2>'+
+		    '<form name="planPlace" id="planPlace" onsubmit="return mapObj.planCheckin();"><div id="errors" ></div>'+
+		      '<label for="day">Jour </label><input type="text" name="day" id="day"><br>'+
+		      '<label for="time">Heure </label><input type="time" name="time" id="time" value="hh:mm"><br>'+
+		      '<label for="comment">Commentaire </label><input type="text" name="comment" id="comment"><br>'+
 		      '<input type="submit" value="OK">'+
 		    '</form>'+
 		  '</div>');
 		$( "#day" ).datepicker({ dateFormat: 'dd/mm/yy' });
 	},
 
-	// Add a marker where the click is
+	// Add a marker on the map where the click is
 	addMarkerPlan : function(location) {
 	  markerPlan = new google.maps.Marker({
 	    position: location,
@@ -452,16 +437,7 @@ var mapObj = {
 		markerPlan.setMap(null);
 	},
 
-	/*formatDate:function(date){
-		var d=date.split("/");
-		var nd=new Date(d[0], d[1] - 1, d[2]);
-		var dd = nd.getDate();
-		var mm = nd.getMonth() + 1; 
-		var yyyy = nd.getFullYear();
-		var dateFormated = yyyy + "-" + mm + "-" + dd;
-		return dateFormated;
-	},*/
-
+	//send the data to plan a checkin
 	planCheckin:function() {
 		var datePlan = $('#day').val();
 		var timePlan = $('#time').val();
@@ -476,7 +452,6 @@ var mapObj = {
 		var url = "plan_checkin.php?lat=" + latPlan + "&lng=" + lngPlan +"&day=" + dateFormated + "&time=" + timePlan+ "&c=" + commentPlan;
 	    var request = $.ajax({
 	      url: url,
-	      //type: "POST",
 	    });
 	     
 	    request.done(function(  ) {
@@ -487,7 +462,6 @@ var mapObj = {
 	      console.log( "Request failed: " + textStatus );
 	      $( "#plan_checkin" ).append( "oops! il y a eu une erreur" );
 	    });
-	    //mapObj.removeMarkerPlan();
 	    return false;
 	},
 	

@@ -20,7 +20,7 @@ require 'topbar.php' ;
   <p><input type="date" max="2015-06-25" min="2013-08-13" id="date" onChange="mapObj.changeDate()" >
   <input type="time" id="hour" onChange="mapObj.changeHour()"> </p>
   <form id="geocoder">
-    <input type="text" id="address" name="address" placeholder="Recherche un lieu" />
+    <input type="text" id="address" name="address" placeholder="Rechercher un lieu" />
   </form>
   <p id="map-status"></p> <!-- Affichage erreurs -->
   <div id="map-canvas" ></div> <!-- Affichage de la map -->
@@ -59,7 +59,7 @@ require 'topbar.php' ;
         </div>
 </div>
 <div id="profile-content">
-<p id="checkin-btn"><input type="button" id="find" onClick="findLocation()" value="check in"></p>
+<p id="checkin-btn"><a href="#map-section" id="find" >Check in !</a></p>
   <h3>Tes prochains checkins</h3>
 
   <div id="list-checkins"></div>

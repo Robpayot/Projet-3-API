@@ -30,23 +30,17 @@ google.maps.event.addDomListener(window, 'load', mapObj.initializeMap());
 mapObj.setMarkers(map,mapObj.params.skateparks); //Display the skateparks' markers
 mapObj.getCheckin(); //Get the information about the skaters and display the skaters' markers on the map
 
-//console.log(mapObj.params.checkinButton);
 $(mapObj.params.checkinButton).on('click',function(e){ 
-	e.preventDefault();
-	//console.log('cliiiick');
+	//e.preventDefault();
 	mapObj.findLocation();
 });
 
 $('#date').val(date);
 $('#hour').val(hour);
 
-function changeDate() {
-  mapObj.changeDate();
-}
-
-function changeHour() {
-  mapObj.changeHour();
-}
+//$('#date').on('change',mapObj.changeDate());
+//$('#hour').on('change',mapObj.changeHour());
+//$('#find').on('click',mapObj.findLocation());
 
 var mapStyles = [//colors of the map
 	  {
