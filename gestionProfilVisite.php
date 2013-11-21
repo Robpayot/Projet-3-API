@@ -22,8 +22,8 @@ session_start();
 	$user = $dbh -> query("SELECT * FROM amis WHERE ID_accepteur='$id_user' AND ID_demandeur='$id_userConnecte'")->fetchAll();
 	
 	foreach ($user as $amis):
-$amitie = $amis['etat'];
-endforeach;
+		$amitie = $amis['etat'];
+	endforeach;
 
 
 //_________________RÉCUPÉRATION DES DONNEES USER_________________//
@@ -101,7 +101,7 @@ else
 		$statut="Vous n'êtes pas amis avec ".$_SESSION['profilVisite'];
 		
 	
-	if(isset($_GET["demande"])){
+	if($_GET["demandeAbonnement"]==3){
 		if($amitie==null)
 			$amitie=-1;
 			
@@ -109,6 +109,7 @@ else
 		
 		
 	}
+	
 
 
 ?>

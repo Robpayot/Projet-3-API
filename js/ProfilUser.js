@@ -1,5 +1,6 @@
 // JavaScript Document
 
+
 profil.init({
 		boutonDemandeAmitie:'#dmdAmi',
 		champStatut:'#newStatut',
@@ -7,17 +8,21 @@ profil.init({
 		divAmis:'#liste-amis',
 		statutDone : function(server_response){
 				$('#newStatut').val('');
-				$("#status").html(server_response).show();
+				$("#status").html(server_response);
 				$("#envoiStatut").attr('disabled',false);			
 			},
 		boutonAmitieDone : function(server_response){
 			console.log("etat amitie"+server_response);
 					if(server_response==1)
-						$('#dmdAmi').attr("value","Suivi(e)").attr('disabled',true);
+						$('#dmdAmi').attr("value","se desabonner");
 					else if (server_response==0)
 						$('#dmdAmi').attr("value","demande envoyée").attr('disabled',true);
-						
-						$("#demande").html(server_response).show();},
+					else
+						$('#dmdAmi').attr("value","s'abonner");
+				
+						//$("#demande").html(server_response).show();
+						}
+						,
 						
 		reponseAmitieDone : function(choix){
 			console.log("doneee!!");
@@ -27,6 +32,7 @@ profil.init({
 });
 var notif;
 profil.evenement();
+
 
 //Classement
   function Classement(){
