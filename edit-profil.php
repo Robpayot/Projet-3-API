@@ -1,90 +1,53 @@
 <?php 
 
-//____________REQUIRE_____________________
+	//____________REQUIRE_____________________
 
 
-require 'config.php';
 			// Modification de toutes les données users
 	
 	$name_modify = $_POST['name'];
-	$surname_modify = $_POST[$users['surname']];
+	$surname_modify = $_POST['surname'];
 	$pseudo_modify = $_POST['pseudo'];
 	$email_modify = $_POST['email'];
-	$avatar_modify = $_POST['avatar'];
-	$age_modify = $_POST['age'];
 	$ville_modify = $_POST['ville'];
 	$sport_level_modify = $_POST['sport_level'];
-
-
-			$success_modify ="modifications faites !";
+    //recupérer les valeurs des checkbox
+    $tabCheckbox = $_POST['check'];
+    foreach ($tabCheckbox as $checkbox):
+		$Vsport=$Vsport+$checkbox;
+    endforeach;			
 			
 	//______________MODIF DANS LA DATABASE_______________	
 		
-	if(isset($_POST['name'])) {	
-			$dbh -> query("UPDATE grabin_user SET name = '".$name_modify."' WHERE id='".$id_user."' " );		
-	}
-	if(isset($_POST[$users['surname']])) {	
-			$dbh -> query("UPDATE grabin_user SET surname = '".$surname_modify."' WHERE id='".$id_user."'" );		
-	}
-		if(isset($_POST['pseudo'])) {	
-			$dbh -> query("UPDATE grabin_user SET pseudo = '".$pseudo_modify."' WHERE id='".$id_user."' " );		
-	}
-		if(isset($_POST['email'])) {	
-			$dbh -> query("UPDATE grabin_user SET email = '".$email_modify."' WHERE id='".$id_user."' " );		
-	}
-		if(isset($_POST['avatar'])) {	
-			$dbh -> query("UPDATE grabin_user SET avatar = '".$avatar_modify."' WHERE id='".$id_user."' " );		
-	}
-		if(isset($_POST['age'])) {	
-			$dbh -> query("UPDATE grabin_user SET age = '".$age_modify."' WHERE id='".$id_user."' " );		
-	}
-		if(isset($_POST['ville'])) {	
-			$dbh -> query("UPDATE grabin_user SET ville = '".$ville_modify."' WHERE id='".$id_user."' " );		
-	}
-		
-	// MODIF SPORT PRATIQUES_____________________________________________________
-	
-if (isset($_POST['check']))
-{    
-    //recupérer les valeurs des checkbox
-    $tabCheckbox = $_POST['check'];
-    foreach ($tabCheckbox as $checkbox) {
-		$Vsport=$Vsport+$checkbox;
-    }
-	$dbh -> query("UPDATE grabin_user SET sport = '".$Vsport."' WHERE id='".$id_user."' ");
 
-	
-}
-	// MODIF SPORT LEVEL ___________________________________________________
-		if(isset($_POST['sport_level'])) {	
-			$dbh -> query("UPDATE grabin_user SET sport_level = '".$sport_level_modify."' WHERE id='".$id_user."'" );		
-	}
+			$user_modify = $dbh -> query("UPDATE grabin_user SET name = '".$name_modify."', surname = '".$surname_modify."', pseudo = '".$pseudo_modify."', email = '".$email_modify."', ville = '".$ville_modify."', sport = '".$Vsport."', sport_level = '".$sport_level_modify."' WHERE id='".$id_user."' " )->fetchAll();		
+
 
 // _________________________________________Upload de fichier_________________________________
-$dossier = 'MEDIA/avatars/';
-$fichier = basename($_FILES['avatar']['name']);
-$taille_maxi = 100000000;
-$taille = filesize($_FILES['avatar']['tmp_name']);
-$extensions = array('.png', '.PNG', '.gif', '.GIF', '.jpg', '.JPG', '.jpeg', '.JPEG');
-$extension = strrchr($_FILES['avatar']['name'], '.'); 
+$dossier_a = 'MEDIA/avatars/';
+$fichier_a = basename($_FILES['avatar']['name']);
+$taille_maxi_a = 100000000;
+$taille_a = filesize($_FILES['avatar']['tmp_name']);
+$extensions_a = array('.png', '.PNG', '.gif', '.GIF', '.jpg', '.JPG', '.jpeg', '.JPEG');
+$extension_a = strrchr($_FILES['avatar']['name'], '.'); 
 
 
 //Début des vérifications de sécurité...
-if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
+if(!in_array($extension_a, $extensions_a)) //Si l'extension n'est pas dans le tableau
 {
     // $erreur = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg...';
 }
-if($taille>$taille_maxi)
+if($taille_a>$taille_maxi_a)
 {
     // $erreur = 'Le fichier est trop gros...';
 }
-if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
+if(!isset($erreur_a)) //S'il n'y a pas d'erreur, on upload
 {
      //On formate le nom du fichier ici...
-     $fichier = strtr($fichier, 
+     $fichier_a = strtr($fichier_a, 
           'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
           'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
-     $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+     $fichier_a = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier_a);
 	 
 	/* //Créer un dossier 'fichiers/1/'
   mkdir('upload/1/', 0777, true);*/
@@ -93,22 +56,22 @@ if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
   //$fichier = md5(uniqid(rand(), true));
   
 // $fichier = "{$id_membre}.{$extension_upload}";
-$resultat = move_uploaded_file($_FILES['icone']['tmp_name'],$nom);
+$resultat_a = move_uploaded_file($_FILES['icone']['tmp_name'],$nom);
 
 
-$fichierDbName=$users['id'].$fichier;
-    if(move_uploaded_file($_FILES['avatar']['tmp_name'], $dossier . $fichierDbName)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+$fichierDbName_a=$users['id'].$fichier_a;
+    if(move_uploaded_file($_FILES['avatar']['tmp_name'], $dossier_a . $fichierDbName_a)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
      {
 
 // Recadrage de l'image 
- $image_path = 'MEDIA/avatars/' .$fichierDbName;
-    $thumb_path = 'MEDIA/avatars/thumb_'. $fichierDbName;
+ $image_path_a = 'MEDIA/avatars/' .$fichierDbName_a;
+    $thumb_path_a = 'MEDIA/avatars/thumb_'. $fichierDbName_a;
      
-    imagethumb($image_path, $thumb_path, 160);
+    imagethumb($image_path_a, $thumb_path_a, 160);
 
-		 $dbh -> query("UPDATE grabin_user SET avatar = '".$thumb_path."' WHERE id='".$id_user."'" );		
+		 $dbh -> query("UPDATE grabin_user SET avatar = '".$thumb_path_a."' WHERE id='".$id_user."'" );		
           echo 'Upload effectué avec succès !';
-		$_SESSION['photo']=$thumb_path;
+		$_SESSION['photo']=$thumb_path_a;
      }
      else //Sinon (la fonction renvoie FALSE).
      {
@@ -118,11 +81,21 @@ $fichierDbName=$users['id'].$fichier;
 else
 {
 
-     echo $erreur;
-}
 
+}
 	
-			header('location: profil.php');
-						 exit(); 
+		$user = $dbh -> query("SELECT * FROM grabin_user WHERE id='".$id_user."'")->fetchAll();
+	foreach ($user as $users):
+$name = $users['name'];
+$surname = $users['surname'];
+$pseudo = $users['pseudo'];
+$email = $users['email'];
+$avatar = $users['avatar'];
+$ville = $users['ville'];
+$sport = $users['sport'];
+$sport_level = $users['sport_level'];
+$score = $users['score'];
+$date_register = $users['date_register'];
+endforeach;
  // FIN DU SUBMIT
 ?>
