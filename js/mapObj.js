@@ -25,7 +25,7 @@ var latPlan, lngPlan; //coordinates of a checkin planned
 
 //Message if success check in
 var checkinSuccess = '<div id="content">' +
-	'<h1 id="firstHeading" class="firstHeading">Tu es ici. Wanna checkin?</h1>' +
+	'<h1 id="firstHeading" class="firstHeading">Se localiser ici</h1>' +
 	'<div id="textCheckin">' +
 	'<form name="add_comment" onsubmit="return mapObj.addCheckin()"><label for="checkin_comment">Commentaire (<140 car.) :</label> <input type="text" id="checkin_comment" name="checkin_comment" /><br>' +
 	'<input type="submit" value="OK"></form></div>' +
