@@ -1,4 +1,6 @@
 // JavaScript Document
+var tab_jour=new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
+var tab_mois=new Array("Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre");
 
 var profil = {
     defaults: {
@@ -24,10 +26,10 @@ var profil = {
             url: url,
             data: "demandeA=" + datas,
             success: function (server_response) {
-                console.log(server_response);
+                //console.log(server_response);
                 if (datas == 2) {
                     var amisId = JSON.parse(server_response);
-                    console.log(amisId.ami2);
+                    //console.log(amisId.ami2);
                     $(profil.params.divAmis).html(amisId.ami0).show();
                 } else {
                     $(profil.params.divAmis).html(server_response).show();
@@ -54,7 +56,7 @@ var profil = {
 						$('.notif-number').fadeTo( 0.1, 1);
                     $(profil.params.divDemandesAmi).html(server_response).show();
                     var length = $('#ul_dmd > *').length;
-                    console.log("taille" + length);
+                    //console.log("taille" + length);
                     $('.notif-number').html(length).show();
                 } else {
                     $(profil.params.divDemandesAmi).html(server_response).show();
@@ -75,8 +77,8 @@ var profil = {
             url: URL,
             data: "demandeAbonnement="+demandeAbonnement,
             success: function (server_response) {
-				console.log("reponse"+server_response);
-				console.log("demande"+demandeAbonnement);
+				//console.log("reponse"+server_response);
+				//console.log("demande"+demandeAbonnement);
                 profil.params.boutonAmitieDone.call(this, server_response);
 
             }
@@ -96,7 +98,7 @@ var profil = {
             url: url,
             data: datas,
             success: function (choix) {
-                console.log(choix);
+                //console.log(choix);
                 profil.params.reponseAmitieDone.call(this, choix);
             }
         });
@@ -114,7 +116,7 @@ var profil = {
                 data: data,
                 success: function (server_response) {
                     $(profil.params.champStatut).val('');
-                    console.log(server_response);
+                    //console.log(server_response);
                     profil.params.statutDone.call(this, server_response);
 
                 }
@@ -136,28 +138,34 @@ var profil = {
 						var ev = JSON.parse(server_response);
 						var count=Object.keys(ev).length;
 						//console.log(count);
-						var affichageEvenement=new Array();
+						var affichageEvenement;
 						var i=0;
-						var j=count-1;
-						var dateEvString=new Array();
+						var j=0;
+						var divEvt="";
+						var dateEvString;
 						var dateEv=new Array();
+						var hourEv=new Array();
+						
 						$("#list-checkins").append("<ul>");
-						for (var passage = 0; passage < count; passage++) {
+						
+						for (var p = 0; p < count; p++) {
+							var checkinDatasID = ev["evenement"+p].id_check;
+							$("#list-checkins ul").append("<li id='ev"+p+"' value='"+checkinDatasID+"'>");}
 							
+						for (var passage = 0; passage < count; passage++) {
 							var checkinDatas = ev["evenement"+passage];
 							//console.log(ev["evenement"+passage]);
-							var tab_jour=new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
-							var tab_mois=new Array("Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre");
+							var commCheckin =ev["evenement"+passage].comment;
 								
 									dateEv[i] = new Date(checkinDatas.date);
 									var month = dateNow.getMonth();
-									dateEvString[i] = tab_jour[dateEv[i].getDay()]+" "+dateEv[i].getDate() + " " + tab_mois[month] + " " + dateEv[i].getFullYear() ;
-									console.log(dateEvString);
+									dateEvString = tab_jour[dateEv[i].getDay()]+" "+dateEv[i].getDate() + " " + tab_mois[month] + " " + dateEv[i].getFullYear() ;
+									//console.log(dateEvString);
 									var minutes=dateEv[i].getMinutes();
-									var hourEv = dateEv[i].getHours() + ":" + (minutes < 10 ? '0' + minutes : minutes );
+									hourEv[i] = dateEv[i].getHours() + ":" + (minutes < 10 ? '0' + minutes : minutes );
 									
-									$("#list-checkins").append(dateEvString[i]);
 									
+								
 							var latlng = new google.maps.LatLng(checkinDatas.lat, checkinDatas.lng);
 							
 							geocoder.geocode({
@@ -165,24 +173,47 @@ var profil = {
 							}, function (results, status) {
 								if (status == google.maps.GeocoderStatus.OK) {
 									//console.log(results[1].formatted_address);
-									console.log(dateEvString);
-									affichageEvenement="<li>"+dateEvString[j]+" à "+hourEv+" à "+results[1].formatted_address+"</li>";
-									console.log(i);
+									//console.log(dateEvString);
+									affichageEvenement=" à "+results[1].formatted_address+"   [X]</li>";
+									//console.log(i);
 									//console.log(affichageEvenement);
-									$("#list-checkins ul").append(affichageEvenement);
+									divEvt="#ev"+i;
+									$(divEvt).append(affichageEvenement);
 									i++;
-									j-=1;
+									
 									
 								} else {
 									console.log('Geocoder failed due to: ' + status);
 								}
 							});
+							
+							divEvt="#ev"+j;
+							$(divEvt).append("<h5>''"+commCheckin+"''</h5> "+dateEvString+" à "+hourEv[i]);
+							j++;	
 							}
-						$("#list-checkins").append("</ul>");
-					}
+						
+						}
 					}
                 });
 
         },
+		
+		supprCheck: function(idCheck){
+			        url = "checkInAvenir.php";
+
+				$.ajax({
+					type: "GET",
+					url: url,
+					data: "supprimer=1 &idCheck="+idCheck,
+					success: function (choix) {
+						console.log(choix);
+						//profil.params.supprCheckDone.call(this, choix);
+						$("#list-checkins ul").remove();
+						profil.evenement();
+					}
+				});
+			
+			
+		}
 
     }
