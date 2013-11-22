@@ -27,7 +27,7 @@ $end = date("Y-m-d H:i", $endTS);
 $score;
 //echo $lat.", ".$lng."<br>";
 //echo "start: ".$start.", end: ".$end."<br>";
-$dbh->exec("INSERT INTO checkIn(json,id_user, pseudo, lat, lng, comment, date_begin, date_end) VALUES('json','$id_user', '$pseudo' '$lat', '$lng', '$comment', '$start', '$end')"); 
+$dbh->exec("INSERT INTO checkIn(json,id_user, pseudo, lat, lng, comment, date_begin, date_end) VALUES('json','$id_user', '$pseudo', '$lat', '$lng', '$comment', '$start', '$end')"); 
 
 
 		$link=mysql_connect("mysql51-100.perso","robinpayadmin","gUFjHp3Q8m9y");

@@ -251,7 +251,7 @@ var mapObj = {
 	  //get LatLng object from the coordinates of the checkin
 	  var myLatLng = new google.maps.LatLng(locations.lat, locations.lng);
 
-	  if((debut<timeChoosen) && (timeChoosen<fin)) {//if the checkin is happening right now
+	  if((debut<=timeChoosen) && (timeChoosen<=fin)) {//if the checkin is happening right now
 	    var checkinInfo = ''; //initialize the infobubble content
 
 	    //initialize the var where the infobubble will be
