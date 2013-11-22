@@ -76,3 +76,11 @@ $('.demandesAmi').click(function(e) {
 		//pour le resultat Voir statutDone
 		profil.nouveauStatut();
 	});
+
+$('#list-checkins').click(function(e) {
+	console.log(e.target.value);
+	var idCheck=e.target.value;
+	//console.log(this.attr("value"));
+	profil.supprCheck(idCheck);
+	
+});
