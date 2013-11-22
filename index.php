@@ -12,9 +12,8 @@ require 'topbar.php' ;
 
  <!-- DEBUT MAP -->
 <div id="map-section">
-  <?php if(isset($_SESSION['login'])) {?><p><input type="button" id="find" onClick="findLocation()" value="check in"><?php } ?>
-  <input type="date" max="2015-06-25" min="2013-08-13" id="date" onChange="changeDate()" >
-  <input type="time" id="hour" onChange="changeHour()"> </p>
+  <p><input type="date" max="2015-06-25" min="2013-08-13" id="date" onChange="mapObj.changeDate()" >
+  <input type="time" id="hour" onChange="mapObj.changeHour()"> </p>
   <form id="geocoder">
     <input type="text" id="address" name="address" placeholder="Recherche un lieu" />
   </form>
@@ -22,7 +21,6 @@ require 'topbar.php' ;
   <div id="map-canvas" ></div> <!-- Affichage de la map -->
 </div>
 <!-- FIN MAP -->
-<div id="list-checkins"></div>
 
 
 <?php
