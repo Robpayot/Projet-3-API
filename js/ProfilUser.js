@@ -60,7 +60,7 @@ profil.afficherlisteDesDemandes();
 $("#voirDemandes").click(function(e) {
 	profil.afficherlisteDesDemandes();
 });
-notif=setInterval(profil.afficherlisteDesDemandes(),60000);
+//notif=setInterval(profil.afficherlisteDesDemandes(),1000);
 
 //Reponse demande ami
 $('.demandesAmi').click(function(e) {
@@ -77,10 +77,18 @@ $('.demandesAmi').click(function(e) {
 		profil.nouveauStatut();
 	});
 
-$('#list-checkins').click(function(e) {
-	console.log(e.target.value);
-	var idCheck=e.target.value;
+$('#list-checkins').on('click','.suppr',function(e) {
+	var r = confirm("Supprimer le checkin?");
+		if (r == true)
+		  {
+		  	var idCheck=e.target.parentElement.value;
+			//console.log(this.attr("value"));
+			profil.supprCheck(idCheck);
+	
+		  }
+	//console.log(e.target);
+	//console.log(e);
 	//console.log(this.attr("value"));
-	profil.supprCheck(idCheck);
+	
 	
 });
