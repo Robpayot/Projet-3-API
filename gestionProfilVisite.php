@@ -19,11 +19,11 @@ session_start();
 	$id_user = $_SESSION['IDprofilVisite'];
 	$id_userConnecte = $_SESSION['ID'];
 		
-	$user = $dbh -> query("SELECT * FROM amis WHERE ID_accepteur='$id_user' AND ID_demandeur='$id_userConnecte'")->fetchAll();
+	$ami = $dbh -> query("SELECT * FROM amis WHERE ID_accepteur='$id_user' AND ID_demandeur='$id_userConnecte'")->fetchAll();
 	
-	foreach ($user as $amis):
-		$amitie = $amis['etat'];
-	endforeach;
+	foreach ($ami as $amis):
+$amitie = $amis['etat'];
+endforeach;
 
 
 //_________________RÉCUPÉRATION DES DONNEES USER_________________//
@@ -95,13 +95,12 @@ if($sport>0){
 else
 	$sport="Bisounours! Yeah";
 	
-	
-	
+
 	if($amitie!=1)
 		$statut="Vous n'êtes pas amis avec ".$_SESSION['profilVisite'];
 		
 	
-	if($_GET["demandeAbonnement"]==3){
+	if(isset($_GET["demandeAbonnement"])){
 		if($amitie==null)
 			$amitie=-1;
 			
@@ -110,6 +109,22 @@ else
 		
 	}
 	
+	// Affichage ou non des photos de l'utilisateur affiché________________________________________________________
+
+if($amitie==1) {
+	//_________________RÉCUPÉRATION DES DONNEES MEDIA_________________//
+
+	$media = $dbh -> query("SELECT * FROM media WHERE id_user='".$id_user."'")->fetchAll();
+	$url = $dbh -> query("SELECT url,id FROM media WHERE id_user='".$id_user."' AND url!=''")->fetchAll();
+	foreach ($media as $medias):
+ if (!empty($medias['url_vid'])) {
+	$url_vid = $medias['url_vid'];
+	}
+$description = $medias['description'];
+$date = $medias['date'];
+endforeach;
+	
+	}
 
 
 ?>
