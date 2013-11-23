@@ -24,18 +24,32 @@ var markerPlan; //marker of the place the user want to plan a checkin
 var latPlan, lngPlan; //coordinates of a checkin planned
 
 //Message if success check in
-var checkinSuccess = '<div id="content">' +
-	'<h1 id="firstHeading" class="firstHeading">Se localiser ici</h1>' +
+var checkinSuccess = '<div style="font-family: Roboto,Arial,sans-serif;">' +
+	'<h2 style="font-weight: bolder;color:#6DC7E2; font-size: 140%;margin-bottom: 10px;">Se localiser ici</h2>' +
 	'<div id="textCheckin">' +
-	'<form name="add_comment" onsubmit="return mapObj.addCheckin()"><label for="checkin_comment">Commentaire (<140 car.) :</label> <input type="text" id="checkin_comment" name="checkin_comment" maxlength="140"/><br>' +
-	'<input type="submit" value="OK"></form></div>' +
+	'<form name="add_comment" onsubmit="return mapObj.addCheckin()"><label for="checkin_comment" style="width: 72px;text-align: right;font-size: 110%;">Commentaire (<140 car.) :</label> <input type="text" id="checkin_comment" name="checkin_comment" maxlength="140"/><br>' +
+	'<input type="submit" value="OK" style="border: none;background-color: #DD4A4A;color: #ffffff;padding: 4px 10px;display: block;margin: 10px auto;"></form></div>' +
 	'</div>';
 
 //Create the window info
-var infowindowCI = new google.maps.InfoWindow({
-    content: checkinSuccess,
-    maxWidth:500,
-});
+var infowindowCI = new InfoBubble({
+			map: map,
+			content: checkinSuccess,  
+			//position: event.latLng,  
+			shadowStyle: 0, 
+			padding: 10,  
+			backgroundColor: '#ffffff',  
+			borderRadius: 0, 
+			arrowSize: 10, 
+			borderWidth: 0,  
+			borderColor: '#009EE0', 
+			disableAutoPan: true, 
+			hideCloseButton: false, 
+			arrowPosition: 50,  
+			arrowStyle: 0, 
+			disableAnimation: false, 
+			maxWidth :   500 
+		});
 
 
 
@@ -158,10 +172,24 @@ var mapObj = {
 	        zIndex: skatepark[3]
 	    });
 	    var skateparkName = "";
-	    var infoSkatepark = new google.maps.InfoWindow({
-	      content: '<div class="noscrollbar">'+skatepark[0]+'</div>',
-	      maxWidth: 320,
-	    });
+	    var infoSkatepark = new InfoBubble({
+			map: map,
+			content: '<div class="noscrollbar">'+skatepark[0]+'</div>',  
+			//position: event.latLng,  
+			shadowStyle: 0, 
+			padding: 10,  
+			backgroundColor: '#ffffff',  
+			borderRadius: 0, 
+			arrowSize: 10, 
+			borderWidth: 0,  
+			borderColor: '#009EE0', 
+			disableAutoPan: true, 
+			hideCloseButton: false, 
+			arrowPosition: 50,  
+			arrowStyle: 0, 
+			disableAnimation: false, 
+			maxWidth :   320 
+		});
 	    google.maps.event.addListener(marker, 'click', (function(marker, i) {
 	        return function() {
 	          infoSkatepark.setContent(locations[i][0]);
@@ -415,17 +443,31 @@ var mapObj = {
 	//infowindow when the user click on the map to plan a checkin
 	windowPlanCheckin:function() {
 		var formPlan = '';
-		var windowPlan = new google.maps.InfoWindow({
-	      content: formPlan,
-	      maxWidth: 500,
-	    });
+	    var windowPlan = new InfoBubble({
+			map: map,
+			content: formPlan,  
+			//position: event.latLng,  
+			shadowStyle: 0, 
+			padding: 10,  
+			backgroundColor: '#ffffff',  
+			borderRadius: 0, 
+			arrowSize: 10, 
+			borderWidth: 0,  
+			borderColor: '#009EE0', 
+			disableAutoPan: true, 
+			hideCloseButton: false, 
+			arrowPosition: 50,  
+			arrowStyle: 0, 
+			disableAnimation: false, 
+			maxWidth :   500 
+		});
 		windowPlan.open(map, markerPlan);
-		windowPlan.setContent('<div id="plan_checkin"><h2>Planifier un checkin</h2>'+
+		windowPlan.setContent('<div id="plan_checkin" style="font-family: Roboto,Arial,sans-serif;"><h2 style="font-weight: bolder;color:#6DC7E2; font-size: 140%;margin-bottom: 10px;">Planifier un checkin</h2>'+
 		    '<form name="planPlace" id="planPlace" onsubmit="return mapObj.planCheckin();"><div id="errors" ></div>'+
-		      '<label for="day">Jour </label><input type="text" name="day" id="day"><br>'+
-		      '<label for="time">Heure </label><input type="time" name="time" id="time" value="hh:mm"><br>'+
-		      '<label for="comment">Commentaire </label><input type="text" name="comment" id="comment"><br>'+
-		      '<input type="submit" value="OK">'+
+		      '<label for="day" style="display: inline-block;width: 72px;text-align: right;font-size: 110%;">Jour </label><input type="text" name="day" id="day"><br>'+
+		      '<label for="time" style="display: inline-block;width: 72px;text-align: right;font-size: 110%;">Heure </label><input type="time" name="time" id="time" value="hh:mm"><br>'+
+		      '<label for="comment" style="display: inline-block;width: 72px;text-align: right;font-size: 110%;">Commentaire </label><input type="text" name="comment" id="comment"><br>'+
+		      '<input type="submit" value="OK" style="border: none;background-color: #DD4A4A;color: #ffffff;padding: 4px 10px;display: block;margin: 10px auto;">'+
 		    '</form>'+
 		  '</div>');
 		$( "#day" ).datepicker({ dateFormat: 'dd/mm/yy' });
