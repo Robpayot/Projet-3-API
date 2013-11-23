@@ -9,6 +9,7 @@ require 'recup.php';
 	//________________________LORS DU SUBMIT _______________________________	
 		
 	if(isset($_POST['submit_edit'])) {
+
 require 'edit-profil.php';
 	}
 	if (isset($_POST['envoiefb'])) {
@@ -26,12 +27,17 @@ require 'edit-profil.php';
 		
 	}
 	
+
+	
 		
 		?>
 <div id="topbar">
 	<div id="topbar-content">
-		<h1>Grab-In</h1>
-		<ul><?php if(isset($_SESSION['login'])) {?>
+		<h1><a href="profil.php"><img src="imgs/logo.png" alt="Grab-In!"/></a></h1>
+    <a onclick="getOn('mobile-more-menu')"><img class="mobile-only" id="mobile-more-icon" src="imgs/more.png" alt="Menu"/></a>
+    <a onclick="getDropDownDown('search-dropdown')"><img class="mobile-only" id="mobile-search" src="imgs/search.png" alt="Recherche"/></a>
+		<ul id="mobile-more-menu" class="mobile-dspln"><?php if(isset($_SESSION['login'])) {?>
+      <a  href="#" class="close" id="mobile-more-close" onclick="getOff('mobile-more-menu')"><img src="imgs/close.png" alt="close"/></a>
       <li>
         <div class="champR">
           <input type="text" id="recherche" name="recherche" onfocus="displayResults()" onblur="hideResults()" placeholder="Chercher des Riders" required>
@@ -39,12 +45,12 @@ require 'edit-profil.php';
         <div class="affichageR" id="resultat"></div>
       </li>
        
-			<li><a href="#" onclick="getDropDownDown('profiledit-dropdown')"><img src="imgs/params.png" alt="Edition du profil"/></a></li>
-      <li><a href="#" onclick="getDropDownDown('amis-dropdown');" id="voirAmis"><img src="imgs/friends.png" alt="Liste d'amis"/></a></li>
-			<li class="abos"><div class="notif-number"></div><a href="#" onclick="getDropDownDown('abonnes-dropdown');" id="voirDemandes"><img src="imgs/abos.png" id="imgDmd" alt="Confirmer les nouveaux abonnés"/></a></li>
-			<li><a href="#" onclick="getDropDownDown('classement-dropdown');">Classement</a></li>
-			<li><a href="profil.php"><?php echo $_SESSION['login']; ?></a></li>
-      <li><a href="deconnexion.php">Déconnexion</a></li>
+			<li class="touch-icon"><a href="#" onclick="getDropDownDown('profiledit-dropdown')"><img src="imgs/params.png" alt="Edition du profil"/></a></li>
+      <li class="touch-icon"><a href="#" onclick="getDropDownDown('amis-dropdown');" id="voirAmis"><img src="imgs/friends.png" alt="Liste d'amis"/></a></li>
+			<li class="abos touch-icon"><div id="notif-number" class="dspln"></div><a href="#" onclick="getDropDownDown('abonnes-dropdown');" id="voirDemandes"><img src="imgs/abos.png" id="imgDmd" alt="Confirmer les nouveaux abonnés"/></a></li>
+			<li class="touch-icon"><a href="#" onclick="getDropDownDown('classement-dropdown');"><img class="mobile-only" src="imgs/cup.png" alt="Classement"/><p class="desktop-only">Classement</p></a></li>
+			<li ><a href="profil.php"><?php echo $_SESSION['login']; ?></a></li>
+      <li class="mobile-logout"><a href="deconnexion.php"><img src="imgs/logout.png" class="mobile-only" alt="Deconnexion" /><p class="desktop-only">Déconnexion</p></a></li>
       <?php } else {?>
 			<li><a href="#" onclick="getDropDownDown('connexion-dropdown')">Connexion</a></li>
       <?php } ?>
@@ -81,7 +87,7 @@ require 'edit-profil.php';
     
     <li class="l-field"><p class="field-desc">Prénom</p><input class="l-text-field" type="text" id="prenom" name="prenom" required></li>
     <li class="l-field"><p class="field-desc">Nom</p><input class="l-text-field" type="text" id="nom" name="nom" required></li>
-    <li class="l-field"><p class="field-desc">Pseudo</p><input class="l-text-field" type="text" id="pseudo" name="pseudo" required></li>
+    <li class="l-field check"><p class="field-desc">Pseudo</p><input class="l-text-field" type="text" id="pseudo" name="pseudo" required><img src="imgs/fail.png" alt="bon" id="imgVerifPseudo"/></li>
     <li class="l-field spaced"><p class="field-desc">Mot de passe</p><input class="l-text-field" type="password" id="mdp" name="mdp" required></li>
     <li class="l-field check"><p class="field-desc">Confirm. Mdp</p><input class="l-text-field" type="password" id="retape_mdp" name="retape_mdp" required><img src="imgs/fail.png" alt="bon" id="imgVerif"/></li>
     <li class="l-field"><p class="field-desc">E-mail</p><input class="l-text-field" type="email" id="email" name="email" required></li>
@@ -158,7 +164,7 @@ require 'edit-profil.php';
   <form action="profil.php" enctype="multipart/form-data" method="post">
   <img id="pp-profiledit" src="<?php echo $avatar; ?>" alt="Photo de profil"/>
   <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
-     <p id="link-pp-profiledit">Ajouter une image : <input class="envoie" type="file" name="envoie_avatar" id="avatar_edit"></p>
+     <p id="link-pp-profiledit"><a onclick="getAvatar()">Changer ma photo</a><input class="envoie dspln" type="file" name="avatar" id="avatar"><a  href="#" id="close-avatar" class="dspln" onclick="getAvatarOff()"><img src="imgs/close.png" alt="close"/></a></p>
   <!--<a href="#" id="link-pp-profiledit">Changer ma photo</a>-->
 
   <ul class="profiledit-right">
@@ -194,7 +200,7 @@ require 'edit-profil.php';
   <div class="l-field send"><p class="field-send"><input type="submit" class="envoie" name="submit_edit" value="Enregistrer les modifications" /></p></div>
   </form>
    <form action='profil.php' method="POST">
-           <p><button class="envoie" name="submit_delete" type="submit">Supprimer mon compte</button></p>
+           <p><button class="envoie-warning"  name="submit_delete" type="submit">Supprimer mon compte</button></p>
         </form>
   </div> <!-- end of profiledit-dropdown -->
 <div id="abonnes-dropdown" class="dropdown-up">
