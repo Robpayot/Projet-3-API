@@ -125,8 +125,9 @@
         bindListHandler: function(smallItems){
             var that = this;
 
-            smallItems.on('click', 'img', function(e){
+            smallItems.on('click', 'li', function(e){
                 e.preventDefault();
+                //console.log($('li.item'));
                 var $this = $(this);
                 that.current = $this.index();
                 that.fadeAllOut();
