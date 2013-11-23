@@ -91,7 +91,7 @@ require 'topbar.php' ;
         <span class="fs-toggle icon-fullscreen"></span>
       </div>
     </div><!-- end #gallery-container-->    
-    <div id="video-section">
+    <div id="video-section" <?php if (empty($url)){ //si il n'y a pas de photos ?>style="float:none"<?php } ?>>
       <?php if (empty($url_vid)){}else{ ?>
       <div id="button" class="pause">
         <span></span>
