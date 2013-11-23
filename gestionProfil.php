@@ -27,10 +27,66 @@ $statut = $users['statut'];
 $date_register = $users['date_register'];
 endforeach;
 
+//____ CLASSIFICATION DES SPORTS PRATIQUES _______________________________
+$iconSports="";
+$bmx="<img src='imgs/icons/bmx.png' alt='bmx'>";
+$skate="<img src='imgs/icons/skate.png' alt='skate'>";
+$trotinette="<img src='imgs/icons/trotinette.png' alt='trotinette'>";
+$roller="<img src='imgs/icons/roller.png' alt='roller'>";
+
+if($sport>0){
+	if ($sport==1) {
+			$iconSports=$skate;
+			}
+	if ($sport==2) {
+			$iconSports=$roller;
+			}
+	if ($sport==3) {
+			$iconSports=$skate."".$roller;
+			}
+	if ($sport==4) {
+			$iconSports=$bmx;
+			}
+	if ($sport==5) {
+			$iconSports=$skate."".$bmx;
+			}
+	if ($sport==6) {
+			$iconSports=$roller."".$bmx;
+			}
+	if ($sport==7) {
+			$iconSports=$skate."".$roller."".$bmx;
+			}
+	if ($sport==8) {
+			$iconSports=$trotinette;
+			}
+	if ($sport==9) {
+			$iconSports=$skate."".$trotinette;
+			}
+	if ($sport==10) {
+			$iconSports=$roller."".$trotinette;
+			}
+	if ($sport==11) {
+			$iconSports=$skate."".$roller.$trotinette;
+			}
+	if ($sport==12) {
+			$iconSports=$bmx."".$trotinette;
+			}
+	if ($sport==13) {
+			$iconSports=$skate."".$bmx.$trotinette;
+			}
+	if ($sport==14) {
+			$iconSports=$roller."".$bmx.$trotinette;
+			}
+	if ($sport==15) {
+			$iconSports=$roller."".$bmx."".$trotinette.$skate;
+			}
+}
+
+
 //_________________RÉCUPÉRATION DES DONNEES MEDIA_________________//
 
 	$media = $dbh -> query("SELECT * FROM media WHERE id_user='".$id_user."'")->fetchAll();
-	$url = $dbh -> query("SELECT url FROM media WHERE id_user='".$id_user."' AND url!=''")->fetchAll();
+	$url = $dbh -> query("SELECT url,id FROM media WHERE id_user='".$id_user."' AND url!=''")->fetchAll();
 	foreach ($media as $medias):
  if (!empty($medias['url_vid'])) {
 	$url_vid = $medias['url_vid'];
@@ -175,21 +231,13 @@ else
 header('location:profil.php');
 }
 
-//_________________SUPPRESSION D'UN MEDIA_________________//
-	
+//_________________SUPPRESSION D'UN PHOTO_________________//
+foreach($url as $urls):	
+if (isset($_POST['delete_media'.$urls['id']])) {
+	$dbh -> query('DELETE FROM media WHERE id = "'.$urls['id'].'"');
+}
+endforeach;
 
-	foreach ($media as $medias):
-
-	if ( isset($_POST['delete_media'.$urls['id']]) ) 
-	{
-
-		//unlink($painting['url_painting']);
-		$delete = $dbh -> query("DELETE FROM media WHERE id='".$medias['id']."' " );
-		//$deletes = $dbh -> query("SELECT * FROM media WHERE id_user = '".$id_user."'")->fetchAll();
-		header('location:profil.php');
-	}
-	
-	endforeach;
 
 //____ CLASSIFICATION DES SPORTS PRATIQUES _______________________________
 if($sport>0){
