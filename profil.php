@@ -46,7 +46,7 @@ require 'topbar.php' ;
                   <p><input type="text" id="newStatut" name="newStatut" placeholder="Nouveau statut" required ><br>
                   <input type="button" id="envoiStatut" name="envoiStatut" value="Exprime-toi !" class="button"/></p>
                 </div>
-                <div id="cal">
+                <div id="cal" class="desktop-only">
                         <div id="cal-shadow-1"></div>
                         <div id="cal-shadow-2"></div>
                         <div id="weather">
@@ -59,10 +59,11 @@ require 'topbar.php' ;
         </div>
 </div>
 <div id="profile-content">
-<p id="checkin-btn"><a href="#map-section" id="find" >Check in !</a></p>
+<p id="checkin-btn"><a href="#map-section" id="find" >Check in !</a></p><!--class="mobile-only"-->
   <h3>Tes prochains checkins</h3>
 
   <div id="list-checkins"></div>
+  <div class="clear-float"></div>
 
 <h3 class="inline-block">Photos et vidéos</h3>
 
@@ -89,7 +90,7 @@ require 'topbar.php' ;
 
   <div id="medias">
     <!--// Gallery Markup: A container that the plugin is called upon, and two lists for the images (use images with same aspect ratio) //-->
-    <div id="gallery-container">
+    <div id="gallery-container" <?php if (empty($url_vid)){?>class="no-video"<?php } ?>>
       <ul class="items--small">
         <?php foreach ($url as $urls): ?>
           <li class="item"><a href="#"><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a>
@@ -104,7 +105,7 @@ require 'topbar.php' ;
           <li class="item--big">
             <a href="#">
               <figure>
-                <img src="<?php echo $urls['url'];?>" alt="" />
+                <img src="<?php echo $urls['url'];?>" <?php if (empty($url_vid)){?>class="no-video2"<?php } ?> alt="" />
                 <figcaption class="img-caption">
                   <?php echo $urls['description'];?>
                 </figcaption>
@@ -120,7 +121,7 @@ require 'topbar.php' ;
         <span class="fs-toggle icon-fullscreen"></span>
       </div>
     </div><!-- end #gallery-container-->    
-    <div id="video-section">
+    <div id="video-section" <?php if (empty($url)){?>class="no-photo"<?php } ?>>
       <?php if (empty($url_vid)){}else{ ?>
       <div id="button" class="pause">
         <span></span>

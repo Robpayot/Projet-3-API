@@ -1,12 +1,23 @@
 .clear-float{clear: both;}
+.no-video{float:none; width:62%}
+.no-video2{margin: 0 auto; width:62%}
+.no-photo{float:none; position:absolute; left:25%;}
+
 #medias{margin-bottom: 40px;}
 .upload-media p{font-size: 14px;margin-top: 8px;}
 .upload-media p label{text-align: right;display: inline-block;width: 200px;margin-right: 20px;}
 .upload-media button{margin: 0 auto; background-color: #ffffff; color:#555555; border: none;display: block;padding: 5px 15px;font-size: 14px;}
 
-h3{font-weight: bolder;font-size: 1.3em;margin-bottom: 20px;}
-#list-checkins ul li{padding: 8px 20px;background-color: #efefef;width: 60%;margin-bottom: 5px;}
+h3{font-weight: bolder;font-size: 1.3em;margin-bottom: 20px;color:#dd4a4a;}
+#list-checkins{text-align: center}
+#list-checkins ul li{padding: 8px 20px;background-color: #efefef;width: 90%;margin-bottom: 25px;}
 #list-checkins ul li:hover{background-color: #f7f7f7;}
+#list-checkins ul li p{font-style: italic;color:#616161;padding-left: 10px;}
+#list-checkins ul li span:nth-child(2){font-weight: bold;color:#6DC7E2;}
+#list-checkins ul li span:nth-child(3){color:#333333;}
+#list-checkins ul li .suppr{font-size: 80%;float: right;display: inline-block;padding: 3px 8px;background-color: #dd4a4a;color: #ffffff;border-radius: 4px}
+
+
 #map-canvas{margin-top:0;}
 #map-section{position:relative;}
 #map-section p{position:absolute;z-index:50;top:75px;right:10px;}
@@ -16,3 +27,23 @@ h3{font-weight: bolder;font-size: 1.3em;margin-bottom: 20px;}
 #checkin-btn a{padding: 8px 15px;background-color: #dd4a4a;color: #ffffff;font-size: 1.2em;border: none;text-decoration: none;}
 
 #infowindow-skatepark{width: 200px; height: 50px;}
+
+/* POUR RESPONSIVE : 
+
+#userbar{height:auto;} 
+#userbar-content {width: 100%;position: relative;} --> Pas de left ou margin left
+#statut {display:block;width:auto;margin-top: 15px;}
+#profile-content {width: 95%;padding: 40px 10px;}
+.poster-media {display:block;margin: 10px auto;}
+.upload-media {padding: 10px;}
+.upload-media p{text-align:center;}
+.upload-media p label{text-align: inherit;display: inline;margin-right:0;}
+.upload-media button {margin-top: 10px;}
+#gallery-container{width: 100%;}
+#video-section {width: 98%;}
+
+*/
+
+
+
+
