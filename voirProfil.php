@@ -68,7 +68,7 @@ require 'topbar.php' ;
           
           <div id="medias">
     <!--// Gallery Markup: A container that the plugin is called upon, and two lists for the images (use images with same aspect ratio) //-->
-    <div id="gallery-container" <?php if (empty($url_vid)){?>class="no-video"<?php } ?>>
+    <div id="gallery-container" <?php if (empty($url_vid)){?>style="float:none; width:62%"<?php } ?>>
       <ul class="items--small">
         <?php
 		if($amitie==1) {
@@ -85,7 +85,7 @@ require 'topbar.php' ;
           <li class="item--big">
             <a href="#">
               <figure>
-                <img src="<?php echo $urls['url'];?>" <?php if (empty($url_vid)){?>class="no-video2"<?php } ?> alt="" />
+                <img src="<?php echo $urls['url'];?>" <?php if (empty($url_vid)){?>style="margin: 0 auto; width:62%"<?php } ?> alt="" />
                 <figcaption class="img-caption">
                   <?php echo $urls['description'];?>
                 </figcaption>
@@ -101,7 +101,7 @@ require 'topbar.php' ;
         <span class="fs-toggle icon-fullscreen"></span>
       </div>
     </div><!-- end #gallery-container-->    
-    <div id="video-section" <?php if (empty($url)){?>class="no-photo"<?php } ?>>
+    <div id="video-section" <?php if (empty($url)){?>style="float:none; position:absolute; left:25%;"<?php } ?>>
       <?php if (empty($url_vid)){}else{ ?>
       <div id="button" class="pause">
         <span></span>

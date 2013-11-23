@@ -20,3 +20,6 @@ video{background-color:#000;-webkit-transition:opacity 5s;display:block;margin:0
 #mute{position:absolute;z-index:30;bottom:8px;left:10%;padding:5px;}
 #full-screen,#mute{color:#ffffff;background-color:transparent;border:none;}
 
+.no-video{float:none; width:62%}
+.no-video2{margin: 0 auto; width:62%}
+.no-photo{float:none; position:absolute; left:25%;}
