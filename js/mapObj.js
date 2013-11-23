@@ -27,7 +27,7 @@ var latPlan, lngPlan; //coordinates of a checkin planned
 var checkinSuccess = '<div id="content">' +
 	'<h1 id="firstHeading" class="firstHeading">Se localiser ici</h1>' +
 	'<div id="textCheckin">' +
-	'<form name="add_comment" onsubmit="return mapObj.addCheckin()"><label for="checkin_comment">Commentaire (<140 car.) :</label> <input type="text" id="checkin_comment" name="checkin_comment" /><br>' +
+	'<form name="add_comment" onsubmit="return mapObj.addCheckin()"><label for="checkin_comment">Commentaire (<140 car.) :</label> <input type="text" id="checkin_comment" name="checkin_comment" maxlength="140"/><br>' +
 	'<input type="submit" value="OK"></form></div>' +
 	'</div>';
 
@@ -86,7 +86,7 @@ var mapObj = {
 	    google.maps.event.addListener(map, 'click', function(event) {
 	    	geocoder.geocode({'latLng': event.latLng}, function(results, status) {
 		    if (status == google.maps.GeocoderStatus.OK) {
-		    	console.log(results[4]);
+		    	//console.log(results[4]);
 		      if (results[1]) {
 		        	if(results[4].formatted_address!="Paris, France" && results[5].formatted_address!="Paris, France") {
 		        		console.log(results[5].formatted_address);
@@ -159,7 +159,7 @@ var mapObj = {
 	    });
 	    var skateparkName = "";
 	    var infoSkatepark = new google.maps.InfoWindow({
-	      content: skatepark[0],
+	      content: '<div class="noscrollbar">'+skatepark[0]+'</div>',
 	      maxWidth: 320,
 	    });
 	    google.maps.event.addListener(marker, 'click', (function(marker, i) {
@@ -322,6 +322,7 @@ var mapObj = {
 
 	//get the geolocation datas and check if the skater is in paris or not
 	findPosition:function(position) { 
+		console.log('position trouvée : '+position);
 	    posLatitude = position.coords.latitude;
 	    posLongitude = position.coords.longitude;
 	    accuracy = position.coords.accuracy;
@@ -357,14 +358,17 @@ var mapObj = {
 	        title: "Votre position",
 	        icon: 'imgs/icons/checkinme.png'
 	    });
+	    console.log('Ajout marker');
 	    infowindowCI.open(map, markerPos);
 	},
 
 
 	//get the location via the browser
 	findLocation:function() {
+		console.log('cherche la position');
 	    if (navigator.geolocation) {
 	        navigator.geolocation.getCurrentPosition(mapObj.findPosition, mapObj.handleError);
+	        console.log('Navigateur supporte la géolocalisation');
 	    } else {
 	        updateStatus("Votre navigateur ne supporte pas la géolocalisation, indiquez votre adresse dans le champs ci-dessus.");
 	    }

@@ -58,11 +58,11 @@ var profil = {
                     $(profil.params.divDemandesAmi).html(server_response).show();
                     var length = $('#ul_dmd > *').length;
                     //console.log("taille" + length);
-                    $('.notif-number').html(length).show();
+                    $('#notif-number').html(length);
                 } else {
                     $(profil.params.divDemandesAmi).html(server_response).show();
 					if(!$("#notif-number").hasClass("dspln")){
-						$("#notif-number").addClass();
+						$("#notif-number").addClass("dspln");
 					 }
                 }
 

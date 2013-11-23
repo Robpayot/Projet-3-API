@@ -5,7 +5,7 @@ $(document).ready(function(e) {
 		var recherche=$(this).val();
 		var data='motclef='+recherche;
 		
-		if(recherche.length>1){
+		if(recherche.length>2){
 			
 			$.ajax({
 				type : "GET",
@@ -27,7 +27,13 @@ $(document).ready(function(e) {
 	
 	});
 
-
+  $("#recherche").focus(function(e) {
+	  var recherche=$(this).val();
+	  
+	  if(recherche==null){
+			$("#resultat").hide();
+		}
+});
 
 
 

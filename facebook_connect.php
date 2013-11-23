@@ -27,7 +27,7 @@ $params = array(
 
 
 
-if (isset($_POST['envoie'])) {
+if (isset($_POST['envoiefb'])) {
 	
 	$loginUrl = $facebook->api($params);
 //print_r($loginUrl);

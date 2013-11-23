@@ -1,51 +1,39 @@
 // JavaScript Document
 
 $(document).ready(function(e) {
+var mdp=false;
+
     $("#retape_mdp").keyup(function(){
 		var retape=$(this).val();
-		var message;
-
 		
 		if(retape.length>1){
 			
 					if($("#retape_mdp").val()==$("#mdp").val()){
-						message="bon";
+						$("#imgVerif").attr("src","imgs/check.png");
+						mdp=true;
 					}
-					else
-						message="mauvais";
-						
-					$("#verifMatchMdp").html(message).show();
+					else{
+						$("#imgVerif").attr("src","imgs/fail.png");
+						mdp=false;
+					}
 
 		}
 		
-		else if(retape.length<2){
-			$("#verifMatchMdp").hide();
-		}
-		
-		
-		
-	$(document).keyup(function(e) {
-        if(message=="bon" && $("#nom").val() && $("#prenom").val() && $("#email_addr").val()
-			&& $("#sport").val()!="sportif" && $("#niveau").val()!="niveaux"
-			)
-			$("#envoie").attr("disabled",false);
-		else
-			$("#envoie").attr("disabled",true);
-    });
-	
-		$(document).click(function(e) {
-        if(message=="bon" && $("#nom").val() && $("#prenom").val() && $("#email_addr").val()
-			&& $("#sport").val()!="sportif" && $("#niveau").val()!="niveaux"
-			)
-			$("#envoie").attr("disabled",false);
-		else
-			$("#envoie").attr("disabled",true);
-    });
-	
-	
-	
-	
 	});
+
+	
+		$("#envoie").click(function(e) {
+ 			if($("#nom").val().length<4 || $("#prenom").val().length<4 || $("#email").val().length<4 ||mdp==false)
+				$("#envoie").attr("disabled",true);
+			else
+				$("#envoie").attr("disabled",false);
+				
+				console.log($("#envoie").attr("disabled"));
+	
+		});
+	
+	
+
 
 
 

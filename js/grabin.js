@@ -21,7 +21,7 @@ $('#recherche').focus(displayResults());
 $('#recherche').blur(hideResults());
 $('#resultat').css("opacity","0");
 
-$( "#date" ).datepicker({ dateFormat: 'dd/mm/yy' });
+//$( "#date" ).datepicker({ dateFormat: 'dd/mm/yy' });
 
 function getOff(id){
   document.getElementById(id).className='opacity-0';
