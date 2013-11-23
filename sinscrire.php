@@ -10,15 +10,7 @@
 		$date_register=date('Y-m-d');
 
 
-$dsn = 'mysql:dbname=robinpayadmin;host=mysql51-100.perso';
-$user = 'robinpayadmin';
-$password = 'gUFjHp3Q8m9y';
-
-try {
-    $dbh = new PDO($dsn, $user, $password);
-} catch (PDOException $e) {
-    echo 'Erreur: ' . $e->getMessage();
-}
+require 'config.php';
 
 if(isset($_GET['test_pseudo'])){
 	$pseudo_test=$_GET['test_pseudo'];

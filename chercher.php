@@ -12,8 +12,7 @@ else if(isset($_GET['motclef'])){
 			
 		$login=mysql_escape_string($_SESSION['login']);
 		
-		$link=mysql_connect("mysql51-100.perso","robinpayadmin","gUFjHp3Q8m9y");
-		mysql_select_db("robinpayadmin") or die (mysql_error());
+		require 'config2.php';
 		
 		$res1=mysql_query("SELECT * FROM grabin_user WHERE pseudo LIKE '%$recherche%' AND pseudo <> '$login'")or die (mysql_error());
 		

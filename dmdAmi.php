@@ -2,8 +2,7 @@
 
 session_start();  
 
-		$link=mysql_connect("mysql51-100.perso","robinpayadmin","gUFjHp3Q8m9y");
-		mysql_select_db("robinpayadmin") or die (mysql_error());
+		require 'config2.php';
 		
 		$IDd=$_SESSION['ID'];
 		$IDa=$_SESSION['IDprofilVisite'];

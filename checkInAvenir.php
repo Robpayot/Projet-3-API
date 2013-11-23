@@ -11,8 +11,7 @@ else if ($_SESSION['profilOuNon']==0) {
 	$supprimer=0;
 }
 	
-$link=mysql_connect("mysql51-100.perso","robinpayadmin","gUFjHp3Q8m9y");
-mysql_select_db("robinpayadmin") or die (mysql_error());
+require 'config2.php';
 
 if(!isset($_GET['supprimer'])){
 	$res2=mysql_query("SELECT * FROM checkIn WHERE id_user='$id_user' AND date_end>now() ORDER BY date_begin")or die (mysql_error());

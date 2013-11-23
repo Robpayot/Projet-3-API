@@ -5,8 +5,7 @@ $i=0;
 $scoreAvant=0;
 $id_user=$_SESSION['ID'];
 	
-		$link=mysql_connect("mysql51-100.perso","robinpayadmin","gUFjHp3Q8m9y");
-		mysql_select_db("robinpayadmin") or die (mysql_error());
+		require 'config2.php';
 		
 		$res4=mysql_query("SELECT * FROM grabin_user WHERE score<>0 ORDER BY score DESC ")or die (mysql_error());
 				if( mysql_num_rows($res4)>=1){

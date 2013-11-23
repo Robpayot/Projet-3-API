@@ -4,8 +4,7 @@
 		$login=mysql_escape_string($_POST['pseudo']);
 		$mdp=mysql_escape_string($_POST['mdp']);
 		
-		$link=mysql_connect("mysql51-100.perso","robinpayadmin","gUFjHp3Q8m9y");
-		mysql_select_db("robinpayadmin") or die (mysql_error());
+		require 'config2.php';
 		$res1=mysql_query("SELECT * FROM grabin_user WHERE pseudo='$login'")or die (mysql_error());
 	
 		 if( mysql_num_rows($res1)>=1){

@@ -5,18 +5,17 @@ $demandeA;
 $amisTab=array();
 $id_user = $_SESSION['ID'];	
 
-$link=mysql_connect("mysql51-100.perso","robinpayadmin","gUFjHp3Q8m9y");
-mysql_select_db("robinpayadmin") or die (mysql_error());	
+require 'config2.php';	
 
 if($_GET['demandeA']==1){
 	
-$res2=mysql_query("SELECT DISTINCT ID_demandeur FROM amis WHERE etat=1 AND ID_accepteur='$id_user'")or die (mysql_error());
+$res2=mysql_query("SELECT DISTINCT ID_accepteur FROM amis WHERE etat=1 AND ID_demandeur='$id_user'")or die (mysql_error());
 		
 		if( mysql_num_rows($res2)>=1){
-				echo "<ul><h2> Amis:</h2>";
+				echo "<ul>";
 				while ($util=mysql_fetch_assoc($res2)){
 					
-					$ID=$util['ID_demandeur'];
+					$ID=$util['ID_accepteur'];
 					//array_push($amisTab,$util['ID_demandeur']);
 					
 					
@@ -30,12 +29,12 @@ $res2=mysql_query("SELECT DISTINCT ID_demandeur FROM amis WHERE etat=1 AND ID_ac
 					$affichage="<li><a href="."voirProfil.php?profil=".$pseudoA."&key=".$ID."><img src=".$avatarA." width='40px' height='40px' alt='photo'>".$pseudoA."</a></li>";
 					echo $affichage;
 						}
-					}
-				else "Pas d'amis";	
+					}	
 				}
-				
+				echo "</ul>";	
 		}
-	echo "</ul>";	
+
+	else echo "Pas d'abonnements acceptés";	
 		
 
 }
@@ -47,17 +46,31 @@ else if($_GET['demandeA']==2){
 	$amisTab=array();
 	$amisTabFinal=array();
 	
-	$res2=mysql_query("SELECT DISTINCT ID_demandeur FROM amis WHERE etat=1 AND ID_accepteur='$id_user'")or die (mysql_error());
+	$res2=mysql_query("SELECT DISTINCT ID_accepteur FROM amis WHERE etat=1 AND ID_demandeur='$id_user'")or die (mysql_error());
 		
 		if( mysql_num_rows($res2)>=1){
 			
 				while ($util=mysql_fetch_assoc($res2)){
-					$amiId=array("ami".$nbAmi=>$util['ID_demandeur']);
+					$amiId=array("ami".$nbAmi=>$util['ID_accepteur']);
 					$amisTab=array_merge((array)$amisTab,(array)$amiId);
 					$nbAmi++;
 				}
 		}
 	echo json_encode($amisTab);
+}
+
+else if(isset($_GET['iduser_checkin'])){
+	
+	$id_ami=$_GET['iduser_checkin'];
+	
+	$res2=mysql_query("SELECT DISTINCT * FROM amis WHERE etat=1 AND ID_demandeur='$id_user' AND ID_accepteur='$id_ami'")or die (mysql_error());
+		if($id_user==$id_ami)
+			echo 2;
+		else if( mysql_num_rows($res2)>=1){
+			echo 1;
+		}
+		else
+			echo 0;
 }
 
 ?>

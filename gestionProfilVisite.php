@@ -1,15 +1,7 @@
 <?php
 // CONNEXION À LA BASE DE DONNÉES
 
-$dsn = 'mysql:dbname=robinpayadmin;host=mysql51-100.perso';
-$user = 'robinpayadmin';
-$password = 'gUFjHp3Q8m9y';
-
-try {
-    $dbh = new PDO($dsn, $user, $password);
-} catch (PDOException $e) {
-    echo 'Erreur: ' . $e->getMessage();
-}
+require 'config.php';
 
 session_start();
 
@@ -119,12 +111,11 @@ if($amitie==1) {
 	foreach ($media as $medias):
  if (!empty($medias['url_vid'])) {
 	$url_vid = $medias['url_vid'];
-	}
+}
 $description = $medias['description'];
 $date = $medias['date'];
 endforeach;
 	
-	}
-
+}
 
 ?>
