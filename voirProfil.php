@@ -7,7 +7,6 @@ if (!isset($_SESSION['login'])) {
    exit();  
 }
 else{
-
 $_SESSION['profilVisite']=$_GET["profil"]; 
 $_SESSION['IDprofilVisite']=$_GET["key"];
 require_once("gestionProfilVisite.php");	
@@ -25,14 +24,14 @@ require 'topbar.php' ;
     <input type="text" id="address" name="address" placeholder="Rechercher un lieu" />
   </form>
   <p id="statut"></p> <!-- Affichage erreurs -->
-  <div id="map-canvas" ></div> <!-- Affichage de la map -->
+  <div id="map-canvas"></div> <!-- Affichage de la map -->
 </div>
 <!-- FIN MAP -->
 <div id="userbar">
         <div id="userbar-content">
                 <img src="<?php echo $avatarV?>" alt="<?php echo htmlentities($pseudoV); ?>"/>
                 <div id="identity">
-                        <h2><?php echo htmlentities($pseudoV); ?> <img src="imgs/skate.png" alt="Skate"/></h2>
+                        <h2><?php echo htmlentities($pseudoV); ?><span id="iconSports"><?php echo $iconSportsV; ?></span></h2>
                         <?php if($ageV>0) {?>
                         <p><?php echo $ageV?> ans</p>
                         <? }?>
@@ -46,7 +45,7 @@ require 'topbar.php' ;
                 <div id="statut">
                   <p id="status"><?php echo "&#171;".$statut."!&#187;" ?> </p> 
                 </div>
-                <div id="cal" class="desktop-only">
+                <div id="cal">
                         <div id="cal-shadow-1"></div>
                         <div id="cal-shadow-2"></div>
                         <div id="weather">
@@ -57,21 +56,16 @@ require 'topbar.php' ;
                         </div>
                 </div>
         </div><!-- end userbar content-->
-
+<?php if($amitie==1) { ?>
         <div id="profile-content">
-<?php if($amitie==1) {?>
-          <h3>Ses checkins</h3>
-
-          <div id="list-checkins"></div>
-<?php }?>
-          <div class="clear-float"></div>
-          
+          	<h3>Les checkins de <?php echo $pseudoV ?></h3>
+			 <div id="list-checkins"></div>
           <div id="medias">
     <!--// Gallery Markup: A container that the plugin is called upon, and two lists for the images (use images with same aspect ratio) //-->
-    <div id="gallery-container" <?php if (empty($url_vid)){?>style="float:none; width:62%"<?php } ?>>
+    <div <?php if (empty($url_vid)){?>style="float:none; width:62%"<?php } ?> id="gallery-container">
       <ul class="items--small">
         <?php
-		if($amitie==1) {
+		
 			 foreach ($url as $urls): ?>
           <li class="item"><a href="#"><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a>
           <form action='profil.php' method="POST" >
@@ -92,7 +86,7 @@ require 'topbar.php' ;
               </figure>
               </a>
           </li>
-        <?php endforeach; }?>
+        <?php endforeach; ?>
       </ul>
       <div class="controls">
         <span class="control icon-arrow-left" data-direction="previous"></span> 
@@ -101,7 +95,7 @@ require 'topbar.php' ;
         <span class="fs-toggle icon-fullscreen"></span>
       </div>
     </div><!-- end #gallery-container-->    
-    <div id="video-section" <?php if (empty($url)){?>style="float:none; position:absolute; left:25%;"<?php } ?>>
+    <div <?php if (empty($url)){?>style="float:none; position:absolute; left:25%;"<?php } ?> id="video-section">
       <?php if (empty($url_vid)){}else{ ?>
       <div id="button" class="pause">
         <span></span>
@@ -125,7 +119,7 @@ require 'topbar.php' ;
     <div class="clear-float"></div>
   </div> <!-- end #medias-->
         </div><!-- End of #profile-content-->
-
+<?php } ?>
 </div>
 
 
