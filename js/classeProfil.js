@@ -52,15 +52,18 @@ var profil = {
             success: function (server_response) {
                 //console.log("server_response "+server_response);
                 if (server_response != "Aucune demande") {
-					if($('.notif-number').css('opacity')==0)
-						$('.notif-number').fadeTo( 0.1, 1);
+					 if($("#notif-number").hasClass("dspln")){
+						$("#notif-number").removeClass();
+					 }
                     $(profil.params.divDemandesAmi).html(server_response).show();
                     var length = $('#ul_dmd > *').length;
                     //console.log("taille" + length);
                     $('.notif-number').html(length).show();
                 } else {
                     $(profil.params.divDemandesAmi).html(server_response).show();
-					$( ".notif-number" ).hide();
+					if(!$("#notif-number").hasClass("dspln")){
+						$("#notif-number").addClass();
+					 }
                 }
 
 
@@ -156,18 +159,28 @@ var profil = {
 							var checkinDatas = ev["evenement"+passage];
 							//console.log(ev["evenement"+passage]);
 							var commCheckin =ev["evenement"+passage].comment;
-									var a=checkinDatas.date.split(" ");
-									var d=a[0].split("-");
-									var t=a[1].split(":");
-									dateEv[i] = new Date(d[0],(d[1]-1),d[2],t[0],t[1],t[2]);
-									var month = dateEv[i].getMonth();
-									dateEvString = tab_jour[dateEv[i].getDay()]+" "+dateEv[i].getDate() + " " + tab_mois[month] + " " + dateEv[i].getFullYear() ;
-									//console.log(dateEvString);
-									var minutes=dateEv[i].getMinutes();
-									hourEv[i] = dateEv[i].getHours() + ":" + (minutes < 10 ? '0' + minutes : minutes );
+							
+							var a=checkinDatas.date.split(" ");
+							var d=a[0].split("-");
+							var t=a[1].split(":");
+							dateEv[i] = new Date(d[0],(d[1]-1),d[2],t[0],t[1],t[2]);
+							var month = dateEv[i].getMonth();
+							var minutes=dateEv[i].getMinutes();
+							hourEv[i] = dateEv[i].getHours() + ":" + (minutes < 10 ? '0' + minutes : minutes );
+									
+									if(dateEv[i]<$.now()){
+										dateEvString ="En ce moment ";
+										hourEv[i] = "(depuis "+dateEv[i].getHours() + ":" + (minutes < 10 ? '0' + minutes : minutes )+")";
+									}
+									else{
+										dateEvString = tab_jour[dateEv[i].getDay()]+" "+dateEv[i].getDate() + " " + tab_mois[month] + " " + dateEv[i].getFullYear() ;
+										hourEv[i] = "à "+dateEv[i].getHours() + ":" + (minutes < 10 ? '0' + minutes : minutes );
+										}
+									console.log($.now());
+
 									
 									
-								
+							var suppr=checkinDatas.supp
 							var latlng = new google.maps.LatLng(checkinDatas.lat, checkinDatas.lng);
 							
 							geocoder.geocode({
@@ -176,7 +189,11 @@ var profil = {
 								if (status == google.maps.GeocoderStatus.OK) {
 									//console.log(results[1].formatted_address);
 									//console.log(dateEvString);
-									affichageEvenement="<span> à "+results[1].formatted_address+"</span></br> <span class='suppr'>[annuler ce checkin]</span></li>";
+									if(suppr==1){
+										affichageEvenement="<span> à "+results[1].formatted_address+"</span></br> <span class='suppr'>[annuler ce checkin]</span></li>";}
+									else{
+										affichageEvenement="<span> à "+results[1].formatted_address+"</span></br></li>";}
+									
 									//console.log(i);
 									//console.log(affichageEvenement);
 									divEvt="#ev"+i;
@@ -190,7 +207,7 @@ var profil = {
 							});
 							
 							divEvt="#ev"+j;
-							$(divEvt).append("<p>''"+commCheckin+"''</p><span> "+dateEvString+" à "+hourEv[i]+"</span>");
+							$(divEvt).append("<p>''"+commCheckin+"''</p><span> "+dateEvString+" "+hourEv[i]+"</span>");
 							j++;	
 							}
 						

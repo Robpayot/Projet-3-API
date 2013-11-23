@@ -27,11 +27,16 @@ $end = date("Y-m-d H:i", $endTS);
 $score;
 //echo $lat.", ".$lng."<br>";
 //echo "start: ".$start.", end: ".$end."<br>";
-$dbh->exec("INSERT INTO checkIn(json,id_user, pseudo, lat, lng, comment, date_begin, date_end) VALUES('json','$id_user', '$pseudo', '$lat', '$lng', '$comment', '$start', '$end')"); 
+ 
 
+$link=mysql_connect("mysql51-100.perso","robinpayadmin","gUFjHp3Q8m9y");
+mysql_select_db("robinpayadmin") or die (mysql_error());
 
-		$link=mysql_connect("mysql51-100.perso","robinpayadmin","gUFjHp3Q8m9y");
-		mysql_select_db("robinpayadmin") or die (mysql_error());
+$res=mysql_query("UPDATE checkIn SET date_end='$start' WHERE id_user='$id_user' AND ('$start'>=date_begin AND '$start'<date_end)")or die (mysql_error());
+
+$dbh->exec("INSERT INTO checkIn(json,id_user, pseudo, lat, lng, comment, date_begin, date_end) VALUES('json','$id_user', '$pseudo', '$lat', '$lng', '$comment', '$start', '$end')");
+		
+		
 		$res1=mysql_query("SELECT * FROM grabin_user WHERE id='$id_user'")or die (mysql_error());
 	
 		 if( mysql_num_rows($res1)>=1){

@@ -1,12 +1,13 @@
 <?php
 session_start(); 
-
+$_SESSION['profilOuNon']=0;
  
 if (!isset($_SESSION['login'])) { 
    header ('Location: index.php'); 
    exit();  
 }
 else{
+
 $_SESSION['profilVisite']=$_GET["profil"]; 
 $_SESSION['IDprofilVisite']=$_GET["key"];
 require_once("gestionProfilVisite.php");	
@@ -58,6 +59,13 @@ require 'topbar.php' ;
         </div><!-- end userbar content-->
 
         <div id="profile-content">
+<?php if($amitie==1) {?>
+          <h3>Ses checkins</h3>
+
+          <div id="list-checkins"></div>
+<?php }?>
+          <div class="clear-float"></div>
+          
           <div id="medias">
     <!--// Gallery Markup: A container that the plugin is called upon, and two lists for the images (use images with same aspect ratio) //-->
     <div id="gallery-container">
@@ -93,7 +101,7 @@ require 'topbar.php' ;
         <span class="fs-toggle icon-fullscreen"></span>
       </div>
     </div><!-- end #gallery-container-->    
-    <div id="video-section" <?php if (empty($url)){ //si il n'y a pas de photos ?>style="float:none"<?php } ?>>
+    <div id="video-section">
       <?php if (empty($url_vid)){}else{ ?>
       <div id="button" class="pause">
         <span></span>
