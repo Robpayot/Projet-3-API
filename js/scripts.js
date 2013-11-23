@@ -125,7 +125,7 @@
         bindListHandler: function(smallItems){
             var that = this;
 
-            smallItems.on('click', 'li', function(e){
+            smallItems.on('click', 'img', function(e){
                 e.preventDefault();
                 var $this = $(this);
                 that.current = $this.index();
