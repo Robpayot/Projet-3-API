@@ -9,14 +9,15 @@
 
 #gallery-container {
   font-size: 20px;
-  margin: auto;
+  margin: 0 auto;
   position: relative;
   max-width: 50em;
+  min-height: 372px;
   text-align: center;
   overflow: hidden;
-  /*padding-top: 1em;*/
   width:37%;
   float: left;
+  background-color: #ebebeb;
 }
 
 #gallery-container:full-screen {
