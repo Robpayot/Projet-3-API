@@ -104,7 +104,7 @@ $user = $dbh -> query('INSERT INTO grabin_user(name, surname, pseudo, sport, spo
 
 
 ?>
-<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+<!--<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>-->
 <!--<script type="text/javascript" src="js/verifmdpFb.js"></script>-->
 
 
