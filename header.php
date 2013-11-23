@@ -9,7 +9,9 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="js/grabin.js" type="text/javascript"></script>
+<script src="edit-profil.js" type="text/javascript"></script>
 <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js"></script>
+<meta name="viewport" content="width=device-width, user-scalable=yes">
 
 <title>Grab-In</title>
 
