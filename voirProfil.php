@@ -62,7 +62,9 @@ require 'topbar.php' ;
     <!--// Gallery Markup: A container that the plugin is called upon, and two lists for the images (use images with same aspect ratio) //-->
     <div id="gallery-container">
       <ul class="items--small">
-        <?php foreach ($url as $urls): ?>
+        <?php
+		if($amitie==1) {
+			 foreach ($url as $urls): ?>
           <li class="item"><a href="#"><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a>
           <form action='profil.php' method="POST" >
             <button class="delete_media" name="delete_media<?=$urls['id']?>" type="submit">Supprimer la photo</button>
@@ -82,7 +84,7 @@ require 'topbar.php' ;
               </figure>
               </a>
           </li>
-        <?php endforeach; ?>
+        <?php endforeach; }?>
       </ul>
       <div class="controls">
         <span class="control icon-arrow-left" data-direction="previous"></span> 

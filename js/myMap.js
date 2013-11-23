@@ -23,6 +23,14 @@ mapObj.init({
 	        mapObj.setMarkersCheckin(map,locationsData.json[i]);
 	    }
 	},
+	planedCheckin : function(locationsData,count) {
+		$("#list-checkins").empty().fadeIn(1000);
+		profil.evenement();
+	},
+	addedCheckin : function(locationsData,count) {
+		$("#list-checkins").empty().fadeIn(1000);
+		profil.evenement();
+	},
 });
 
 

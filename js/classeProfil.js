@@ -132,8 +132,8 @@ var profil = {
                 type: "GET",
                 url: url,
                 success: function (server_response) {
-					if(server_response=="Aucun ckeckin à venir"){
-						$("#list-checkins").html(server_response);}
+					if(server_response=="Aucun checkin à venir"){
+						$("#list-checkins").fadeIn(500).append(server_response);}
 					else{
 						var ev = JSON.parse(server_response);
 						var count=Object.keys(ev).length;
@@ -156,9 +156,11 @@ var profil = {
 							var checkinDatas = ev["evenement"+passage];
 							//console.log(ev["evenement"+passage]);
 							var commCheckin =ev["evenement"+passage].comment;
-								
-									dateEv[i] = new Date(checkinDatas.date);
-									var month = dateNow.getMonth();
+									var a=checkinDatas.date.split(" ");
+									var d=a[0].split("-");
+									var t=a[1].split(":");
+									dateEv[i] = new Date(d[0],(d[1]-1),d[2],t[0],t[1],t[2]);
+									var month = dateEv[i].getMonth();
 									dateEvString = tab_jour[dateEv[i].getDay()]+" "+dateEv[i].getDate() + " " + tab_mois[month] + " " + dateEv[i].getFullYear() ;
 									//console.log(dateEvString);
 									var minutes=dateEv[i].getMinutes();
@@ -174,7 +176,7 @@ var profil = {
 								if (status == google.maps.GeocoderStatus.OK) {
 									//console.log(results[1].formatted_address);
 									//console.log(dateEvString);
-									affichageEvenement=" à "+results[1].formatted_address+"   [X]</li>";
+									affichageEvenement="<span> à "+results[1].formatted_address+"</span></br> <span class='suppr'>[annuler ce checkin]</span></li>";
 									//console.log(i);
 									//console.log(affichageEvenement);
 									divEvt="#ev"+i;
@@ -188,7 +190,7 @@ var profil = {
 							});
 							
 							divEvt="#ev"+j;
-							$(divEvt).append("<h5>''"+commCheckin+"''</h5> "+dateEvString+" à "+hourEv[i]);
+							$(divEvt).append("<p>''"+commCheckin+"''</p><span> "+dateEvString+" à "+hourEv[i]+"</span>");
 							j++;	
 							}
 						
@@ -208,7 +210,7 @@ var profil = {
 					success: function (choix) {
 						console.log(choix);
 						//profil.params.supprCheckDone.call(this, choix);
-						$("#list-checkins ul").remove();
+						$("#list-checkins").empty().fadeIn(1000);
 						profil.evenement();
 					}
 				});

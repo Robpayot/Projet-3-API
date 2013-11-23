@@ -50,6 +50,8 @@ var mapObj = {
 
 		initializedMap : function () {},
 		gotCheckin : function() {},
+		planedCheckin : function(){},
+		addedCheckin :function(){},
 	},
 
 
@@ -395,6 +397,7 @@ var mapObj = {
 	    request.done(function(  ) {
 	      $( "#textCheckin" ).html( "C'est fait !" );
 	      $( "#firstHeading" ).html( "Check in enregistré !" );
+		  mapObj.params.addedCheckin.call(this);
 	    });
 	     
 	    request.fail(function( jqXHR, textStatus ) {
@@ -456,11 +459,13 @@ var mapObj = {
 	     
 	    request.done(function(  ) {
 	      $( "#plan_checkin" ).html( "Evenement planifié !" );
+			mapObj.params.planedCheckin.call(this);
 	    });
 	     
 	    request.fail(function( jqXHR, textStatus ) {
 	      console.log( "Request failed: " + textStatus );
 	      $( "#plan_checkin" ).append( "oops! il y a eu une erreur" );
+		  
 	    });
 	    return false;
 	},
