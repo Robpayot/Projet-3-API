@@ -25,7 +25,7 @@ require 'topbar.php' ;
     <input type="text" id="address" name="address" placeholder="Rechercher un lieu" />
   </form>
   <p id="statut"></p> <!-- Affichage erreurs -->
-  <div id="map-canvas" style="height:665px; width:100%; " ></div> <!-- Affichage de la map -->
+  <div id="map-canvas" ></div> <!-- Affichage de la map -->
 </div>
 <!-- FIN MAP -->
 <div id="userbar">
@@ -46,7 +46,7 @@ require 'topbar.php' ;
                 <div id="statut">
                   <p id="status"><?php echo "&#171;".$statut."!&#187;" ?> </p> 
                 </div>
-                <div id="cal">
+                <div id="cal" class="desktop-only">
                         <div id="cal-shadow-1"></div>
                         <div id="cal-shadow-2"></div>
                         <div id="weather">
@@ -68,7 +68,7 @@ require 'topbar.php' ;
           
           <div id="medias">
     <!--// Gallery Markup: A container that the plugin is called upon, and two lists for the images (use images with same aspect ratio) //-->
-    <div id="gallery-container">
+    <div id="gallery-container" <?php if (empty($url_vid)){?>class="no-video"<?php } ?>>
       <ul class="items--small">
         <?php
 		if($amitie==1) {
@@ -85,7 +85,7 @@ require 'topbar.php' ;
           <li class="item--big">
             <a href="#">
               <figure>
-                <img src="<?php echo $urls['url'];?>" alt="" />
+                <img src="<?php echo $urls['url'];?>" <?php if (empty($url_vid)){?>class="no-video2"<?php } ?> alt="" />
                 <figcaption class="img-caption">
                   <?php echo $urls['description'];?>
                 </figcaption>
@@ -101,7 +101,7 @@ require 'topbar.php' ;
         <span class="fs-toggle icon-fullscreen"></span>
       </div>
     </div><!-- end #gallery-container-->    
-    <div id="video-section">
+    <div id="video-section" <?php if (empty($url)){?>class="no-photo"<?php } ?>>
       <?php if (empty($url_vid)){}else{ ?>
       <div id="button" class="pause">
         <span></span>
