@@ -87,6 +87,9 @@ if($sport>0){
 
 	$media = $dbh -> query("SELECT * FROM media WHERE id_user='".$id_user."'")->fetchAll();
 	$url = $dbh -> query("SELECT url,id FROM media WHERE id_user='".$id_user."' AND url!=''")->fetchAll();
+
+	$nbUrl=count($url);
+
 	foreach ($media as $medias):
  if (!empty($medias['url_vid'])) {
 	$url_vid = $medias['url_vid'];
@@ -235,6 +238,7 @@ header('location:profil.php');
 foreach($url as $urls):	
 if (isset($_POST['delete_media'.$urls['id']])) {
 	$dbh -> query('DELETE FROM media WHERE id = "'.$urls['id'].'"');
+	header('location:profil.php');
 }
 endforeach;
 

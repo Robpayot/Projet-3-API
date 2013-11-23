@@ -12,7 +12,6 @@ require_once("meteo.php");
 }
 require 'header.php' ;
 require 'topbar.php' ;
-
 ?>
  <!-- DEBUT MAP -->
 
@@ -71,6 +70,7 @@ require 'topbar.php' ;
 <a href="#" class="poster-media" onclick="return afficher_cacher('poster-photo');">Poster une photo</a>
 <a href="#" class="poster-media" onclick="return afficher_cacher('poster-video'); ">Poster une vidéo</a>
 
+<?php if ($nbUrl<9) { ?>
 <div id="poster-photo" class="upload-media" style="display:none">
   <form action="profil.php" enctype="multipart/form-data" method="post">
     <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
@@ -79,6 +79,9 @@ require 'topbar.php' ;
     <button id="submit_photo" name="submit_photo" type="submit">Valider</button></p>
   </form> 
 </div>
+<?php } else { ?>
+<p>Vous ne pouvez pas poster plus de 9 photos !</p>
+ <?php } ?>
 
 <div id="poster-video" class="upload-media" style="display:none">
   <form action="profil.php" enctype="multipart/form-data" method="post">
@@ -92,7 +95,8 @@ require 'topbar.php' ;
   <div id="medias">
     <!--// Gallery Markup: A container that the plugin is called upon, and two lists for the images (use images with same aspect ratio) //-->
     <?php if (empty($url)){
-		}else {  ?>
+		}else {  
+		?>
     <div <?php if (empty($url_vid)){?>style="float:none; width:62%"<?php } ?> id="gallery-container" >
       <ul class="items--small">
         <?php foreach ($url as $urls): ?>
@@ -124,7 +128,8 @@ require 'topbar.php' ;
         <span class="fs-toggle icon-fullscreen"></span>
       </div>
     </div><!-- end #gallery-container--> 
-     <?php } ?>   
+     <?php 
+	  } ?>   
   <?php if (empty($url_vid)){
 	  }else{ ?>
     <div <?php if (empty($url)){?>style="float:none; position:absolute; left:25%;"<?php } ?> id="video-section" >
