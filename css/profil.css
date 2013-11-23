@@ -3,7 +3,9 @@
 #medias{margin-bottom: 40px;}
 .upload-media p{font-size: 14px;margin-top: 8px;}
 .upload-media p label{text-align: right;display: inline-block;width: 200px;margin-right: 20px;}
-.upload-media button{margin: 0 auto; background-color: #ffffff; color:#555555; border: none;display: block;padding: 5px 15px;font-size: 14px;}
+.upload-media button{margin: 10px auto; background-color: #ffffff; color:#555555; border: none;display: block;padding: 5px 15px;font-size: 14px;}
+.upload-media input[type="file"] {background-color: #F7F7F7;color: #555555;padding: 3px 7px;font-size: 14px;}
+.upload-media p input[name="description"] {width: 310px;border: none;padding: 5px 4px;}
 
 h3{font-weight: bolder;font-size: 1.3em;margin-bottom: 20px;color:#dd4a4a;}
 #list-checkins{text-align: center}
@@ -29,6 +31,12 @@ h3{font-weight: bolder;font-size: 1.3em;margin-bottom: 20px;color:#dd4a4a;}
 #plan-checkin h2{font-weight: bold;font-size: 120%;}
 
 .noscrollbar {line-height:1.35;overflow:hidden;white-space:nowrap;}
+
+
+#weather {background-color: #6dc7e2;padding:0;}
+#cal-shadow-2{background: #797979;}
+
+
 
 /* POUR RESPONSIVE : 
 

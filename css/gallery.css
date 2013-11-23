@@ -17,7 +17,6 @@
   overflow: hidden;
   width:37%;
   float: left;
-  background-color: #ebebeb;
 }
 
 #gallery-container:full-screen {
@@ -124,6 +123,8 @@
   position: relative;
 }
 .item form{position:absolute;bottom:0px;}
+
+.delete_media{background-color: #F7F7F7;border: none;color:#dd4a4a;}
 
 .item img {
   display: block;
