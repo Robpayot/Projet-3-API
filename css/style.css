@@ -27,26 +27,27 @@ body{
 	font-family: 'ProximaNovaRegular', verdana;
 }
 #topbar-content{
-	width:960px;
-	margin-left:-480px;
-	left:50%;
-	position:relative;
 	padding-top:10px;
+  width:100%;
+  max-width:1020px;
+  margin:0 auto;
+  position: relative;
 }
 #topbar-content a:visited, #topbar-content a:link{
   color:#202020;
   text-decoration:none;
 }
 #topbar{
+  width:100%;
+  margin:0 auto;
 	height:50px;
 	background:white;
 	border-bottom: solid 1px #6dc9e4;
 	font-size:14px;
 	position:fixed;
-	width:100%;
-    z-index: 100;
+  z-index: 100;
 }
-#topbar h1{font-family: 'ProximaNovaSemibold';font-size:18px;position:absolute;left:0;}
+h1{position:absolute;left:30px;}
 h1:hover{
   -moz-transform: scale(1) rotate(-3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
     -webkit-transform: scale(1) rotate(-3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
@@ -55,7 +56,7 @@ h1:hover{
         transform: scale(1) rotate(-3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
 }
 #topbar li{display:inline-block;margin-left:13px;}
-#topbar ul{font-family: 'ProximaNovaSemibold';font-size:14px;position:absolute;right:0px;}
+#topbar ul{font-family: 'ProximaNovaSemibold';font-size:14px;position:absolute;right:30px;}
 #notif-number{position:absolute;top:-5px;right:-5px;height:10px;width:10px;background-color:red;color:white;font-size:9px;line-height:11px;text-align:center;border-radius:50%;}
 #topbar li input{
     margin-right:19px;
@@ -441,7 +442,7 @@ h3{margin-top: 40px;font-weight: bold;font-size: 1.1em}
 #list-checkins ul{}
 
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 820px) {
 #topbar-content{width:320px;margin-left:-160px;left:50%;}
 #topbar h1{left:50%;margin-left:-31px;}
 #topbar li{margin-left: 19px;}
@@ -478,7 +479,7 @@ h3{margin-top: 40px;font-weight: bold;font-size: 1.1em}
   .mobile-dspln{display:none;}
   }
 
-@media screen and (min-width: 641px) {
+@media screen and (min-width: 821px) {
 /*#topbar li img{display:block;}*/
 .mobile-only{display:none;}
 #mobile-more-close{display:none;}
