@@ -335,7 +335,7 @@ h1:hover{
 }
 
 
-#map-canvas{/*height:75%*/height:500px;width:100%;margin-top:50px;}
+#map-canvas{height:75%;/*height:500px;*/width:100%;margin-top:50px;}
 #map-section{padding-top: 50px;}
 
 /*--Infobulles checkins--*/
