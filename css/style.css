@@ -122,7 +122,7 @@ h1:hover{
         -ms-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-30deg) skewY(0deg);
         transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-30deg) skewY(0deg);
 }
-#cal-shadow-2{width:270px;height:180px;background:#6dc7e2;position:absolute;bottom:0;left:4px;
+#cal-shadow-2{width:270px;height:180px;background:#dcdcdc;position:absolute;bottom:0;left:3px;
         -moz-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-2deg) skewY(0deg);
         -webkit-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-2deg) skewY(0deg);
         -o-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-2deg) skewY(0deg);
@@ -448,8 +448,7 @@ h3{margin-top: 40px;font-weight: bold;font-size: 1.1em}
 #topbar li input{margin-top:10px;margin-right:46px;width:208px;}
 #topbar li:nth-child(n+4){display:block;}
 
-#mobile-more-icon{position:absolute;left:19px;top:19px;}
-#mobile-search{position:absolute;right:19px;top:19px;}
+#mobile-more-icon{position:fixed;left:19px;top:19px;z-index:200;}
 #topbar ul{
   width:320px;
   position:fixed;
@@ -487,6 +486,5 @@ h3{margin-top: 40px;font-weight: bold;font-size: 1.1em}
 
   }
 
-  
 
 
