@@ -343,7 +343,7 @@ h1:hover{
 #content-infocheckin{padding: 10px;color: #aaa;}
 
 /*--Form recherche lieu--*/
-#geocoder {position:absolute;z-index:50;left:80%; top: 50px;}
+#geocoder {position:absolute;z-index:50;top: 50px;}
 #geocoder input {
     background-color: #eeeeee;
     border: thick solid #ffffff;
