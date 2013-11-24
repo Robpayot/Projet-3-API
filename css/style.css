@@ -477,6 +477,10 @@ h3{margin-top: 40px;font-weight: bold;font-size: 1.1em}
         transform: scale(1) rotate(0deg) translateX(0px) translateY(-150%) skewX(0deg) skewY(0deg);
     }
   .mobile-dspln{display:none;}
+  #profiledit-dropdown{width:320px;margin-left:-160px;}
+  #link-pp-profiledit{position:inherit;margin:10px;}
+  #close-avatar{position:absolute;left:18px;top:209px;}
+  #avatar{top:185px;left:0px;width:245px;}
   }
 
 @media screen and (min-width: 821px) {
