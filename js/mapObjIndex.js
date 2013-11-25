@@ -23,34 +23,6 @@ var addressLocation; //stock the address found by the geocoder
 var markerPlan; //marker of the place the user want to plan a checkin
 var latPlan, lngPlan; //coordinates of a checkin planned
 
-//Message if success check in
-var checkinSuccess = '<div style="font-family: Roboto,Arial,sans-serif;">' +
-	'<h2 style="font-weight: bolder;color:#6DC7E2; font-size: 140%;margin-bottom: 10px;">Se localiser ici</h2>' +
-	'<div id="textCheckin">' +
-	'<form name="add_comment" onsubmit="return mapObj.addCheckin()"><label for="checkin_comment" style="width: 72px;text-align: right;font-size: 110%;">Commentaire (<140 car.) :</label> <input type="text" id="checkin_comment" name="checkin_comment" maxlength="140"/><br>' +
-	'<input type="submit" value="OK" style="border: none;background-color: #DD4A4A;color: #ffffff;padding: 4px 10px;display: block;margin: 10px auto;"></form></div>' +
-	'</div>';
-
-//Create the window info
-var infowindowCI = new InfoBubble({
-			map: map,
-			content: checkinSuccess,  
-			//position: event.latLng,  
-			shadowStyle: 0, 
-			padding: 10,  
-			backgroundColor: '#ffffff',  
-			borderRadius: 0, 
-			arrowSize: 10, 
-			borderWidth: 0,  
-			borderColor: '#009EE0', 
-			disableAutoPan: true, 
-			hideCloseButton: false, 
-			arrowPosition: 50,  
-			arrowStyle: 0, 
-			disableAnimation: false, 
-			maxWidth :   500 
-		});
-
 
 
 var mapObj = {
@@ -95,37 +67,6 @@ var mapObj = {
 	    //Create the map
 	    map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);//$(mapObj.params.mapDiv)
 
-	    //Plan a checkin by clicking on the map
-	    var plan=false;
-	    google.maps.event.addListener(map, 'click', function(event) {
-	    	geocoder.geocode({'latLng': event.latLng}, function(results, status) {
-		    if (status == google.maps.GeocoderStatus.OK) {
-		    	//console.log(results[4]);
-		      if (results[1]) {
-		        	if(results[4].formatted_address!="Paris, France" && results[5].formatted_address!="Paris, France") {
-		        		console.log(results[5].formatted_address);
-			            alert("Le service n'est disponible qu'à Paris pour le moment, tu ne peux donc pas te géolocaliser ici, désolé !");
-			        } else {
-				    	if(plan==false){
-				    	plan=true;
-					    //console.log(event.latLng);
-					    latPlan=event.latLng.ob;
-					    lngPlan=event.latLng.pb;
-					    	mapObj.addMarkerPlan(event.latLng);
-					    	mapObj.windowPlanCheckin(event.latLng);
-						} else {
-							mapObj.removeMarkerPlan();
-							plan=false;
-						}
-					}
-		        } else {
-		        console.log('No results found');
-		      }
-		    } else {
-		      console.log('Geocoder failed due to: ' + status);
-		    }
-		  });
-		});
 
 	    // Limit of the map 
 	    var strictBounds = new google.maps.LatLngBounds(
@@ -348,55 +289,7 @@ var mapObj = {
 	  }
 	},
 
-	//get the geolocation datas and check if the skater is in paris or not
-	findPosition:function(position) { 
-	    posLatitude = position.coords.latitude;
-	    posLongitude = position.coords.longitude;
-	    accuracy = position.coords.accuracy;
-	    var ltlng = new google.maps.LatLng(posLatitude, posLongitude);
-	    geocoder.geocode({'latLng': ltlng}, function(results, status) {
-	    if (status == google.maps.GeocoderStatus.OK) {
-	      if (results[1]) {
-	        //console.log(results[4].formatted_address);
-	        addressLocation = results[1].formatted_address;
-	        //console.log('Adresse : '+addressLocation);
-	        //////lines below are commented during the developpment and the demo//////
-	        //if(results[4].formatted_address!="Paris, France" ) {
-	          //alert("Le service n'est disponible qu'à Paris pour le moment, tu ne peux donc pas te géolocaliser ici, désolé !");
-	        //} else {
-	          mapObj.findOnGoogleMaps();
-	        //}
-	      } else {
-	        console.log('No results found');
-	      }
-	    } else {
-	      console.log('Geocoder failed due to: ' + status);
-	    }
-	  });
-	},
-
-	findOnGoogleMaps:function() {
-	    currentPos = new google.maps.LatLng(posLatitude, posLongitude);
-	    map.setZoom(15);
-	    map.setCenter(currentPos);
-	    var markerPos = new google.maps.Marker({
-	        position: currentPos,
-	        map: map,
-	        title: "Votre position",
-	        icon: 'imgs/icons/checkinme.png'
-	    });
-	    infowindowCI.open(map, markerPos);
-	},
-
-
-	//get the location via the browser
-	findLocation:function() {
-	    if (navigator.geolocation) {
-	        navigator.geolocation.getCurrentPosition(mapObj.findPosition, mapObj.handleError);
-	    } else {
-	        updateStatus("Votre navigateur ne supporte pas la géolocalisation, indiquez votre adresse dans le champs ci-dessus.");
-	    }
-	},
+	
 
 
 	find : function(address){
@@ -414,103 +307,7 @@ var mapObj = {
 		
 	},
 
-	//Add the checkin datas in the database
-	addCheckin:function() {
-	    var comment = document.forms["add_comment"].elements[0].value;
-	    var url = "add_checkin.php?lat=" + posLatitude + "&lng=" + posLongitude + "&comm=" + comment;
-	    var request = $.ajax({
-	      url: url,
-	    });
-	     
-	    request.done(function(  ) {
-	      $( "#textCheckin" ).html( "C'est fait !" );
-	      $( "#firstHeading" ).html( "Check in enregistré !" );
-		  mapObj.params.addedCheckin.call(this);
-	    });
-	     
-	    request.fail(function( jqXHR, textStatus ) {
-	      console.log( "Request failed: " + textStatus );
-	      $( "#textCheckin" ).html( "oops!" );
-	      $( "#firstHeading" ).html( "Il semble qu'il y a un problème" );
-	    });
-	    return false;
-	},
-	  
-	//infowindow when the user click on the map to plan a checkin
-	windowPlanCheckin:function() {
-		var formPlan = '';
-	    var windowPlan = new InfoBubble({
-			map: map,
-			content: formPlan,  
-			//position: event.latLng,  
-			shadowStyle: 0, 
-			padding: 10,  
-			backgroundColor: '#ffffff',  
-			borderRadius: 0, 
-			arrowSize: 10, 
-			borderWidth: 0,  
-			borderColor: '#009EE0', 
-			disableAutoPan: true, 
-			hideCloseButton: false, 
-			arrowPosition: 50,  
-			arrowStyle: 0, 
-			disableAnimation: false, 
-			maxWidth :   500 
-		});
-		windowPlan.open(map, markerPlan);
-		windowPlan.setContent('<div id="plan_checkin" style="font-family: Roboto,Arial,sans-serif;"><h2 style="font-weight: bolder;color:#6DC7E2; font-size: 140%;margin-bottom: 10px;">Planifier un checkin</h2>'+
-		    '<form name="planPlace" id="planPlace" onsubmit="return mapObj.planCheckin();"><div id="errors" ></div>'+
-		      '<label for="day" style="display: inline-block;width: 72px;text-align: right;font-size: 110%;">Jour </label><input type="text" name="day" id="day"><br>'+
-		      '<label for="time" style="display: inline-block;width: 72px;text-align: right;font-size: 110%;">Heure </label><input type="time" name="time" id="time" value="hh:mm"><br>'+
-		      '<label for="comment" style="display: inline-block;width: 72px;text-align: right;font-size: 110%;">Commentaire </label><input type="text" name="comment" id="comment"><br>'+
-		      '<input type="submit" value="OK" style="border: none;background-color: #DD4A4A;color: #ffffff;padding: 4px 10px;display: block;margin: 10px auto;">'+
-		    '</form>'+
-		  '</div>');
-		$( "#day" ).datepicker({ dateFormat: 'dd/mm/yy' });
-	},
-
-	// Add a marker on the map where the click is
-	addMarkerPlan : function(location) {
-	  markerPlan = new google.maps.Marker({
-	    position: location,
-	    map: map,
-	    icon: 'imgs/icons/checkinadd.png'
-	  });
-	},
-
-	removeMarkerPlan : function(){
-		markerPlan.setMap(null);
-	},
-
-	//send the data to plan a checkin
-	planCheckin:function() {
-		var datePlan = $('#day').val();
-		var timePlan = $('#time').val();
-		var commentPlan = $('#comment').val();
-		var d=datePlan.split("/");
-		var nd=new Date(d[2], d[1] - 1, d[0]);
-		var dd = nd.getDate();
-		var mm = nd.getMonth() + 1; 
-		var yyyy = nd.getFullYear();
-		var dateFormated = yyyy + "-" + mm + "-" + dd;
-
-		var url = "plan_checkin.php?lat=" + latPlan + "&lng=" + lngPlan +"&day=" + dateFormated + "&time=" + timePlan+ "&c=" + commentPlan;
-	    var request = $.ajax({
-	      url: url,
-	    });
-	     
-	    request.done(function(  ) {
-	      $( "#plan_checkin" ).html( "Evenement planifié !" );
-			mapObj.params.planedCheckin.call(this);
-	    });
-	     
-	    request.fail(function( jqXHR, textStatus ) {
-	      console.log( "Request failed: " + textStatus );
-	      $( "#plan_checkin" ).append( "oops! il y a eu une erreur" );
-		  
-	    });
-	    return false;
-	},
+	
 	
 
 }

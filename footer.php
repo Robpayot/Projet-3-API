@@ -1,12 +1,12 @@
-<footer><div id="footer-content">Copyright 2013 Grab-In!© - <a href="mailto:romain.barbier@mail.com">Contact</a></div></footer>
+<footer><div id="footer-content">Copyright 2013 Grab-In! © - <a href="mailto:romain.barbier@mail.com">Contact</a></div></footer>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL6jbConOc2cMBNepwDNA0l_lqrNOaRPI&sensor=true"></script><!-- API Google Maps-->
 <script type="text/javascript" src="js/verifConnexion.js"></script>
 <script type="text/javascript" src="js/planning.js"></script>
-<script type="text/javascript" src="js/mapObj.js"></script>
+<?php if ($_SERVER['REQUEST_URI']=='/GRAB-IN/MASTER/index.php' ) { ?> <script type="text/javascript" src="js/mapObjIndex.js"></script><?php }else{ ?><script type="text/javascript" src="js/mapObj.js"></script><?php } ?>
 <script type="text/javascript" src="js/myMap.js"></script>
 <script type="text/javascript" src="js/classeProfil.js"></script>
-<!--<script type="text/javascript" src="js/ProfilUser.js"></script>-->
+<script type="text/javascript" src="js/ProfilUser.js"></script>
 <script type="text/javascript" src="js/ProfilVisite.js"></script>
 <script type="text/javascript" src="js/search.js"></script>
 <script type="text/javascript" src="js/video.js"></script>
