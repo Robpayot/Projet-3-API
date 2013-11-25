@@ -49,7 +49,6 @@ function getAvatarOff(){
   setTimeout(function(){document.getElementById('close-avatar').className='dspln';},100);
 };
 
-
 //$( "#date" ).datepicker({ dateFormat: 'dd/mm/yy' });
 
 
@@ -68,12 +67,10 @@ function afficher_cacher(id){
 }
 
 function displayResults(){
-	console.log("FOCUS");
 	$('#resultat').css("opacity","1");
 }
 
 function hideResults(){
-	console.log("BLUR");
 		$('#resultat').css("opacity","0");
 		//$('#recherche').val("");
 }
