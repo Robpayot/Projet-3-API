@@ -460,7 +460,7 @@ var mapObj = {
 		windowPlan.open(map, markerPlan);
 		windowPlan.setContent('<div id="plan_checkin" style="font-family: Roboto,Arial,sans-serif;"><h2 style="font-weight: bolder;color:#6DC7E2; font-size: 140%;margin-bottom: 10px;">Planifier un checkin</h2>'+
 		    '<form name="planPlace" id="planPlace" onsubmit="return mapObj.planCheckin();"><div id="errors" ></div>'+
-		      '<label for="day" style="display: inline-block;width: 72px;text-align: right;font-size: 110%;">Jour </label><input type="text" name="day" id="day"><br>'+
+		      '<label for="day" style="display: inline-block;width: 72px;text-align: right;font-size: 110%;">Jour </label><input type="text" name="day" placeholder="jj/mm/aaaa" id="day"><br>'+
 		      '<label for="time" style="display: inline-block;width: 72px;text-align: right;font-size: 110%;">Heure </label><input type="time" name="time" id="time" value="hh:mm"><br>'+
 		      '<label for="comment" style="display: inline-block;width: 72px;text-align: right;font-size: 110%;">Commentaire </label><input type="text" name="comment" id="comment"><br>'+
 		      '<input type="submit" value="OK" style="border: none;background-color: #DD4A4A;color: #ffffff;padding: 4px 10px;display: block;margin: 10px auto;">'+
