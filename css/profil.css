@@ -48,14 +48,14 @@ h3{font-weight: bolder;font-size: 1.3em;margin-bottom: 20px;color:#dd4a4a;}
 #userbar{height:auto;} 
 #userbar-content {width: 210px;margin:20px auto;} --> Pas de left ou margin left
 #statut {display:block;width:auto;margin-top: 15px;}
-#profile-content {width: 95%;padding: 40px 0;margin-top:310px;}
+#profile-content {width: 100%;padding: 40px 0;margin-top:310px;}
 .poster-media {display:block;margin: 10px auto;}
 .upload-media {padding: 10px;}
 .upload-media p{text-align:center;}
 .upload-media p label{text-align: inherit;display: inline;margin-right:0;}
 .upload-media button {margin-top: 10px;}
 #gallery-container{width: 100%;}
-#video-section {width: 98%;}
+#video-section {width: 100%;}
 }
 
 
