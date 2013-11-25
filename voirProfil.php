@@ -60,6 +60,7 @@ require 'topbar.php' ;
         <div id="profile-content">
           	<h3>Les checkins de <?php echo $pseudoV ?></h3>
 			 <div id="list-checkins"></div>
+        <h3>Les médias de <?php echo $pseudoV ?></h3>
           <div id="medias">
     <!--// Gallery Markup: A container that the plugin is called upon, and two lists for the images (use images with same aspect ratio) //-->
     <div <?php if (empty($url_vid)){?>style="float:none; width:62%"<?php } ?> id="gallery-container">
@@ -68,9 +69,6 @@ require 'topbar.php' ;
 		
 			 foreach ($url as $urls): ?>
           <li class="item"><a href="#"><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a>
-          <form action='profil.php' method="POST" >
-            <button class="delete_media" name="delete_media<?=$urls['id']?>" type="submit">Supprimer la photo</button>
-          </form>
           </li>
         <?php endforeach; ?>
       </ul>
@@ -80,9 +78,11 @@ require 'topbar.php' ;
             <a href="#">
               <figure>
                 <img src="<?php echo $urls['url'];?>" <?php if (empty($url_vid)){?>style="margin: 0 auto; width:62%"<?php } ?> alt="" />
+                <?php if($urls['description']!=""){ ?>
                 <figcaption class="img-caption">
                   <?php echo $urls['description'];?>
                 </figcaption>
+                <?php } ?>
               </figure>
               </a>
           </li>

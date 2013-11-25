@@ -111,9 +111,11 @@ require 'topbar.php' ;
                 <a href="#">
                   <figure>
                     <img src="<?php echo $urls['url'];?>" <?php if (empty($url_vid)){?>style="margin: 0 auto; width:62%"<?php } ?> alt="" />
+                    <?php //if($urls['description']!=""){ ?>
                     <figcaption class="img-caption">
                       <?php echo $urls['description'];?>
                     </figcaption>
+                    <?php //} ?>
                   </figure>
                   </a>
               </li>
