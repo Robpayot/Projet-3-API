@@ -28,7 +28,7 @@ require 'topbar.php' ;
 <!-- FIN MAP -->
 <div id="userbar">
         <div id="userbar-content">
-                <img src="<?php echo $avatar?>" alt="<?php echo htmlentities($pseudo); ?>"/>
+                <img id="profile-picture" src="<?php echo $avatar?>" alt="<?php echo htmlentities($pseudo); ?>"/>
                 <div id="identity">
                         <h2><?php echo htmlentities($pseudo); ?><span id="iconSports"><?php echo $iconSports; ?></span></h2>
                         <?php if($age>0) {?>
