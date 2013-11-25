@@ -178,7 +178,7 @@ h1:hover{
   z-index:200;
 }
 
-#profiledit-dropdown{width:480px;margin-left:-240px;}
+#profiledit-dropdown{width:480px;margin-left:-240px;position:absolute;}
 .profiledit-right{width:320px;float:right;margin-bottom:14px;}
 #pp-profiledit{position:relative; width:133px;height:133px;}
 #link-pp-profiledit{position:absolute;top:203px;left:22px;color:#8d8d8d;}
