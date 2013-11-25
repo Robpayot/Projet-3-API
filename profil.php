@@ -125,7 +125,6 @@ require 'topbar.php' ;
             <span class="control icon-arrow-left" data-direction="previous"></span> 
             <span class="control icon-arrow-right" data-direction="next"></span> 
             <span class="grid icon-grid"></span>
-            <span class="fs-toggle icon-fullscreen"></span>
           </div>
         </div><!-- end #gallery-container--> 
          <?php 

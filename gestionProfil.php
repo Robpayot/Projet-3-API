@@ -86,7 +86,7 @@ if($sport>0){
 //_________________RÉCUPÉRATION DES DONNEES MEDIA_________________//
 
 	$media = $dbh -> query("SELECT * FROM media WHERE id_user='".$id_user."'")->fetchAll();
-	$url = $dbh -> query("SELECT url,id FROM media WHERE id_user='".$id_user."' AND url!=''")->fetchAll();
+	$url = $dbh -> query("SELECT url,id,description FROM media WHERE id_user='".$id_user."' AND url!=''")->fetchAll();
 
 	$nbUrl=count($url);
 
