@@ -31,11 +31,11 @@ require 'edit-profil.php';
 	
 		
 		?>
+<a onclick="getOn('mobile-more-menu')"><img class="mobile-only" id="mobile-more-icon" src="imgs/more.png" alt="Menu"/></a>
 <div id="topbar">
 	<div id="topbar-content">
 		<h1><a href="profil.php"><img src="imgs/logo.png" alt="Grab-In!"/></a></h1>
-    <a onclick="getOn('mobile-more-menu')"><img class="mobile-only" id="mobile-more-icon" src="imgs/more.png" alt="Menu"/></a>
-    <a onclick="getDropDownDown('search-dropdown')"><img class="mobile-only" id="mobile-search" src="imgs/search.png" alt="Recherche"/></a>
+    
 		<ul id="mobile-more-menu" class="mobile-dspln"><?php if(isset($_SESSION['login'])) {?>
       <a  href="#" class="close" id="mobile-more-close" onclick="getOff('mobile-more-menu')"><img src="imgs/close.png" alt="close"/></a>
       <li>

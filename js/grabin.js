@@ -27,6 +27,11 @@ function getOff(id){
   setTimeout(function(){document.getElementById(id).className='mobile-dspln';},200);
 };
 
+function getOffDesktop(id){
+  document.getElementById(id).className='opacity-0';
+  setTimeout(function(){document.getElementById(id).className='dspln';},200);
+};
+
 function getOn(id){
   document.getElementById(id).className='noclass opacity-0';
   setTimeout(function(){document.getElementById(id).className='opacity-1';},100);
