@@ -132,7 +132,7 @@ require 'topbar.php' ;
     	  }else{ ?>
         <div <?php if (empty($url)){?>style="float:none; position:absolute; left:25%;"<?php } ?> id="video-section" >
           
-          <div id="button" class="pause">
+          <div id="button" class="play">
             <span></span>
           </div>
           <video id="video" preload="none">

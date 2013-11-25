@@ -21,16 +21,15 @@ var player={
 	
 	playPause : function () {
 		var media=$(player.params.video)[0];
-		$(player.params.button).removeClass('loading');
 		if(media.paused){
 			media.play();
-			$(player.params.button).addClass('play');
-			$(player.params.button).removeClass('pause');
+			$(player.params.button).addClass('pause');
+			$(player.params.button).removeClass('play');
 		}
 		else{
 			media.pause();
-			$(player.params.button).addClass('pause');
-			$(player.params.button).removeClass('play');
+			$(player.params.button).addClass('play');
+			$(player.params.button).removeClass('pause');
 		}
 	},
 
