@@ -91,7 +91,7 @@ h1:hover{
   position: relative;
 }
 #userbar{position:absolute;width:100%;top:75%;margin-top:40px;height:160px;/*padding:10px;*/background:#efefef;} /* le padding fait déborder de l'écran */
-#userbar-content{width:960px;position:relative;margin-left:-480px;left:50%;}
+#userbar-content{width:960px;position:relative;}
 #userbar-content img{display:inline-block;}
 #userbar h2{font-family: 'ProximaNovaSemibold';font-size:18px;}
 #userbar p{font-size:14px;margin-top:2px;}
@@ -142,7 +142,7 @@ h1:hover{
 #weather span{font-size: 20px;color: #ffffff;font-weight: bolder;text-transform: uppercase;}
 #weather img{position:absolute;left:45px;top:30%;}
 #status{
-    width:300px;
+    width:210px;
     text-align:center;
     color:#8d8d8d;
     font-family: 'ProximaNovaSemiboldItalic';
@@ -150,9 +150,9 @@ h1:hover{
     margin:0 auto;
 }
 #status~p{text-align:center;margin-top: 20px;}
-#statut{display:inline-block;vertical-align:top;width:40%;margin-top:15px;}
-#envoiStatut{width:200px;background-color:#ffffff;padding:5px 2px;border:none;font-weight:bold;}
-#newStatut{width:200px;padding:4px;border:none;}
+#statut{vertical-align:top;width:40%;margin-top:15px;}
+#envoiStatut{width:210px;background-color:#ffffff;padding:5px 2px;border:none;font-weight:bold;}
+#newStatut{width:202px;padding:4px;border:none;}
 
 
 .transition200io, #classement-dropdown li, #envoie, .opacity-1, .opacity-0, h1{
@@ -485,6 +485,7 @@ h3{margin-top: 40px;font-weight: bold;font-size: 1.1em}
   #link-pp-profiledit{position:inherit;margin:10px;}
   #close-avatar{position:absolute;left:18px;top:209px;}
   #avatar{top:185px;left:0px;width:245px;}
+  #profile-picture{width:70px;height:70px;border-radius:50%;}
 
   }
 
@@ -494,6 +495,8 @@ h3{margin-top: 40px;font-weight: bold;font-size: 1.1em}
 #mobile-more-close{display:none;}
 .abos{margin-right:19px;position:relative;}
 #profile-content{left:50%;margin-left:-500px;}
+#statut{display:inline-block;}
+#userbar-content{margin-left:-480px;left:50%;}
 
   }
 
