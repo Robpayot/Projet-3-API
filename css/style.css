@@ -432,7 +432,7 @@ h1:hover{
 
 
 
-#profile-content{width:1000px;left:50%;margin-left:-500px;position:absolute;margin-top:230px;top:75%;}
+#profile-content{width:1000px;margin:0 auto;margin-top:40px;position:absolute;top:75%;margin-top:230px;}
 
 #medias{width:100%;margin:0 auto;padding-top:40px;}
 
@@ -443,8 +443,6 @@ h1:hover{
 .upload-media{margin: 20px 5px;background-color:#efefef;padding:20px;}
 
 h3{margin-top: 40px;font-weight: bold;font-size: 1.1em}
-
-#profile-picture{width:160px;height:160px;}
 
 #list-checkins ul{}
 
@@ -496,6 +494,7 @@ h3{margin-top: 40px;font-weight: bold;font-size: 1.1em}
 .mobile-only{display:none;}
 #mobile-more-close{display:none;}
 .abos{margin-right:19px;position:relative;}
+#profile-content{left:50%;margin-left:-500px;}
 
   }
 
