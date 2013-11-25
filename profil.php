@@ -101,9 +101,6 @@ require 'topbar.php' ;
       <ul class="items--small">
         <?php foreach ($url as $urls): ?>
           <li class="item"><a href="#"><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a>
-          <form action='profil.php' method="POST" >
-            <button class="delete_media" name="delete_media<?=$urls['id']?>" type="submit">Supprimer la photo</button>
-          </form>
           </li>
         <?php endforeach; ?>
       </ul>
@@ -157,6 +154,27 @@ require 'topbar.php' ;
   </div> <!-- end #medias-->
 
 
+<div>
+<?php if (empty($url)){
+    }else {  
+    ?>
+      <ul>
+        <?php foreach ($url as $urls): ?>
+          <li><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a>
+          <form action='profil.php' method="POST" >
+            <button class="delete_media" name="delete_media<?=$urls['id']?>" type="submit">Supprimer cette photo</button>
+          </form>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+<?php }
+if (empty($url_vid)){
+    }else{ ?>
+    <form action='profil.php' method="POST" >
+      <button class="delete_media" name="delete_media<?//=$urls['id']?>" type="submit">Supprimer la vidéo</button>
+    </form>
+<?php } ?>
+</div>
 
 
 </div> <!-- end #profile-content-->
