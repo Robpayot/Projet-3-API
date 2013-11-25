@@ -20,7 +20,7 @@
     src: url('../fonts/proximanova/proximanova-regular.eot') format('embedded-opentype'),
          url('../fonts/proximanova/proximanova-regular.woff') format('woff'),
          url('../fonts/proximanova/proximanova-regular.ttf') format('truetype'),
-         url('fonts/proximanova/proximanova-regular.svg#ProximaNovaRegular') format('svg');
+         url('../fonts/proximanova/proximanova-regular.svg#ProximaNovaRegular') format('svg');
 }
 html{height:100%;}
 body{
