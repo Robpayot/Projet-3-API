@@ -64,7 +64,7 @@ require 'edit-profil.php';
   <form autocomplete="off" method='post' id="formConn">
   <input type="text" id="pseudoConnexion" name="pseudo" placeholder="Pseudo" required><span id="erreurLOGIN"></span>
   <input type="password" placeholder="Mot de passe" id="mdpConnexion" name="mdp" required ><span id="erreurMDP"></span>
-  <div id="btn-connexion"><input class="transition200io" id="btn" type="submit" value="Let's ride" /></div>
+  <div id="btn-connexion" ><input class="transition200io blubtn" id="btn" type="submit" value="Let's ride" /></div>
   </form>
   <div id="separation">
     <p>ou</p>
