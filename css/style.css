@@ -432,7 +432,7 @@ h1:hover{
 
 
 
-#profile-content{width:100%;margin:0 auto;position:absolute;margin-top:230px;top:75%;}
+#profile-content{width:1000px;left:50%;margin-left:-500px;position:absolute;margin-top:230px;top:75%;}
 
 #medias{width:100%;margin:0 auto;padding-top:40px;}
 
