@@ -48,7 +48,7 @@ h3{font-weight: bolder;font-size: 1.3em;margin-bottom: 20px;color:#dd4a4a;}
 #userbar{height:auto;} 
 #userbar-content {width: 100%;position: relative;} --> Pas de left ou margin left
 #statut {display:block;width:auto;margin-top: 15px;}
-#profile-content {width: 95%;padding: 40px 10px;margin-top:310px;}
+#profile-content {width: 95%;padding: 40px 0;margin-top:310px;}
 .poster-media {display:block;margin: 10px auto;}
 .upload-media {padding: 10px;}
 .upload-media p{text-align:center;}
