@@ -2,7 +2,6 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL6jbConOc2cMBNepwDNA0l_lqrNOaRPI&sensor=true"></script><!-- API Google Maps-->
 <script type="text/javascript" src="js/verifConnexion.js"></script>
-<script type="text/javascript" src="js/planning.js"></script>
 <?php if ($_SERVER['REQUEST_URI']=='/GRAB-IN/MASTER/index.php' ) { ?> <script type="text/javascript" src="js/mapObjIndex.js"></script><?php }else{ ?><script type="text/javascript" src="js/mapObj.js"></script><?php } ?>
 <script type="text/javascript" src="js/myMap.js"></script>
 <script type="text/javascript" src="js/classeProfil.js"></script>

@@ -50,6 +50,12 @@ $('#hour').val(hour);
 //$('#hour').on('change',mapObj.changeHour());
 //$('#find').on('click',mapObj.findLocation());
 
+$("#geocoder").submit(function(e){
+    e.preventDefault(); 
+    var address=$("#address").val();
+    mapObj.find(address);
+});
+
 var mapStyles = [//colors of the map
 	  {
 	    "featureType": "administrative.country",
