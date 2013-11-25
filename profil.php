@@ -60,7 +60,7 @@ require 'topbar.php' ;
 </div>
 <div id="profile-content">
   <div id="wax">
-    <p id="checkin-btn"><a href="#map-section" id="find" >Check in !</a></p><!--class="mobile-only"-->
+    <p id="checkin-btn"><a href="#map-section" id="find" class="mobile-only">Check in !</a></p>
       <h3>Tes checkins</h3>
 
       <div id="list-checkins"></div>
@@ -102,9 +102,6 @@ require 'topbar.php' ;
           <ul class="items--small">
             <?php foreach ($url as $urls): ?>
               <li class="item"><a href="#"><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a>
-              <form action='profil.php' method="POST" >
-                <button class="delete_media" name="delete_media<?=$urls['id']?>" type="submit">Supprimer la photo</button>
-              </form>
               </li>
             <?php endforeach; ?>
           </ul>
@@ -157,7 +154,30 @@ require 'topbar.php' ;
         <div class="clear-float"></div>
       </div> <!-- end #medias-->
 
-
+    <?php if (empty($url) && empty($url_vid)){}
+         else{ ?>
+    <div id="edit-media"><!--edit medias-->
+      <h4>Gestion de tes médias</h4>
+      <?php if (empty($url)){
+         }else {  
+         ?>
+           <ul>
+             <?php foreach ($url as $urls): ?>
+               <li><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a>
+               <form action='profil.php' method="POST" >
+                 <button class="delete_media" name="delete_media<?=$urls['id']?>" type="submit">Supprimer cette photo</button>
+               </form>
+               </li>
+             <?php endforeach; ?>
+           </ul>
+      <?php }
+      if (empty($url_vid)){}else{ ?>
+         <form action='profil.php' method="POST" >
+           <button class="delete_media" name="delete_media<?//=$urls['id']?>" type="submit">Supprimer la vidéo</button>
+         </form>
+       <?php } ?>
+     </div><!--end edit medias-->
+     <?php } ?>
 
   </div> <!-- end of wax -->
 </div> <!-- end #profile-content-->
