@@ -22,9 +22,13 @@
          url('../fonts/proximanova/proximanova-regular.ttf') format('truetype'),
          url('fonts/proximanova/proximanova-regular.svg#ProximaNovaRegular') format('svg');
 }
-
+html{height:100%;}
 body{
 	font-family: 'ProximaNovaRegular', verdana;
+  min-height:100%;
+  margin:0;
+  padding:0;
+  position:relative;
 }
 #topbar-content{
 	padding-top:10px;
@@ -86,6 +90,7 @@ h1:hover{
   display: block;
   position: relative;
 }
+#userbar{position:absolute;width:100%;top:75%;margin-top:40px;} 
 #userbar-content{width:960px;position:relative;margin-left:-480px;left:50%;}
 #userbar-content img{display:inline-block;}
 #userbar{height:160px;padding:10px;background:#efefef;}
@@ -335,8 +340,8 @@ h1:hover{
 }
 
 
-#map-canvas{/*height:75%*/height:500px;width:100%;margin-top:50px;}
-#map-section{padding-top: 50px;}
+#map-canvas{height:100%;width:100%;margin-top:50px;position:absolute;}
+#map-section{margin-top:50px;height:75%;width:100%;position:absolute;}
 
 /*--Infobulles checkins--*/
 #pseudo-checkin {display: block; background-color: #eeeeee; padding: 0; margin: 0; height: 30px;}
@@ -427,7 +432,7 @@ h1:hover{
 
 
 
-#profile-content{width:1000px;margin:0 auto;padding-top:40px;}
+#profile-content{width:100%;margin:0 auto;position:absolute;margin-top:230px;top:75%;}
 
 #medias{width:100%;margin:0 auto;padding-top:40px;}
 
