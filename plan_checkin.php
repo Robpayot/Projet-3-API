@@ -34,7 +34,7 @@ $end = date("Y-m-d H:i", $endTS);
  $link=mysql_connect("mysql51-100.perso","robinpayadmin","gUFjHp3Q8m9y");
 		mysql_select_db("robinpayadmin") or die (mysql_error());
 		
-	$res=mysql_query("UPDATE checkIn SET date_end='$start' WHERE id_user='$id_user' AND ('$start'>=date_begin AND '$start'<date_end)")or die (mysql_error());
+	$res=mysql_query("UPDATE checkIn SET date_end='$start' WHERE id_user='$id_user' AND ('$start'>=date_begin AND '$start'<=date_end)")or die (mysql_error());
 
 $res4=mysql_query("DELETE FROM checkIn WHERE id_user='$id_user' AND date_end=date_begin")or die (mysql_error());
 
