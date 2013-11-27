@@ -25,8 +25,6 @@ $startTS = unix_timestamp($start);
 $endTS = $startTS+10800;
 $end = date("Y-m-d H:i", $endTS);
 $score;
-//echo $lat.", ".$lng."<br>";
-//echo "start: ".$start.", end: ".$end."<br>";
  
 
 $link=mysql_connect("mysql51-100.perso","robinpayadmin","gUFjHp3Q8m9y");
@@ -47,13 +45,5 @@ $dbh->exec("INSERT INTO checkIn(json,id_user, pseudo, lat, lng, comment, date_be
 		 }
 		 
 		 $res1=mysql_query("UPDATE grabin_user SET score='$score' WHERE id='$id_user'")or die (mysql_error());
-/*$dbh -> exec("SELECT * FROM grabin_user WHERE id='$id_user'")->fetchAll();
-
-foreach ($user as $users):
-$score=$users['score']+10;
-
-endforeach;
-
-$dbh -> exec("UPDATE grabin_user SET score='$score' WHERE id='$id_user'");*/
        
 ?>

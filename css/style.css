@@ -78,13 +78,14 @@ h1:hover{
 #resultat {
   background-color: #ffffff;
   opacity: 0;
+  display:none;
   width: 240px;
   position: absolute;
 }
-#list-results{
+#resultat.affichageR #list-results{
   background-color: #ffffff;
-  position: relative;
-  width: 240px;
+  width: 253px;
+  left: 0;
 }
 #resultat ul li{
   display: block;
@@ -98,7 +99,6 @@ h1:hover{
 #userbar :nth-child(4){color:#8d8d8d;}
 #dmdAmi{
     height:24px;
-    width:110px;
     text-transform: uppercase;
     font-size:14px;
     padding-top:5px;
@@ -436,9 +436,9 @@ h1:hover{
 
 
 #profile-content{width:960px;z-index:1;margin:0 auto;margin-top:40px;position:absolute;top:75%;margin-top:220px;}
-#wax{background-color: white;padding-top: 10px;}
+#wax{background-color: white;padding-top: 10px;margin-bottom: 50px;}
 
-#medias{width:100%;margin:0 auto;padding-top:40px;}
+#medias{width:100%;margin:0 auto;padding-top:40px;margin-bottom: 40px;height: 400px}
 
 .poster-media{display:inline-block;width:200px;height:25px;background-color:#efefef;text-transform:uppercase;font-weight:bold;color:#dd4a4a;margin-left:180px;text-align: center;padding-top:8px;text-decoration:none;}
 .poster-media a:visited{color:#dd4a4a;}
@@ -520,7 +520,6 @@ footer a:visited, footer a:link{color:#6dc9e4;text-decoration: none;}
   #profile-picture{width:70px;height:70px;border-radius:50%;}
   #home-popin{width:320px;margin-left:-160px;}
   .popin-title{margin-top:40px;margin-bottom:24px;}
-
   }
 
 @media screen and (min-width: 821px) {

@@ -1,6 +1,5 @@
 .clear-float{clear: both;}
 
-#medias{margin-bottom: 40px;}
 .upload-media p{font-size: 14px;margin-top: 8px;}
 .upload-media p label{text-align: right;display: inline-block;width: 200px;margin-right: 20px;}
 .upload-media button{margin: 10px auto; background-color: #ffffff; color:#555555; border: none;display: block;padding: 5px 15px;font-size: 14px;}
@@ -25,7 +24,7 @@ h4{font-weight: bold; margin: 5px 0 15px 10px}
 #geocoder{top:130px;right:10px;/*enlever le left:80%*/}
 
 #checkin-btn a{color: #ffffff;font-size: 1.2em;border: none;text-decoration: none;}
-#checkin-btn {padding: 8px 15px;background-color: #dd4a4a;width: 130px;text-align: center;display: block;margin: 0 auto;}
+#checkin-btn {padding: 8px 15px;background-color: #dd4a4a;width: 130px;text-align: center;margin: 0 auto;}
 
 #infowindow-skatepark{width: 200px; height: 50px;margin-bottom: 10px;}
 
@@ -58,12 +57,13 @@ h4{font-weight: bold; margin: 5px 0 15px 10px}
 .upload-media p label{text-align: inherit;display: inline;margin-right:0;}
 .upload-media button {margin-top: 10px;}
 #gallery-container{width: 100%;}
-#video-section {width: 100%;}
+#video-section {width: 100%;left:0}
 #geocoder{top:90%;right:10px;}
 #map-section p input, #geocoder input {font-size: 12px;border: 2px solid #ffffff;padding: 2px;display: block;}
 #map-section p {top: 70%;right:10px;}
+#medias{height: auto}
 #edit-media img{height: 130px;}
-#edit-media{width: 85%;}
+#edit-media{width: 85%;margin-top: 20px}
 #list-checkins ul li{width: 80%; margin: 0 auto 25px auto;padding: 8px 10px;} 
 }
 

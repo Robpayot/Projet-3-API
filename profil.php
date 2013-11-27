@@ -60,7 +60,7 @@ require 'topbar.php' ;
 </div>
 <div id="profile-content">
   <div id="wax">
-    <p id="checkin-btn" class="mobile-only"><a href="#map-section" id="find">Check in !</a></p>
+    <div id="checkin-btn" class="mobile-only"><a href="#map-section" id="find">Check in !</a></div>
       <h3>Tes checkins</h3>
 
       <div id="list-checkins"></div>

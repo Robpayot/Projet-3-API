@@ -21,6 +21,7 @@ function unix_timestamp($date)
 $lat = $_GET['lat'];
 $lng = $_GET['lng'];
 $day = $_GET['day'];
+$address = $_GET['a'];
 $comment = $_GET['c'];
 $time = $_GET['time'];
 echo $day." ".$time;
@@ -29,7 +30,6 @@ var_dump($start);
 $startTS = unix_timestamp($start);
 $endTS = $startTS+10800;
 $end = date("Y-m-d H:i", $endTS);
-//echo "start: ".$start.", end: ".$end."<br>";
 
  $link=mysql_connect("mysql51-100.perso","robinpayadmin","gUFjHp3Q8m9y");
 		mysql_select_db("robinpayadmin") or die (mysql_error());

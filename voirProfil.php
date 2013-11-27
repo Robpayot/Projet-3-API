@@ -45,7 +45,7 @@ require 'topbar.php' ;
                 <div id="statut">
                   <p id="status"><?php echo "&#171;".$statut."!&#187;" ?> </p> 
                 </div>
-                <div id="cal">
+                <div id="cal" class="desktop-only">
                         <div id="cal-shadow-1"></div>
                         <div id="cal-shadow-2"></div>
                         <div id="weather">
@@ -58,6 +58,7 @@ require 'topbar.php' ;
         </div><!-- end userbar content-->
 <?php if($amitie==1) { ?>
         <div id="profile-content">
+          <div id="wax">
           	<h3>Les checkins de <?php echo $pseudoV ?></h3>
 			 <div id="list-checkins"></div>
         <h3>Les médias de <?php echo $pseudoV ?></h3>
@@ -117,7 +118,8 @@ require 'topbar.php' ;
 
     <div class="clear-float"></div>
   </div> <!-- end #medias-->
-        </div><!-- End of #profile-content-->
+  </div><!-- End of #wax-->
+</div><!-- End of #profile-content-->
 <?php } ?>
 </div>
 
