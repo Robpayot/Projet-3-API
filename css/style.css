@@ -139,7 +139,7 @@ h1:hover{
 /*#cal :nth-child(3){width:270px;height:180px;background:white;position:absolute;top:0;right:0;}*/
 #weather{width:270px;height:180px;position:absolute;top:0;right:0;padding:10px;}
 #weather :nth-child(1){position:absolute;top:25px;left:40%;}
-#weather :nth-child(2){position:absolute;bottom:35px;left:41%;}
+#weather :nth-child(2){position:absolute;bottom:25px;left:41%;}
 #weather :nth-child(3){position:absolute;top:36%;right:30px;font-size: 40px;}
 #weather span{font-size: 20px;color: #ffffff;font-weight: bolder;text-transform: uppercase;}
 #weather img{position:absolute;left:45px;top:30%;}
@@ -468,6 +468,7 @@ footer {
 }
 
 footer a:visited, footer a:link{color:#6dc9e4;text-decoration: none;}
+.pointer{cursor:pointer;}
 
 #map-section.home{height:100%;margin-top:0;}
 
