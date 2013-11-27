@@ -7,6 +7,4 @@ $sth->execute();
 $data=$sth->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_GROUP);
 echo json_encode($data);
 
-
-
 ?>

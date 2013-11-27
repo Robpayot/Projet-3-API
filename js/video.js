@@ -125,4 +125,3 @@ $('#mute').on('click',player.mute);
 $('#full-screen').on('click',player.fullScreen);
 $('#volume-bar').on('change',player.volume);
 $("#video").on("timeupdate",player.displayTime);
-
