@@ -88,7 +88,7 @@ if($sport>0){
 	$media = $dbh -> query("SELECT * FROM media WHERE id_user='".$id_user."'")->fetchAll();
 	$url = $dbh -> query("SELECT url,id,description FROM media WHERE id_user='".$id_user."' AND url!=''")->fetchAll();
 
-	$nbUrl=count($url);
+
 
 	foreach ($media as $medias):
  if (!empty($medias['url_vid'])) {
@@ -97,6 +97,13 @@ if($sport>0){
 $description = $medias['description'];
 $date = $medias['date'];
 endforeach;
+
+
+// Compte le nombre de photo et de vidéo chargées_______________________________________________________
+
+$nbUrl=count($url);
+$nbUrl_vid=count($url_vid);
+
 
 // IF SUBMIT PHOTO_______________________________________________
 if(isset($_POST['submit_photo'])) {
@@ -242,57 +249,14 @@ if (isset($_POST['delete_media'.$urls['id']])) {
 }
 endforeach;
 
+//_________________SUPPRESSION DE LA VIDEO_________________//
 
-//____ CLASSIFICATION DES SPORTS PRATIQUES _______________________________
-if($sport>0){
-	if ($sport==1) {
-			$sport="Skate";
-			}
-	if ($sport==2) {
-			$sport="Roller";
-			}
-	if ($sport==3) {
-			$sport="Skate et Roller";
-			}
-	if ($sport==4) {
-			$sport="Bike";
-			}
-	if ($sport==5) {
-			$sport="Skate et Bike";
-			}
-	if ($sport==6) {
-			$sport="Roller et Bike";
-			}
-	if ($sport==7) {
-			$sport="Skate, Roller et Bike";
-			}
-	if ($sport==8) {
-			$sport="Trotinette";
-			}
-	if ($sport==9) {
-			$sport="Skate et Trotinette";
-			}
-	if ($sport==10) {
-			$sport="Roller et Trotinette";
-			}
-	if ($sport==11) {
-			$sport="Skate, Roller et Trotinette";
-			}
-	if ($sport==12) {
-			$sport="Bike et Trotinette";
-			}
-	if ($sport==13) {
-			$sport="Skate, Bike et Trotinette";
-			}
-	if ($sport==14) {
-			$sport="Roller, Bike et Trotinette";
-			}
-	if ($sport==15) {
-			$sport="Ultime Rider";
-			}
+if (isset($_POST['delete_media'.$url_vid])) {
+	$dbh -> query('DELETE FROM media WHERE url_vid = "'.$url_vid.'"');
+	header('location:profil.php');
 }
-else
-	$sport="Bisounours! Yeah";
+
+
 	
 
 
