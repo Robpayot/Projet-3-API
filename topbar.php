@@ -112,7 +112,7 @@ require 'edit-profil.php';
         </SELECT>
       
     </li>
-    <li class="l-field spaced send"><p class="field-send"><input type="submit" class="envoie" name="envoie" value="Envoyer"/></p></li>
+    <li class="l-field spaced send"><p class="field-send"><input type="submit" id="envoie" class="envoie" name="envoie" value="Envoyer"/></p></li>
   </ul>
   </form>
 </div> <!-- end of inscription-fb-dropdown -->
@@ -128,10 +128,9 @@ require 'edit-profil.php';
     <li class="l-field"><p id="facebook_button"><fb:login-button id="fb_connexion" scope="user_birthday,email" width="200" max-rows="1"></fb:login-button></p>
     <p id="message_co"></p>
      <!--<img id="check_fb" src="" alt="bon"/>--></li>
-    <li class="l-field"><p class="field-desc">Pseudo</p><input class="l-text-field" type="text" id="pseudoFb" name="pseudo" required></li>
+    <li class="l-field"><p class="field-desc">Pseudo</p><input class="l-text-field" type="text" id="pseudoFb" name="pseudo" required><img src="imgs/fail.png" alt="bon" id="imgVerifPseudoFb"/></li>
     <li class="l-field"><p class="field-desc">Mot de passe</p><input class="l-text-field" type="password" id="mdpFb" name="mdp" required></li>
-    <li class="l-field check"><p class="field-desc">Confirm. Mdp</p><input class="l-text-field" type="password" id="retape_mdpFb" name="retape_mdp" required>
-    <img id="check_fb" src="imgs/check.png" alt="bon"/></li>
+    <li class="l-field check"><p class="field-desc">Confirm. Mdp</p><input class="l-text-field" type="password" id="retape_mdpFb" name="retape_mdp" required><img src="imgs/fail.png" alt="bon" id="imgVerifFb"/></li>
   <p class="verifMatchMdp" id="verifMatchMdpFb"></p> 
    <li class="xl-field spaced"><p class="field-desc">Sport pratiqué</p>
       <ul class="sports-checkboxes">
@@ -153,7 +152,7 @@ require 'edit-profil.php';
         </SELECT>
       
     </li>
-    <li class="l-field spaced send"><p class="field-send"><input type="submit" class="envoie" name="envoiefb" value="Envoyer"/></p></li>
+    <li class="l-field spaced send"><p class="field-send"><input type="submit" id="envoieFb" class="envoie" name="envoiefb" value="Envoyer"/></p></li>
   </ul>
   </form>
 </div> <!-- end of inscription-fb-dropdown -->

@@ -4,6 +4,7 @@
 <script type="text/javascript" src="js/verifConnexion.js"></script>
 <?php if ($_SERVER['REQUEST_URI']=='/GRAB-IN/MASTER/index.php' ) { ?> <script type="text/javascript" src="js/mapObjIndex.js"></script><?php }else{ ?><script type="text/javascript" src="js/mapObj.js"></script><?php } ?>
 <script type="text/javascript" src="js/verifmdp.js"></script>
+<script type="text/javascript" src="js/verifmdpFb.js"></script>
 <script type="text/javascript" src="js/myMap.js"></script>
 <script type="text/javascript" src="js/classeProfil.js"></script>
 <script type="text/javascript" src="js/ProfilUser.js"></script>
