@@ -74,28 +74,39 @@ require 'topbar.php' ;
     <a href="#" class="poster-media" onclick="return afficher_cacher('poster-photo');">Poster une photo</a>
     <a href="#" class="poster-media" onclick="return afficher_cacher('poster-video'); ">Poster une vidéo</a>
 
-    <?php if ($nbUrl<9) { ?>
+
     <div id="poster-photo" class="upload-media" style="display:none">
+        <?php if ($nbUrl<9) { ?>
       <form action="profil.php" enctype="multipart/form-data" method="post">
         <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
         <p><label for="url">Votre photo : </label><input type="file" name="url" id="url" required></p>
         <p><label for="description">Description : </label><input name="description" id="description" data-provide="limit" data-counter="#counter" ></p>
         <button id="submit_photo" name="submit_photo" type="submit">Valider</button></p>
       </form> 
-    </div>
-    <?php } else { ?>
-    <p>Vous ne pouvez pas poster plus de 9 photos !</p>
+          <?php } else { ?>
+    <p>Vous ne pouvez pas poster plus de 9 photos ! Veuillez en supprimer pour en charger de nouvelles</p>
     <?php } ?>
+    </div>
+
+	
+	
 
     <div id="poster-video" class="upload-media" style="display:none">
+    <?php if($nbUrl_vid>1) { ?>
       <form action="profil.php" enctype="multipart/form-data" method="post">
         <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
         <p><label for="url">Votre vidéo (fichiers mp4 et ogg) :</label> <input type="file" name="url" id="url" required></p>
         <p><label for="description">Description : </label><input name="description" id="description" data-provide="limit" data-counter="#counter" ></p>
         <p><button id="submit_video" name="submit_video" type="submit">Valider</button></p>
       </form> 
+      <?php } else { ?>
+      <p>Vous ne pouvez pas poster plus d'une vidéo ! Veuillez la supprimer pour en charger une autre</p>
+      <?php } ?>
     </div>
-
+     
+    
+    
+    
     <div id="medias">
       <!--// Gallery Markup: A container that the plugin is called upon, and two lists for the images (use images with same aspect ratio) //-->
       <?php if (empty($url)){
@@ -131,7 +142,8 @@ require 'topbar.php' ;
       </div>
     </div><!-- end #gallery-container--> 
     <?php } ?>   
-    <?php if (empty($url_vid)){ }else{ ?>
+    <?php if (empty($url_vid)){ }else{ 
+	?>
     <div <?php if (empty($url)){?>style="float:none; position:absolute; left:25%;"<?php } ?> id="video-section" >
 
       <div id="button" class="play">
@@ -173,7 +185,7 @@ require 'topbar.php' ;
      <?php }
      if (empty($url_vid)){}else{ ?>
      <form action='profil.php' method="POST" >
-       <button class="delete_media" name="delete_media<?//=$urls['id']?>" type="submit">Supprimer la vidéo</button>
+       <button class="delete_media" name="delete_media<?=$url_vid?>" type="submit">Supprimer la vidéo</button>
      </form>
      <?php } ?>
    </div><!--end edit medias-->
