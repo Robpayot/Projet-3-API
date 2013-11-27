@@ -6,6 +6,8 @@ profil.init({
 		champStatut:'#newStatut',
 		divDemandesAmi:'#dmd',
 		divAmis:'#liste-amis',
+		divResultRecherche:'#resultat',
+		divClassement:'#classement-dropdown ul',
 		statutDone : function(server_response){
 				$('#newStatut').val('');
 				$("#status").html(server_response);
@@ -30,32 +32,36 @@ profil.init({
 				
 			},
 });
+
+
 var notif;
+//Liste checkins
 profil.evenement();
 
+//recherche
+ $("#recherche").keyup(function(){
+		var recherche=$(this).val();
+		profil.rechercheUser(recherche);
+	});
 
-//Classement
-  function Classement(){
-        $.ajax({
-            type: "GET",
-            url: "classement.php",
-            success: function (server_response) {
-                $("#classement-dropdown ul").append(server_response);
+ $("#recherche").focus(function(e) {
+	  var recherche=$(this).val(); 
+	  if(recherche==null){
+			$("#resultat").hide();
+		}
+});
 
-            }
-        });
 
-    }
-	
-Classement();
+//Voir classement
+profil.classement();
 
 //Liste des amis
 profil.afficherlisteDesAmis(1);
 $("#voirAmis").click(function(e) {
 	profil.afficherlisteDesAmis(1);
 });
-//Liste des demandes d'amis
 
+//Liste des demandes d'amis
 profil.afficherlisteDesDemandes();
 $("#voirDemandes").click(function(e) {
 	profil.afficherlisteDesDemandes();
@@ -63,20 +69,21 @@ $("#voirDemandes").click(function(e) {
 //notif=setInterval(profil.afficherlisteDesDemandes(),1000);
 
 //Reponse demande ami
-$('.demandesAmi').click(function(e) {
-	console.log(e);
-	profil.reponseAmitie(e);
+$('.demandesAmi').click(function() {
+	console.log(event.srcElement.className);
+	profil.reponseAmitie(event.srcElement);
 	
 });
 
 
 //statut
-    $("#envoiStatut").click(function(){
+$("#envoiStatut").click(function(){
 		$(this).attr('disabled',true);
 		//pour le resultat Voir statutDone
 		profil.nouveauStatut();
 	});
 
+//Supprimer checkin
 $('#list-checkins').on('click','.suppr',function(e) {
 	var r = confirm("Supprimer le checkin?");
 		if (r == true)

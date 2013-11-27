@@ -8,6 +8,8 @@ var profil = {
         champStatut: '#newStatut',
         divDemandesAmi: '#dmd',
         divAmis: '#dmd',
+		divResultRecherche:'#resultat',
+		divClassement:'#classement-dropdown ul',
         statutDone: function () {},
         boutonAmitieDone: function () {},
         reponseAmitieDone: function () {},
@@ -16,6 +18,40 @@ var profil = {
     init: function (options) {
         this.params = $.extend(this.defaults, options);
     },
+    rechercheUser: function (recherche) {
+		var data='motclef='+recherche;
+		console.log("ouii");
+		if(recherche.length>1){
+			
+			$.ajax({
+				type : "GET",
+				url : "chercher.php",
+				data : data,
+				success: function(server_response){
+					
+					$(profil.params.divResultRecherche).html(server_response).show();
+				}
+			});
+		}
+		
+		else if(recherche.length<2){
+			$(profil.params.divResultRecherche).hide();
+		}
+		
+	},
+	
+	classement: function () {
+		
+		     $.ajax({
+            type: "GET",
+            url: "classement.php",
+            success: function (server_response) {
+                $(profil.params.divClassement).append(server_response);
+
+            }
+        });
+		
+		},	
 
     afficherlisteDesAmis: function (datas) {
         url = "ListeAmis.php";
@@ -90,7 +126,7 @@ var profil = {
     },
     reponseAmitie: function (e) {
 
-        var classe = e.toElement.className;
+        var classe = e.className;
         datas = 'accepte=' + $("." + classe).attr('data-accepte') + '&ami=' + $("." + classe).attr('data-ami');
         console.log(datas);
 
@@ -148,6 +184,7 @@ var profil = {
 						var dateEvString;
 						var dateEv=new Array();
 						var hourEv=new Array();
+						var moment=false;
 						
 						$("#list-checkins").append("<ul>");
 						
@@ -157,7 +194,7 @@ var profil = {
 							
 						for (var passage = 0; passage < count; passage++) {
 							var checkinDatas = ev["evenement"+passage];
-							//console.log(ev["evenement"+passage]);
+							//console.log(ev["evenement"+passage].comment);
 							var commCheckin =ev["evenement"+passage].comment;
 							
 							var a=checkinDatas.date.split(" ");
@@ -168,9 +205,10 @@ var profil = {
 							var minutes=dateEv[i].getMinutes();
 							hourEv[i] = dateEv[i].getHours() + ":" + (minutes < 10 ? '0' + minutes : minutes );
 									
-									if(dateEv[i]<$.now()){
+									if(dateEv[i]<$.now() && moment==false){
 										dateEvString ="En ce moment ";
 										hourEv[i] = "(depuis "+dateEv[i].getHours() + ":" + (minutes < 10 ? '0' + minutes : minutes )+")";
+										moment=true;
 									}
 									else{
 										dateEvString = tab_jour[dateEv[i].getDay()]+" "+dateEv[i].getDate() + " " + tab_mois[month] + " " + dateEv[i].getFullYear() ;
@@ -218,7 +256,7 @@ var profil = {
         },
 		
 		supprCheck: function(idCheck){
-			        url = "checkInAvenir.php";
+			   url = "checkInAvenir.php";
 
 				$.ajax({
 					type: "GET",
