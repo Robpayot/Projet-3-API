@@ -175,7 +175,7 @@ require 'topbar.php' ;
          <?php foreach ($url as $urls): ?>
          <li><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" />
            <form action='profil.php' method="POST" >
-             <button class="delete_media" name="delete_media<?=$urls['id']?>" type="submit" class="pointer">Supprimer cette photo</button>
+             <button class="delete_media pointer" name="delete_media<?=$urls['id']?>" type="submit">Supprimer cette photo</button>
            </form>
          </li>
        <?php endforeach; ?>
@@ -183,7 +183,7 @@ require 'topbar.php' ;
      <?php }
      if (empty($url_vid)){}else{ ?>
      <form action='profil.php' method="POST" >
-       <button class="delete_media" name="delete_media<?=$url_vid?>" type="submit" class="pointer">Supprimer la vidéo</button>
+       <button class="delete_media pointer" name="delete_media<?=$url_vid?>" type="submit">Supprimer la vidéo</button>
      </form>
      <?php } ?>
    </div><!--end edit medias-->
