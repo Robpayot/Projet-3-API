@@ -33,9 +33,9 @@ $id_user=$_SESSION['ID'];
 						if($score!=$scoreAvant)
 							$i++;
 					if($id==$id_user){	
-						$affichage="<li>".$div."</div><a href='#' class='rider'>".$pseudo."</a><p class='score'>".$score." pts</p></li>";}
+						$affichage="<li class='pointer'>".$div."</div><a href='#' class='rider'>".$pseudo."</a><p class='score'>".$score." pts</p></li>";}
 					else{	
-						$affichage="<li>".$div."</div><a href="."voirProfil.php?profil=".$pseudo."&key=".$id." class='rider'>".$pseudo."</a><p class='score'>".$score." pts</p></li>";}
+						$affichage="<li class='pointer'>".$div."</div><a href="."voirProfil.php?profil=".$pseudo."&key=".$id." class='rider'>".$pseudo."</a><p class='score'>".$score." pts</p></li>";}
 						
 						echo $affichage;
 						

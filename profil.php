@@ -81,7 +81,7 @@ require 'topbar.php' ;
         <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
         <p><label for="url">Votre photo : </label><input type="file" name="url" id="url" required></p>
         <p><label for="description">Description : </label><input name="description" id="description" data-provide="limit" data-counter="#counter" ></p>
-        <button id="submit_photo" name="submit_photo" type="submit">Valider</button></p>
+        <button id="submit_photo" name="submit_photo" type="submit" class="pointer">Valider</button></p>
       </form> 
           <?php } else { ?>
     <p>Vous ne pouvez pas poster plus de 9 photos ! Veuillez en supprimer pour en charger de nouvelles</p>
@@ -97,7 +97,7 @@ require 'topbar.php' ;
         <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
         <p><label for="url">Votre vidéo (fichiers mp4 et ogg) :</label> <input type="file" name="url" id="url" required></p>
         <p><label for="description">Description : </label><input name="description" id="description" data-provide="limit" data-counter="#counter" ></p>
-        <p><button id="submit_video" name="submit_video" type="submit">Valider</button></p>
+        <p><button id="submit_video" name="submit_video" type="submit" class="pointer">Valider</button></p>
       </form> 
       <?php } else { ?>
       <p>Vous ne pouvez pas poster plus d'une vidéo ! Veuillez la supprimer pour en charger une autre</p>
