@@ -5,9 +5,9 @@ var mdpFb=false;
 var pseudoFreeFb=false;
 
     $("#retape_mdpFb").keyup(function(){
-		var retape=$(this).val();
+		var retapeFb=$(this).val();
 		
-		if(retape.length>1){
+		if(retapeFb.length>1){
 			
 					if($("#retape_mdpFb").val()==$("#mdpFb").val()){
 						$("#imgVerifFb").attr("src","imgs/check.png");
@@ -26,7 +26,7 @@ var pseudoFreeFb=false;
 		var pseudoFb=$(this).val();
 		var dataFb='test_pseudo='+pseudoFb;
 		
-		if(pseudo.length>2){
+		if(pseudoFb.length>2){
 			
 			$.ajax({
 				type : "GET",

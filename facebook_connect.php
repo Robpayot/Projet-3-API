@@ -137,9 +137,7 @@ $user = $dbh -> query('INSERT INTO grabin_user(name, surname, pseudo, sport, spo
 		   $("#fb-root").hide();
 		   var message_co=document.getElementById("message_co");
 			message_co.innerHTML="Connecté à Facebook";
-			 var check_fb=document.getElementById("check_fb").src;
 			
-			check_fb="imgs/check.png";
 			
 	      } else if (response.status === 'not_authorized') {
       // In this case, the person is logged into Facebook, but not into the app, so we call
@@ -176,9 +174,9 @@ $user = $dbh -> query('INSERT INTO grabin_user(name, surname, pseudo, sport, spo
     // Here we run a very simple test of the Graph API after login is successful. 
   // This testAPI() function is only called in those cases. 
   function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
+   
     FB.api('/me', function(response) {
-      console.log('Good to see you, ' + response.name + '.');
+
     });
   }
 </script>
