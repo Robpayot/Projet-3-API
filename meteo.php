@@ -10,7 +10,7 @@ die('Weather not found! Check feed URL');
 $xml = new SimpleXMLElement($feed);
 
 $code=false;
-
+//parcours dur XML
 foreach($xml->channel->item->children('yweather', TRUE) as $noeud => $b) {
 	foreach($xml->channel->item->children('yweather', TRUE)->$noeud->attributes() as $attribut => $valeur){
 		if($attribut=='temp'){
@@ -22,7 +22,7 @@ foreach($xml->channel->item->children('yweather', TRUE) as $noeud => $b) {
 		}
 	}
 }
-
+//Image personnalisée selon le code image de yahoo
 switch ($codeImg) {
 	case 1:
 	case 2:

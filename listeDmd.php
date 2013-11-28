@@ -6,14 +6,7 @@ session_start();
 		
 		require 'config2.php';
 		
-		/*$res1=mysql_query("SELECT id FROM grabin_user WHERE pseudo='$login'")or die (mysql_error());
-		 if( mysql_num_rows($res1)>=1){
-			 $util3=mysql_fetch_assoc($res1);
-						$IDa=$util3['idUser'];
-						
-					}
-		else "ID multiple";*/
-		
+//Affichage liste des demandes avec pseudo + photo		
 		
 $res2=mysql_query("SELECT DISTINCT * FROM amis WHERE ID_accepteur='$IDa' AND etat=0 AND ID_demandeur<>0")or die (mysql_error());
 		
@@ -35,7 +28,7 @@ $res2=mysql_query("SELECT DISTINCT * FROM amis WHERE ID_accepteur='$IDa' AND eta
 					$classeA="amitie".$nb;
 					$classeR="refus".$nb;
 					
-					$bouton="<li class='pointer'><a href="."voirProfil.php?profil=".$pseudod."&key=".$IDd.">".$pseudod."</a> demande à vous suivre <img src='imgs/check.png' class=".$classeA." data-accepte=1 data-ami='".$IDd."' > <img src='imgs/fail.png' class=".$classeR." data-accepte=2 data-ami='".$IDd."' ></li>";
+					$bouton="<li class='pointer'><a href="."voirProfil.php?profil=".$pseudod."&key=".$IDd.">".$pseudod."</a> demande à vous suivre <span class='checkfriend'><img src='imgs/check.png' class=".$classeA." data-accepte=1 data-ami='".$IDd."' ></span> <img src='imgs/fail.png' class=".$classeR." data-accepte=2 data-ami='".$IDd."' ></li>";
 					$nb++;
 					echo $bouton;
 						}

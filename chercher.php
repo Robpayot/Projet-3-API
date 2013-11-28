@@ -8,6 +8,7 @@ if (!isset($_SESSION['login'])) {
 }  
 
 else if(isset($_GET['motclef'])){
+	//rechercher des utilisateurs
 		$recherche=mysql_escape_string($_GET['motclef']);
 			
 		$login=mysql_escape_string($_SESSION['login']);

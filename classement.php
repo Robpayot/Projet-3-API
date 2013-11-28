@@ -1,6 +1,6 @@
 <?php
 session_start();  
-  
+ //Obtenir le classement 
 $i=0;
 $scoreAvant=0;
 $id_user=$_SESSION['ID'];
@@ -13,7 +13,7 @@ $id_user=$_SESSION['ID'];
 						$id=$util2['id'];
 						$pseudo=$util2['pseudo'];
 						$score=$util2['score'];
-							
+						//Trois premier ont des coupes	
 						if($i==0)
 							$div="<div class='categ yellow'></div><div class='cup goldcup'>";
 						else if($i==1)
@@ -21,7 +21,7 @@ $id_user=$_SESSION['ID'];
 						else if($i==2)
 							$div="<div class='categ yellow'></div><div class='cup bronzecup'>";
 						else{
-							
+							//A partir du 4eme alternance des couleurs au changement du nombre de points
 							if($score!=$scoreAvant)
 								$changeCouleur=!$changeCouleur;
 							if($changeCouleur)

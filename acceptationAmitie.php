@@ -5,6 +5,7 @@ session_start();
 
 	$id=$_SESSION['ID'];
 	$ami=$_GET['ami'];
+	//choix 1 accepter- 2 refuser
 	$choix=$_GET['accepte'];
 	
 		require 'config2.php';

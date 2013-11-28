@@ -14,6 +14,7 @@ else if ($_SESSION['profilOuNon']==0) {
 require 'config2.php';
 
 if(!isset($_GET['supprimer'])){
+//Obtenir la liste des checkins sous forme de tableau "JSON"
 	$res2=mysql_query("SELECT * FROM checkIn WHERE id_user='$id_user' AND date_end>now() ORDER BY date_begin")or die (mysql_error());
 		
 			if( mysql_num_rows($res2)>=1){
@@ -29,6 +30,7 @@ if(!isset($_GET['supprimer'])){
 				}
 				
 else{
+//Supprimer un checkin
 $idC=$_GET['supprimer'];
 $idCheck=$_GET['idCheck'];
 

@@ -8,7 +8,7 @@ $id_user = $_SESSION['ID'];
 require 'config2.php';	
 
 if($_GET['demandeA']==1){
-	
+	//Affichage liste d'amis
 $res2=mysql_query("SELECT DISTINCT ID_accepteur FROM amis WHERE etat=1 AND ID_demandeur='$id_user'")or die (mysql_error());
 		
 		if( mysql_num_rows($res2)>=1){
@@ -41,6 +41,7 @@ $res2=mysql_query("SELECT DISTINCT ID_accepteur FROM amis WHERE etat=1 AND ID_de
 
 
 else if($_GET['demandeA']==2){
+	//Liste d'amis en tableau JSON
 	$nbAmi=0;
 	$amiId=array();
 	$amisTab=array();
@@ -60,7 +61,7 @@ else if($_GET['demandeA']==2){
 }
 
 else if(isset($_GET['iduser_checkin'])){
-	
+	//Determine la couleur du point checkin: si ami>1>bleu, si sois même>2>rose sinon gris
 	$id_ami=$_GET['iduser_checkin'];
 	
 	$res2=mysql_query("SELECT DISTINCT * FROM amis WHERE etat=1 AND ID_demandeur='$id_user' AND ID_accepteur='$id_ami'")or die (mysql_error());
