@@ -52,7 +52,7 @@ require 'edit-profil.php';
 			<li ><a href="profil.php"><?php echo $_SESSION['login']; ?></a></li>
       <li class="mobile-logout"><a href="deconnexion.php"><img src="imgs/logout.png" class="mobile-only" alt="Deconnexion" /><p class="desktop-only">Déconnexion</p></a></li>
       <?php } else {?>
-			<li class="connexion"><a href="#" onclick="getDropDownDown('connexion-dropdown')">Connexion</a></li>
+			<li><a href="#" onclick="getDropDownDown('connexion-dropdown')">Connexion</a></li>
       <?php } ?>
       
 		</ul>
