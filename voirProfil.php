@@ -43,7 +43,7 @@ require 'topbar.php' ;
       <? }?>
       <p><?php echo $scoreV."pts"?></p>
 
-      <div id="subscribe"><input type="button" id="dmdAmi" name="dmdAmi" value="S'abonner" ></div>
+      <div id="subscribe"><input type="button" id="dmdAmi" name="dmdAmi" class="pointer" value="S'abonner" ></div>
     </div>
 
     <div id="statut">
