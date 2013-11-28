@@ -23,15 +23,15 @@ var pseudoFreeFb=false;
 	});
 	
 	$("#pseudoFb").keyup(function(){
-		var pseudo=$(this).val();
-		var data='test_pseudo='+pseudo;
+		var pseudoFb=$(this).val();
+		var dataFb='test_pseudo='+pseudoFb;
 		
 		if(pseudo.length>2){
 			
 			$.ajax({
 				type : "GET",
 				url : "facebook_connect.php",
-				data : data,
+				data : dataFb,
 				success: function(server_response){
 					
 					if(server_response==0){
