@@ -30,7 +30,7 @@ var pseudoFreeFb=false;
 			
 			$.ajax({
 				type : "GET",
-				url : "facebook_connect.php",
+				url : "sinscrire.php",
 				data : dataFb,
 				success: function(server_response){
 					
