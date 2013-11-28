@@ -35,7 +35,7 @@ $res2=mysql_query("SELECT DISTINCT * FROM amis WHERE ID_accepteur='$IDa' AND eta
 					$classeA="amitie".$nb;
 					$classeR="refus".$nb;
 					
-					$bouton="<li><a href="."voirProfil.php?profil=".$pseudod."&key=".$IDd.">".$pseudod."</a> demande à vous suivre <input type='button' value='Accepter' class=".$classeA." data-accepte=1 data-ami='".$IDd."' > <input type='button' value='Refuser' class=".$classeR." data-accepte=2 data-ami='".$IDd."' ></li>";
+					$bouton="<li class='pointer'><a href="."voirProfil.php?profil=".$pseudod."&key=".$IDd.">".$pseudod."</a> demande à vous suivre <img src='imgs/check.png' class=".$classeA." data-accepte=1 data-ami='".$IDd."' > <img src='imgs/fail.png' class=".$classeR." data-accepte=2 data-ami='".$IDd."' ></li>";
 					$nb++;
 					echo $bouton;
 						}
