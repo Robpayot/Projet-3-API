@@ -31,7 +31,7 @@ require 'topbar.php' ;
 <!-- FIN MAP -->
 <div id="userbar">
   <div id="userbar-content">
-    <img src="<?php echo $avatarV?>" alt="<?php echo htmlentities($pseudoV); ?>"/>
+    <img id="profile-picture" src="<?php echo $avatarV?>" alt="<?php echo htmlentities($pseudoV); ?>"/>
 
     <div id="identity">
       <h2><?php echo htmlentities($pseudoV); ?><span id="iconSports"><?php echo $iconSportsV; ?></span></h2>
