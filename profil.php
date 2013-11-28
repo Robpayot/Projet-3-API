@@ -92,7 +92,7 @@ require 'topbar.php' ;
 	
 
     <div id="poster-video" class="upload-media" style="display:none">
-    <?php if($nbUrl_vid>1) { ?>
+    <?php if($nbUrl_vid<1) { ?>
       <form action="profil.php" enctype="multipart/form-data" method="post">
         <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
         <p><label for="url">Votre vidéo (fichiers mp4 et ogg) :</label> <input type="file" name="url" id="url" required></p>
