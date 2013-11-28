@@ -173,7 +173,7 @@ require 'topbar.php' ;
       <?php if (empty($url)){}else { ?>
        <ul>
          <?php foreach ($url as $urls): ?>
-         <li><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a>
+         <li><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" />
            <form action='profil.php' method="POST" >
              <button class="delete_media" name="delete_media<?=$urls['id']?>" type="submit">Supprimer cette photo</button>
            </form>
