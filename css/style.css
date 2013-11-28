@@ -523,6 +523,7 @@ footer a:visited, footer a:link, #classement-dropdown a:link, #classement-dropdo
   #avatar{top:185px;left:0px;width:245px;}
   #profile-picture{width:70px;height:70px;border-radius:50%;}
   #home-popin{width:320px;margin-left:-160px;}
+  #home-popin div:nth-child(1) img {top:0;}
   .popin-title{margin-top:40px;margin-bottom:24px;}
   }
 
