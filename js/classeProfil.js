@@ -13,11 +13,13 @@ var profil = {
         statutDone: function () {},
         boutonAmitieDone: function () {},
         reponseAmitieDone: function () {},
+		supprCheckDone: function(){}
     },
 
     init: function (options) {
         this.params = $.extend(this.defaults, options);
     },
+	//rechercher un utilisateur
     rechercheUser: function (recherche) {
 		var data='motclef='+recherche;
 		console.log("ouii");
@@ -28,7 +30,7 @@ var profil = {
 				url : "chercher.php",
 				data : data,
 				success: function(server_response){
-					
+					//affichage résultat
 					$(profil.params.divResultRecherche).html(server_response).show();
 				}
 			});
@@ -39,20 +41,21 @@ var profil = {
 		}
 		
 	},
-	
+	//Voir le classement des riders
 	classement: function () {
 		
 		     $.ajax({
             type: "GET",
             url: "classement.php",
             success: function (server_response) {
+				//affichage résultat
                 $(profil.params.divClassement).append(server_response);
 
             }
         });
 		
-		},	
-
+	},	
+//afficher la liste des amis
     afficherlisteDesAmis: function (datas) {
         url = "ListeAmis.php";
 
@@ -62,12 +65,12 @@ var profil = {
             url: url,
             data: "demandeA=" + datas,
             success: function (server_response) {
-                //console.log(server_response);
+				//datas=2 si on veut un tableau json avec les amis
                 if (datas == 2) {
                     var amisId = JSON.parse(server_response);
-                    //console.log(amisId.ami2);
                     $(profil.params.divAmis).html(amisId.ami0).show();
                 } else {
+				//Voir liste des amis
                     $(profil.params.divAmis).html(server_response).show();
                 }
             },
@@ -78,7 +81,7 @@ var profil = {
         });
 
     },
-
+//liste des demandes
     afficherlisteDesDemandes: function () {
         url = "listeDmd.php";
 
@@ -86,49 +89,45 @@ var profil = {
             type: "GET",
             url: url,
             success: function (server_response) {
-                //console.log("server_response "+server_response);
+
                 if (server_response != "Aucune demande") {
+					//affichage notification
 					 if($("#notif-number").hasClass("dspln")){
 						$("#notif-number").removeClass();
 					 }
                     $(profil.params.divDemandesAmi).html(server_response).show();
                     var length = $('#ul_dmd > *').length;
-                    //console.log("taille" + length);
                     $('#notif-number').html(length);
                 } else {
+					//pas de notification donc pas de div notification
                     $(profil.params.divDemandesAmi).html(server_response).show();
 					if(!$("#notif-number").hasClass("dspln")){
 						$("#notif-number").addClass("dspln");
 					 }
                 }
 
-
-
-
             }
         });
 
     },
-
+// Changement de bouton abonné/demande envoyée/suivre
     ChangementEtatBoutonAmitie: function (URL,demandeAbonnement) {
         $.ajax({
             type: "GET",
             url: URL,
             data: "demandeAbonnement="+demandeAbonnement,
             success: function (server_response) {
-				//console.log("reponse"+server_response);
-				//console.log("demande"+demandeAbonnement);
                 profil.params.boutonAmitieDone.call(this, server_response);
 
             }
         });
 
     },
+//Acceptation ou refus d'un abonnement
     reponseAmitie: function (e) {
 
         var classe = e.className;
         datas = 'accepte=' + $("." + classe).attr('data-accepte') + '&ami=' + $("." + classe).attr('data-ami');
-        console.log(datas);
 
         url = "acceptationAmitie.php";
 
@@ -137,12 +136,12 @@ var profil = {
             url: url,
             data: datas,
             success: function (choix) {
-                //console.log(choix);
                 profil.params.reponseAmitieDone.call(this, choix);
             }
         });
 
     },
+//Changer de statut
     nouveauStatut: function () {
         var statut = $(profil.params.champStatut).val();
         var data = 'statut=' + statut;
@@ -163,8 +162,8 @@ var profil = {
         }
     },
 
+//Liste des checkins
     evenement: function () {
-	//console.log("loool");
         url = "checkInAvenir.php";
 
         $.ajax({
@@ -174,9 +173,9 @@ var profil = {
 					if(server_response=="Aucun checkin à venir"){
 						$("#list-checkins").fadeIn(500).append(server_response);}
 					else{
+						//Recup liste des checkins
 						var ev = JSON.parse(server_response);
 						var count=Object.keys(ev).length;
-						//console.log(count);
 						var affichageEvenement;
 						var i=0;
 						var j=0;
@@ -187,14 +186,13 @@ var profil = {
 						var moment=false;
 						
 						$("#list-checkins").append("<ul>");
-						
+						//Gestion affichage des checkins
 						for (var p = 0; p < count; p++) {
 							var checkinDatasID = ev["evenement"+p].id_check;
 							$("#list-checkins ul").append("<li id='ev"+p+"' value='"+checkinDatasID+"'>");}
 							
 						for (var passage = 0; passage < count; passage++) {
 							var checkinDatas = ev["evenement"+passage];
-							//console.log(ev["evenement"+passage].comment);
 							var commCheckin =ev["evenement"+passage].comment;
 							
 							var a=checkinDatas.date.split(" ");
@@ -225,15 +223,11 @@ var profil = {
 								'latLng': latlng
 							}, function (results, status) {
 								if (status == google.maps.GeocoderStatus.OK) {
-									//console.log(results[1].formatted_address);
-									//console.log(dateEvString);
+									//Supprimer uniquement quand ce sont nos checkins
 									if(suppr==1){
-										affichageEvenement="<span> à "+results[1].formatted_address+"</span></br> <span class='suppr'>[annuler ce checkin]</span></li>";}
+										affichageEvenement="<span> à "+results[1].formatted_address+"</span></br> <span class='suppr pointer'>[annuler ce checkin]</span></li>";}
 									else{
 										affichageEvenement="<span> à "+results[1].formatted_address+"</span></br></li>";}
-									
-									//console.log(i);
-									//console.log(affichageEvenement);
 									divEvt="#ev"+i;
 									$(divEvt).append(affichageEvenement);
 									i++;
@@ -254,7 +248,7 @@ var profil = {
                 });
 
         },
-		
+//Annuler un checkin		
 		supprCheck: function(idCheck){
 			   url = "checkInAvenir.php";
 
@@ -263,10 +257,7 @@ var profil = {
 					url: url,
 					data: "supprimer=1 &idCheck="+idCheck,
 					success: function (choix) {
-						console.log(choix);
-						//profil.params.supprCheckDone.call(this, choix);
-						$("#list-checkins").empty().fadeIn(1000);
-						profil.evenement();
+						profil.params.supprCheckDone.call(this, choix);
 					}
 				});
 			
