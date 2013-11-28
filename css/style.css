@@ -418,6 +418,7 @@ h1:hover{
 
 .check{position:relative;}
 .check img{position:absolute;top:14px;right:14px;}
+.checkfriend{margin-left:10px;}
 
 .sports-checkboxes{width:210px;float:right;margin-top:12px;}
 .niveau{margin-top:12px;float:left;margin-left:10px;}
