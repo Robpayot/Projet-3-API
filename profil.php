@@ -45,7 +45,7 @@ require 'topbar.php' ;
       <p id="status"><?php echo "&#171;".$statut."!&#187;" ?> </p> 
       <p>
         <input type="text" id="newStatut" name="newStatut" placeholder="Nouveau statut" required ><br>
-        <input type="button" id="envoiStatut" name="envoiStatut" value="Exprime-toi !" class="button"/>
+        <input type="button" id="envoiStatut" name="envoiStatut" value="Exprime-toi !" class="button pointer"/>
       </p>
     </div>
     <div id="cal" class="desktop-only">
@@ -92,7 +92,7 @@ require 'topbar.php' ;
 	
 
     <div id="poster-video" class="upload-media" style="display:none">
-    <?php if($nbUrl_vid>1) { ?>
+    <?php if($nbUrl_vid<1) { ?>
       <form action="profil.php" enctype="multipart/form-data" method="post">
         <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
         <p><label for="url">Votre vidéo (fichiers mp4 et ogg) :</label> <input type="file" name="url" id="url" required></p>
@@ -122,7 +122,6 @@ require 'topbar.php' ;
         <ul class="items--big">
           <?php foreach ($url as $urls): ?>
           <li class="item--big">
-            <a href="#">
               <figure>
                 <img src="<?php echo $urls['url'];?>" <?php if (empty($url_vid)){?>style="margin: 0 auto; width:62%"<?php } ?> alt="" />
                 <?php if($urls['description']!=""){ ?>
@@ -131,7 +130,6 @@ require 'topbar.php' ;
                 </figcaption>
                 <?php } ?>
               </figure>
-            </a>
           </li>
         <?php endforeach; ?>
       </ul>
