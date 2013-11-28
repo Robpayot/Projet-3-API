@@ -61,7 +61,8 @@ require 'topbar.php' ;
       </div>
     </div>
   </div><!-- end userbar content-->
-  
+</div><!-- end userbar -->
+
   <?php if($amitie==1) { ?>
   <div id="profile-content">
     <div id="wax">
@@ -100,9 +101,9 @@ require 'topbar.php' ;
         <span class="control icon-arrow-right" data-direction="next"></span> 
         <span class="grid icon-grid"></span>
       </div>
-    </div><!-- end #gallery-container-->    
+    </div><!-- end #gallery-container--> 
+    <?php if (empty($url_vid)){}else{ ?>   
     <div <?php if (empty($url)){?>style="float:none; position:absolute; left:25%;"<?php } ?> id="video-section">
-      <?php if (empty($url_vid)){}else{ ?>
       <div id="button" class="play">
         <span></span>
       </div>
@@ -119,8 +120,8 @@ require 'topbar.php' ;
         <button type="button" id="mute">Mute</button>
         <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1">
         <button type="button" id="full-screen">Full-Screen</button>
-        <?php } ?>
       </div> <!-- end #video-section-->
+      <?php } ?>
 
       <div class="clear-float"></div>
     </div> <!-- end #medias-->
