@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="imgs/favicon.ico" />
 <link rel="stylesheet" href="css/reset.css" type="text/css" />
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/video.css" type="text/css" />

@@ -45,7 +45,7 @@ require 'topbar.php' ;
       <p id="status"><?php echo "&#171;".$statut."!&#187;" ?> </p> 
       <p>
         <input type="text" id="newStatut" name="newStatut" placeholder="Nouveau statut" required ><br>
-        <input type="button" id="envoiStatut" name="envoiStatut" value="Exprime-toi !" class="button"/>
+        <input type="button" id="envoiStatut" name="envoiStatut" value="Exprime-toi !" class="button pointer"/>
       </p>
     </div>
     <div id="cal" class="desktop-only">
@@ -81,7 +81,7 @@ require 'topbar.php' ;
         <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
         <p><label for="url">Votre photo : </label><input type="file" name="url" id="url" required></p>
         <p><label for="description">Description : </label><input name="description" id="description" data-provide="limit" data-counter="#counter" ></p>
-        <button id="submit_photo" name="submit_photo" type="submit">Valider</button></p>
+        <button id="submit_photo" name="submit_photo" type="submit" class="pointer">Valider</button></p>
       </form> 
           <?php } else { ?>
     <p>Vous ne pouvez pas poster plus de 9 photos ! Veuillez en supprimer pour en charger de nouvelles</p>
@@ -92,12 +92,12 @@ require 'topbar.php' ;
 	
 
     <div id="poster-video" class="upload-media" style="display:none">
-    <?php if($nbUrl_vid>1) { ?>
+    <?php if($nbUrl_vid<1) { ?>
       <form action="profil.php" enctype="multipart/form-data" method="post">
         <input type="hidden" name="MAX_FILE_SIZE" value="100000000">
         <p><label for="url">Votre vidéo (fichiers mp4 et ogg) :</label> <input type="file" name="url" id="url" required></p>
         <p><label for="description">Description : </label><input name="description" id="description" data-provide="limit" data-counter="#counter" ></p>
-        <p><button id="submit_video" name="submit_video" type="submit">Valider</button></p>
+        <p><button id="submit_video" name="submit_video" type="submit" class="pointer">Valider</button></p>
       </form> 
       <?php } else { ?>
       <p>Vous ne pouvez pas poster plus d'une vidéo ! Veuillez la supprimer pour en charger une autre</p>
@@ -122,7 +122,6 @@ require 'topbar.php' ;
         <ul class="items--big">
           <?php foreach ($url as $urls): ?>
           <li class="item--big">
-            <a href="#">
               <figure>
                 <img src="<?php echo $urls['url'];?>" <?php if (empty($url_vid)){?>style="margin: 0 auto; width:62%"<?php } ?> alt="" />
                 <?php if($urls['description']!=""){ ?>
@@ -131,7 +130,6 @@ require 'topbar.php' ;
                 </figcaption>
                 <?php } ?>
               </figure>
-            </a>
           </li>
         <?php endforeach; ?>
       </ul>
@@ -175,9 +173,9 @@ require 'topbar.php' ;
       <?php if (empty($url)){}else { ?>
        <ul>
          <?php foreach ($url as $urls): ?>
-         <li><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" /></a>
+         <li><img src="<?php echo $urls['url'];?>" alt="<?php echo $urls['description'];?>" />
            <form action='profil.php' method="POST" >
-             <button class="delete_media" name="delete_media<?=$urls['id']?>" type="submit">Supprimer cette photo</button>
+             <button class="delete_media" name="delete_media<?=$urls['id']?>" type="submit" class="pointer">Supprimer cette photo</button>
            </form>
          </li>
        <?php endforeach; ?>
@@ -185,7 +183,7 @@ require 'topbar.php' ;
      <?php }
      if (empty($url_vid)){}else{ ?>
      <form action='profil.php' method="POST" >
-       <button class="delete_media" name="delete_media<?=$url_vid?>" type="submit">Supprimer la vidéo</button>
+       <button class="delete_media" name="delete_media<?=$url_vid?>" type="submit" class="pointer">Supprimer la vidéo</button>
      </form>
      <?php } ?>
    </div><!--end edit medias-->
