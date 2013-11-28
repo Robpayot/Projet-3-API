@@ -8,33 +8,33 @@ profil.init({
 		divAmis:'#liste-amis',
 		divResultRecherche:'#resultat',
 		divClassement:'#classement-dropdown ul',
+		//calls back
 		statutDone : function(server_response){
 				$('#newStatut').val('');
 				$("#status").html(server_response);
 				$("#envoiStatut").attr('disabled',false);			
 			},
 		boutonAmitieDone : function(server_response){
-			console.log("etat amitie"+server_response);
 					if(server_response==1)
 						$('#dmdAmi').attr("value","se desabonner");
 					else if (server_response==0)
 						$('#dmdAmi').attr("value","demande envoyée").attr('disabled',true);
 					else
 						$('#dmdAmi').attr("value","s'abonner");
-				
-						//$("#demande").html(server_response).show();
-						}
-						,
+				},
 						
 		reponseAmitieDone : function(choix){
-			console.log("doneee!!");
 					profil.afficherlisteDesDemandes();
 				
 			},
+		supprCheckDone:function(){
+				$("#list-checkins").empty().fadeIn(1000);
+				profil.evenement();			
+		}
 });
 
 
-var notif;
+
 //Liste checkins
 profil.evenement();
 
@@ -66,11 +66,10 @@ profil.afficherlisteDesDemandes();
 $("#voirDemandes").click(function(e) {
 	profil.afficherlisteDesDemandes();
 });
-//notif=setInterval(profil.afficherlisteDesDemandes(),1000);
 
 //Reponse demande ami
 $('.demandesAmi').click(function() {
-	console.log(event.srcElement.className);
+	//console.log(event.srcElement.className);
 	profil.reponseAmitie(event.srcElement);
 	
 });
@@ -93,9 +92,6 @@ $('#list-checkins').on('click','.suppr',function(e) {
 			profil.supprCheck(idCheck);
 	
 		  }
-	//console.log(e.target);
-	//console.log(e);
-	//console.log(this.attr("value"));
 	
 	
 });
