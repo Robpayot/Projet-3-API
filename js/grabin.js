@@ -14,10 +14,6 @@ function getDropDownUp(id) {
   document.getElementById(id).className = 'dropdown-up';
 };
 
-$('#recherche').focus(displayResults());
-$('#recherche').blur(hideResults());
-$('#resultat').css("opacity", "0");
-
 
 function getOff(id) {
   document.getElementById(id).className = 'opacity-0';
@@ -78,6 +74,10 @@ function afficher_cacher(id) {
   $("#" + id).stop().slideToggle(500, 'easeInSine');
   return false;
 }
+/*---- résultats recherche----*/
+$('#recherche').focus(displayResults());
+$('#recherche').blur(hideResults());
+$('#resultat').css("opacity", "0");
 
 function displayResults() {
   $('#resultat').css("opacity", "1");
