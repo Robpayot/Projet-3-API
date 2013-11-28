@@ -5,8 +5,25 @@
 function getDropDownUp(){
   document.getElementById('connexion-dropdown').className='dropdown-up';
 } */
-function getDropDownDown(id) {
-  document.getElementById(id).className = 'dropdown-down';
+//variables pour avoir une unique fenêtre ouverte
+var choix=document.getElementsByClassName('dropdown-down');
+var choixDiv;
+  
+function getDropDownDown(id) {   
+
+document.getElementById(id).className = 'dropdown-down';
+ 
+for (i=0;i<choix.length;i++){
+		if(choix[i].id!=id){
+			choixDiv=choix[i];
+			  setTimeout(function () {
+					choixDiv.className = 'dropdown-up';
+				}, 500);
+			
+		}
+}
+
+
 };
 
 
@@ -74,6 +91,7 @@ function afficher_cacher(id) {
   $("#" + id).stop().slideToggle(500, 'easeInSine');
   return false;
 }
+
 /*---- résultats recherche----*/
 $('#recherche').focus(displayResults());
 $('#recherche').blur(hideResults());
