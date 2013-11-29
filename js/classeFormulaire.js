@@ -1,5 +1,5 @@
 // JavaScript Document
-
+var check=false;
 
 var verifFormulaireInsc = {
     defaults: {
@@ -75,7 +75,7 @@ var verifFormulaireInsc = {
 	},
 	//Verification que toutes les informations sont rentrées
 		disab: function(sinscrire){
-			var check=false;
+			check=false;
 			var checkbox=document.getElementsByName('check[]');
 			for(var i=0; i<checkbox.length;i++){
 				if(checkbox[i].checked == true){
@@ -90,8 +90,6 @@ var verifFormulaireInsc = {
 				$(sinscrire).removeClass().addClass('greyenvoie');
 				$(sinscrire).attr("disabled",true);
 			}
-				
-				console.log(document.getElementsByName('check[]')[0]);
 		
 		
 	}

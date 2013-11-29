@@ -57,7 +57,7 @@
         <p>ou</p>
       </div>
       <div id="btn-fbco" class="transition200io"><a onclick="getDropDownDown('inscription-fb-dropdown')">Inscription avec Facebook</a></div>
-      <a href="#" onclick="getDropDownDown('inscription-dropdown')" class="no-account">Pas encore de compte ?</a>
+      <a href="#" onclick="getDropDownDown('inscription-dropdown')" class="no-account" id="btn-co">Pas encore de compte ?</a>
     </div> <!-- end of connexion-dropdown -->
     <div id="classement-dropdown" class="dropdown-up">
       <p class="dropdown-title">Classement</p>
@@ -69,7 +69,7 @@
       <p class="dropdown-title">Inscription</p>
       <a  href="#" class="close" onclick="getDropDownUp('inscription-dropdown')"><img src="imgs/close.png" alt="close"/></a>
      
-      <form autocomplete="off" method='post' action='sinscrire.php'>
+      <form autocomplete="off" method='post' action='sinscrire.php' id="formInsc">
       <ul>
         
         <li class="l-field"><p class="field-desc">Prénom</p><input class="l-text-field" type="text" id="prenom" name="prenom" required></li>
@@ -99,7 +99,7 @@
             </SELECT>
           
         </li>
-        <li class="l-field spaced send"><p class="field-send"><input type="submit" id="envoie" class="envoie" name="envoie" value="Envoyer"/></p></li>
+        <li class="l-field spaced send"><p class="field-send"><input type="submit" id="envoie" class="greyenvoie" name="envoie" value="Envoyer"/></p></li>
       </ul>
       </form>
     </div> <!-- end of inscription-dropdown -->
@@ -110,7 +110,7 @@
     
     
       <a  href="#" class="close" onclick="getDropDownUp('inscription-fb-dropdown')"><img src="imgs/close.png" alt="close"/></a>
-      <form autocomplete="off" method='post' action='facebook_connect.php'>
+      <form autocomplete="off" method='post' action='facebook_connect.php' id="formInscFb">
       <ul>
         <li class="l-field"><p id="facebook_button"><fb:login-button id="fb_connexion" scope="user_birthday,email" width="200" max-rows="1"></fb:login-button></p>
         <p id="message_co"></p>
@@ -139,7 +139,7 @@
             </SELECT>
           
         </li>
-        <li class="l-field spaced send"><p class="field-send"><input type="submit" id="envoieFb" class="envoie" name="envoiefb" value="Envoyer"/></p></li>
+        <li class="l-field spaced send"><p class="field-send"><input type="submit" id="envoieFb" class="greyenvoie" name="envoiefb" value="Envoyer"/></p></li>
       </ul>
       </form>
     </div> <!-- end of inscription-fb-dropdown -->

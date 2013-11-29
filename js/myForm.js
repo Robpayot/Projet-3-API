@@ -16,6 +16,19 @@ verifFormulaireInsc.init({
 		Vmdp:false,
 		pseudoFree:false
 	});
+	
+function reseT(){
+	verifFormulaireInsc.params.Vmdp=false;
+	verifFormulaireInsc.params.pseudoFree=false;
+	var checkbox=document.getElementsByName('check[]');
+	for(var i=0; i<checkbox.length;i++){
+			checkbox[i].checked=false;
+			}
+	
+}
+$('#btn-co').click(function(e){reseT();});
+$('#btn-fbco').click(function(e){reseT();});
+
 //Verification mot de passe
 $("#retape_mdp").keyup(function(){
 	verifFormulaireInsc.verifMdp(verifFormulaireInsc.params.retape,verifFormulaireInsc.params.mdp,verifFormulaireInsc.params.imgVerif);
